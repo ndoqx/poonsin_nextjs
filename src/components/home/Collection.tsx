@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
-import { LayoutGrid } from 'lucide-react';
-import { SITE_CONFIG } from '@/config/site';
+import { Search } from 'lucide-react';
+import { SITE_CONFIG, CategoryType } from '@/config/site';
 import { Reveal } from '@/components/ui/Reveal';
 
 interface CollectionProps {
   scrollToSection: (id: string) => void;
-  setActiveGallery: (gallery: 'modern' | 'classic' | 'brahma') => void;
+  setActiveCategory: (category: CategoryType) => void;
 }
 
-export const Collection = ({ scrollToSection, setActiveGallery }: CollectionProps) => {
+export const Collection = ({ scrollToSection, setActiveCategory }: CollectionProps) => {
   return (
     <section id="collection" className="bg-white text-gray-900 py-40 px-6 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto">
@@ -37,15 +37,15 @@ export const Collection = ({ scrollToSection, setActiveGallery }: CollectionProp
                 <button onClick={() => scrollToSection('contact')} className="text-white bg-gray-900 px-8 py-4 rounded-full hover:bg-amber-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   ติดต่อสั่งทำ
                 </button>
-                <button onClick={() => setActiveGallery('modern')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
-                  <LayoutGrid size={20} /> รูปแบบเพิ่มเติม
+                <button onClick={() => setActiveCategory('modern')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
+                  <Search size={20} /> ดูทุกรุ่นในหมวดนี้
                 </button>
               </div>
             </Reveal>
             <Reveal effect="fade-left" delay={200} className="md:w-1/2 order-1 md:order-2 relative">
               <div className="absolute inset-0 bg-amber-100 rounded-full blur-3xl scale-75 opacity-0 group-hover:opacity-50 transition-opacity duration-1000 animate-[spin_10s_linear_infinite]"></div>
               <div className="relative overflow-hidden rounded-[2rem] shadow-2xl border border-gray-100 aspect-[4/5] md:aspect-auto md:h-[600px] w-full transform group-hover:-translate-y-2 transition-transform duration-700">
-                <img src={SITE_CONFIG.products.modern} alt="ศาลโมเดิร์น" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
+                <img src={SITE_CONFIG.catalog.modern.coverImage} alt="ศาลโมเดิร์น" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </Reveal>
@@ -56,7 +56,7 @@ export const Collection = ({ scrollToSection, setActiveGallery }: CollectionProp
             <Reveal effect="fade-right" delay={200} className="md:w-1/2 relative">
                <div className="absolute inset-0 bg-amber-100 rounded-full blur-3xl scale-75 opacity-0 group-hover:opacity-50 transition-opacity duration-1000 animate-[spin_10s_linear_infinite]"></div>
               <div className="relative overflow-hidden rounded-[2rem] shadow-2xl border border-gray-100 aspect-[4/5] md:aspect-auto md:h-[600px] w-full transform group-hover:-translate-y-2 transition-transform duration-700">
-                <img src={SITE_CONFIG.products.classic} alt="ศาลพระภูมิ" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
+                <img src={SITE_CONFIG.catalog.classic.coverImage} alt="ศาลพระภูมิ" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </Reveal>
@@ -74,8 +74,8 @@ export const Collection = ({ scrollToSection, setActiveGallery }: CollectionProp
                 <button onClick={() => scrollToSection('contact')} className="text-white bg-gradient-to-r from-amber-500 to-amber-700 px-8 py-4 rounded-full hover:shadow-lg hover:shadow-amber-500/30 hover:-translate-y-1 transition-all duration-300">
                   ติดต่อสั่งทำ
                 </button>
-                <button onClick={() => setActiveGallery('classic')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
-                  <LayoutGrid size={20} /> รูปแบบเพิ่มเติม
+                <button onClick={() => setActiveCategory('classic')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
+                  <Search size={20} /> ดูทุกรุ่นในหมวดนี้
                 </button>
               </div>
             </Reveal>
@@ -95,15 +95,15 @@ export const Collection = ({ scrollToSection, setActiveGallery }: CollectionProp
                 <button onClick={() => scrollToSection('contact')} className="text-white bg-gray-900 px-8 py-4 rounded-full hover:bg-amber-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   ติดต่อสั่งทำ
                 </button>
-                <button onClick={() => setActiveGallery('brahma')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
-                  <LayoutGrid size={20} /> รูปแบบเพิ่มเติม
+                <button onClick={() => setActiveCategory('brahma')} className="text-gray-900 bg-white border border-gray-200 px-6 py-4 rounded-full hover:border-amber-500 hover:text-amber-600 hover:shadow-md transition-all duration-300 flex items-center gap-2">
+                  <Search size={20} /> ดูทุกรุ่นในหมวดนี้
                 </button>
               </div>
             </Reveal>
             <Reveal effect="fade-left" delay={200} className="md:w-1/2 order-1 md:order-2 relative">
                <div className="absolute inset-0 bg-amber-100 rounded-full blur-3xl scale-75 opacity-0 group-hover:opacity-50 transition-opacity duration-1000 animate-[spin_10s_linear_infinite]"></div>
               <div className="relative overflow-hidden rounded-[2rem] shadow-2xl border border-gray-100 aspect-[4/5] md:aspect-auto md:h-[600px] w-full transform group-hover:-translate-y-2 transition-transform duration-700">
-                <img src={SITE_CONFIG.products.brahma} alt="ศาลพระพรหม" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
+                <img src={SITE_CONFIG.catalog.brahma.coverImage} alt="ศาลพระพรหม" className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-[1500ms] ease-out"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </Reveal>

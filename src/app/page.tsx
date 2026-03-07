@@ -8,16 +8,18 @@ import { Heritage } from '@/components/home/Heritage';
 import { Collection } from '@/components/home/Collection';
 import { Reviews } from '@/components/home/Reviews';
 import { Contact } from '@/components/home/Contact';
+import { CategoryModal } from '@/components/shared/CategoryModal';
 import { ProductModal } from '@/components/shared/ProductModal';
-
-type GalleryType = 'modern' | 'classic' | 'brahma' | null;
+import { CategoryType, ProductItem } from '@/config/site';
 
 export default function Home() {
-  const [activeGallery, setActiveGallery] = useState<GalleryType>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryType | null>(null);
+  const [activeProduct, setActiveProduct] = useState<ProductItem | null>(null);
 
   // ฟังก์ชันเลื่อนไปยัง Section ต่างๆ + ปิด Popup ทันทีที่กด
   const scrollToSection = (id: string) => {
-    setActiveGallery(null); // ปิด Popup หากเปิดอยู่
+    setActiveCategory(null);
+    setActiveProduct(null);
     
     // ตั้งเวลาเล็กน้อยเพื่อให้ Popup ปิดเสร็จก่อนเลื่อนหน้าจอ
     setTimeout(() => {
@@ -41,7 +43,7 @@ export default function Home() {
         <Heritage />
         <Collection 
           scrollToSection={scrollToSection} 
-          setActiveGallery={setActiveGallery} 
+          setActiveCategory={setActiveCategory} 
         />
         <Reviews />
         <Contact />
@@ -50,13 +52,29 @@ export default function Home() {
       {/* Footer */}
       <Footer />
 
-      {/* Product Gallery Modal */}
+      {/* Category Grid Modal */}
+      <CategoryModal
+        activeCategory={activeCategory}
+        activeProduct={activeProduct}
+        onClose={() => setActiveCategory(null)}
+        onProductSelect={(product) => setActiveProduct(product)}
+      />
+
+      {/* Product Details Modal */}
       <ProductModal 
-        activeGallery={activeGallery} 
-        onClose={() => setActiveGallery(null)}
+        activeProduct={activeProduct}
+        onBack={() => setActiveProduct(null)}
+        onClose={() => { setActiveProduct(null); setActiveCategory(null); }}
         onContactSelect={() => scrollToSection('contact')}
       />
 
+      {/* สไตล์สำหรับ Scrollbar ในกรอบรูปเล็ก */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #fcd34d; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+      `}} />
     </div>
   );
 }
