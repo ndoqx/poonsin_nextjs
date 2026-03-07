@@ -1,91 +1,80 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+interface NavbarProps {
+  scrollToSection: (id: string) => void;
+}
+
+export const Navbar = ({ scrollToSection }: NavbarProps) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (id: string) => {
+    setIsMenuOpen(false);
+    scrollToSection(id);
+  };
+
+  const navItems = [
+    { name: 'ประวัติร้านพูนสิน', id: 'heritage' },
+    { name: 'คอลเลกชัน', id: 'collection' },
+    { name: 'รีวิวลูกค้า', id: 'reviews' },
+    { name: 'ติดต่อเรา', id: 'contact' }
+  ];
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <a href="#" className="shrink-0 flex items-center gap-2">
-              <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-white font-bold text-xl font-heading">
-                พ
-              </div>
-              <div>
-                <span className="font-heading font-bold text-2xl text-gray-800">
-                  {SITE_CONFIG.name}
-                </span>
-                <p className="text-xs text-gold uppercase tracking-widest">
-                  {SITE_CONFIG.tagline}
-                </p>
-              </div>
-            </a>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-gray-600 hover:text-gold transition font-medium"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              className="px-5 py-2 bg-gold text-white rounded-full hover:bg-gold-dark transition shadow-lg font-medium"
-            >
-              ติดต่อเรา
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
-                <Menu className="w-8 h-8" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block px-4 py-3 text-gray-600 hover:bg-gray-50"
-            >
-              {link.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-gold font-bold hover:bg-gray-50"
+    <>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-700 backdrop-blur-md ${
+        scrolled ? 'bg-white/90 border-b border-gray-200 py-3 shadow-sm' : 'bg-transparent border-transparent py-6'
+      }`}>
+        <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider">
+          <button 
+            onClick={() => handleNavClick('hero')} 
+            className={`font-serif text-xl font-bold tracking-widest transition-colors flex items-center gap-3 ${scrolled ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}
           >
-            ติดต่อเรา
-          </a>
+            <span className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-lg">P</span>
+            POONSIN
+          </button>
+          
+          <div className="hidden md:flex space-x-12">
+            {navItems.map((item, i) => (
+              <button 
+                key={i} 
+                onClick={() => handleNavClick(item.id)}
+                className={`uppercase font-bold tracking-widest transition-colors ${scrolled ? 'text-gray-600 hover:text-amber-600' : 'text-gray-800 hover:text-amber-600 drop-shadow-sm'}`}
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          <button className="md:hidden z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X size={28} className="text-gray-900" /> : <Menu size={28} className={scrolled ? 'text-gray-900' : 'text-gray-900'} />}
+          </button>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile Menu */}
+        <div className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+             {[ { name: 'หน้าหลัก', id: 'hero' }, ...navItems ].map((item, i) => (
+              <button 
+                key={i} 
+                onClick={() => handleNavClick(item.id)}
+                className="text-2xl font-serif text-gray-900 hover:text-amber-600 transition-colors"
+              >
+                {item.name}
+              </button>
+            ))}
+        </div>
+      </nav>
+    </>
   );
-}
+};

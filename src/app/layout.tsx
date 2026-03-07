@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Kanit, Sarabun } from "next/font/google";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const kanit = Kanit({
@@ -41,9 +39,7 @@ export default function RootLayout({
       <body
         className={`${kanit.variable} ${sarabun.variable} bg-gray-50 text-gray-800 antialiased`}
       >
-        <Navbar />
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   );

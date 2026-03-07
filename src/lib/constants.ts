@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
     description:
       "ดีไซน์เรียบหรู เข้ากับบ้านสไตล์ Modern & Minimal เน้นโทนสีขาวสะอาดตา",
     image:
-      "https://placehold.co/600x400/EEE/999?text=Modern+Spirit+House+1",
+      "https://photos.app.goo.gl/bPsNCA1kxTNLfCNg7",
     imageAlt: "ศาลโมเดิร์น",
     badge: "Best Seller",
     category: "modern",
