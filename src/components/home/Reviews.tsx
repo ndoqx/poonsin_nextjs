@@ -16,8 +16,8 @@ export const Reviews = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {SITE_CONFIG.reviews.map((review, index) => (
-            <Reveal key={review.id} delay={index * 200} effect="fade-up">
-              <a href={review.link} target="_blank" rel="noreferrer" className="block bg-white p-10 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(245,158,11,0.15)] transition-all duration-500 hover:-translate-y-4 border border-transparent hover:border-amber-100 group relative h-full flex flex-col justify-between overflow-hidden">
+            <Reveal key={review.id} delay={index * 100} effect="fade-up">
+              <a href={review.link} target="_blank" rel="noreferrer" className="block bg-white p-8 md:p-10 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(245,158,11,0.15)] transition-all duration-500 hover:-translate-y-4 border border-transparent hover:border-amber-100 group relative h-full flex flex-col justify-between overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-150"></div>
                 <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-amber-500 z-10">
                   <ExternalLink size={24} />
@@ -28,8 +28,8 @@ export const Reviews = () => {
                   </div>
                   <p className="text-gray-700 text-xl leading-relaxed mb-10 italic">"{review.content}"</p>
                 </div>
-                <div className="flex items-center gap-5 border-t border-gray-100 pt-6 relative z-10">
-                  <img src={review.avatar} alt={review.author} className="w-16 h-16 rounded-full object-cover ring-4 ring-amber-50" />
+                <div className="flex items-center gap-4 md:gap-5 border-t border-gray-100 pt-6 relative z-10">
+                  <img src={review.avatar} alt={review.author} className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover ring-4 ring-amber-50" />
                   <div>
                     <h4 className="font-bold text-gray-900 text-lg">{review.author}</h4>
                     <p className="text-sm text-gray-500">{review.role}</p>

@@ -63,16 +63,28 @@ export const Navbar = ({ scrollToSection }: NavbarProps) => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-             {[ { name: 'หน้าหลัก', id: 'hero' }, ...navItems ].map((item, i) => (
-              <button 
-                key={i} 
-                onClick={() => handleNavClick(item.id)}
-                className="text-2xl font-serif text-gray-900 hover:text-amber-600 transition-colors"
-              >
-                {item.name}
-              </button>
-            ))}
+        <div className={`fixed inset-0 bg-white/98 backdrop-blur-3xl z-40 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+          <div className="flex flex-col h-full justify-center px-10">
+             <div className="space-y-6">
+                 {[ { name: 'หน้าหลัก', id: 'hero' }, ...navItems ].map((item, i) => (
+                  <div key={i} className="overflow-hidden">
+                    <button 
+                      onClick={() => handleNavClick(item.id)}
+                      className={`text-4xl sm:text-5xl font-bold tracking-tighter text-gray-900 hover:text-amber-500 transition-colors transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} duration-700`}
+                      style={{ transitionDelay: isMenuOpen ? `${i * 100 + 100}ms` : '0ms' }}
+                    >
+                      {item.name}
+                    </button>
+                  </div>
+                ))}
+            </div>
+            
+            <div className={`mt-20 flex gap-6 transform transition-all duration-700 delay-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">FB</a>
+               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">IG</a>
+               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">LI</a>
+            </div>
+          </div>
         </div>
       </nav>
     </>

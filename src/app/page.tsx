@@ -21,14 +21,12 @@ export default function Home() {
     setActiveCategory(null);
     setActiveProduct(null);
     
-    // ตั้งเวลาเล็กน้อยเพื่อให้ Popup ปิดเสร็จก่อนเลื่อนหน้าจอ
-    setTimeout(() => {
-      const element = document.getElementById(id);
-      if (element) {
-        const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }, 50);
+    // ปิด Popup แล้วเลื่อนทันทีเพื่อให้ประสบการณ์ใช้งานลื่นไหล (snappy)
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -70,7 +68,7 @@ export default function Home() {
 
       {/* สไตล์สำหรับ Scrollbar ในกรอบรูปเล็ก */}
       <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #fcd34d; border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #f59e0b; }

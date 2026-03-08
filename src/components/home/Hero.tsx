@@ -33,20 +33,20 @@ export const Hero = ({ scrollToSection }: HeroProps) => {
 
       <div className="relative z-10 text-center flex flex-col items-center mt-20 px-4 w-full will-change-transform" style={{ transform: `translateY(${-scrollY * 0.5}px)`, opacity: Math.max(0, 1 - scrollY * 0.002) }}>
         
-        <Reveal effect="blur-in" delay={400}>
+        <Reveal effect="blur-in" delay={100}>
           <h1 className="text-7xl md:text-[8rem] font-bold tracking-tighter mb-6 text-gray-900 drop-shadow-lg leading-[0.9]">
             เหนือกว่า<br />คำว่า<span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-400 to-amber-700">ทนทาน.</span>
           </h1>
         </Reveal>
         
-        <Reveal effect="fade-up" delay={800}>
+        <Reveal effect="fade-up" delay={300}>
           <p className="text-xl md:text-3xl text-gray-600 font-medium mb-12 max-w-3xl mx-auto tracking-tight leading-relaxed drop-shadow-sm">
             สถาปัตยกรรมแห่งศรัทธา ที่ออกแบบมาเพื่ออนาคต<br />
             ประสบการณ์ 60 ปี สู่ผลงานชิ้นเอกที่ไม่มีใครเทียบ
           </p>
         </Reveal>
         
-        <Reveal effect="fade-up" delay={1000}>
+        <Reveal effect="fade-up" delay={500}>
           <button 
             onClick={() => scrollToSection('collection')}
             className="group relative overflow-hidden bg-gray-900 text-white px-12 py-5 rounded-full font-bold text-lg shadow-2xl hover:shadow-amber-500/30 transition-all duration-500 hover:-translate-y-1"

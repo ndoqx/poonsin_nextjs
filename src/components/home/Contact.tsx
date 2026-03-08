@@ -11,7 +11,7 @@ export const Contact = () => {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <Reveal effect="scale-up">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-2xl flex items-center justify-center text-4xl font-serif font-bold mx-auto mb-10 shadow-xl rotate-45">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-xl md:rounded-2xl flex items-center justify-center text-3xl md:text-4xl font-serif font-bold mx-auto mb-8 md:mb-10 shadow-xl rotate-45">
               <span className="-rotate-45">P</span>
             </div>
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-gray-900">
@@ -22,30 +22,30 @@ export const Contact = () => {
               <span className="text-amber-600 font-bold">ดูแลทุกขั้นตอนโดยเจ้าของร้านโดยตรง</span>
             </p>
             
-            <div className="flex flex-col md:flex-row justify-center gap-6 mb-16">
-              <a href="tel:0818890173" className="group relative overflow-hidden bg-gray-900 text-white px-10 py-5 rounded-full font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-gray-900/40 hover:-translate-y-1 flex items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mb-12 md:mb-16">
+              <a href="tel:0818890173" className="w-full sm:w-auto group relative overflow-hidden bg-gray-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-2xl hover:shadow-gray-900/40 hover:-translate-y-1 flex items-center justify-center gap-4">
                 <div className="absolute inset-0 bg-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
-                <Phone size={28} className="relative z-10 group-hover:rotate-12 transition-transform" /> 
-                <span className="relative z-10">081-8890173 (สิงหะ)</span>
+                <Phone size={24} className="md:w-[28px] md:h-[28px] relative z-10 group-hover:rotate-12 transition-transform" /> 
+                <span className="relative z-10 break-keep">081-8890173 (สิงหะ)</span>
               </a>
               
-              <a href="https://line.me/ti/p/" target="_blank" rel="noreferrer" className="group relative overflow-hidden bg-[#00B900] text-white px-10 py-5 rounded-full font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-4">
+              <a href="https://line.me/ti/p/" target="_blank" rel="noreferrer" className="w-full sm:w-auto group relative overflow-hidden bg-[#00B900] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-2xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-4">
                 <div className="absolute inset-0 bg-[#009900] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
-                <MessageCircle size={28} className="relative z-10 group-hover:scale-110 transition-transform" /> 
-                <span className="relative z-10">LINE: 0611733389</span>
+                <MessageCircle size={24} className="md:w-[28px] md:h-[28px] relative z-10 group-hover:scale-110 transition-transform" /> 
+                <span className="relative z-10 break-keep">LINE: 0611733389</span>
               </a>
             </div>
 
-            <div className="flex justify-center gap-10">
+            <div className="flex justify-center gap-8 md:gap-10">
               <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover:bg-[#1877F2] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:-translate-y-2">
-                    <Facebook size={32} />
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover:bg-[#1877F2] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:-translate-y-2">
+                    <Facebook size={28} className="md:w-[32px] md:h-[32px]" />
                   </div>
-                  <span className="text-xs uppercase tracking-widest font-bold text-gray-400 group-hover:text-[#1877F2] transition-colors">Facebook</span>
+                  <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-400 group-hover:text-[#1877F2] transition-colors">Facebook</span>
               </a>
               <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:-translate-y-2">
-                    <Instagram size={32} />
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:-translate-y-2">
+                    <Instagram size={28} className="md:w-[32px] md:h-[32px]" />
                   </div>
                   <span className="text-xs uppercase tracking-widest font-bold text-gray-400 group-hover:text-[#dc2743] transition-colors">Instagram</span>
               </a>
