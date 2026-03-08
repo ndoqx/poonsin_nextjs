@@ -19,6 +19,15 @@ export const Navbar = ({ scrollToSection }: NavbarProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isMenuOpen]);
+
   const handleNavClick = (id: string) => {
     setIsMenuOpen(false);
     scrollToSection(id);
@@ -39,9 +48,9 @@ export const Navbar = ({ scrollToSection }: NavbarProps) => {
         <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider">
           <button 
             onClick={() => handleNavClick('hero')} 
-            className={`font-serif text-xl font-bold tracking-widest transition-colors flex items-center gap-3 ${scrolled ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}
+            className={`font-serif text-lg md:text-xl font-bold tracking-widest transition-colors flex items-center gap-2 md:gap-3 ${scrolled ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}
           >
-            <span className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-lg">P</span>
+            <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-lg">P</span>
             POONSIN
           </button>
           
@@ -57,32 +66,56 @@ export const Navbar = ({ scrollToSection }: NavbarProps) => {
             ))}
           </div>
 
-          <button className="md:hidden z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={28} className="text-gray-900" /> : <Menu size={28} className={scrolled ? 'text-gray-900' : 'text-gray-900'} />}
+          {/* ปุ่มเปิดเมนูมือถือ */}
+          <button className="md:hidden relative p-2 text-gray-900" onClick={() => setIsMenuOpen(true)}>
+             <Menu size={28} />
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div className={`fixed inset-0 bg-white/98 backdrop-blur-3xl z-40 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-          <div className="flex flex-col h-full justify-center px-10">
-             <div className="space-y-6">
-                 {[ { name: 'หน้าหลัก', id: 'hero' }, ...navItems ].map((item, i) => (
-                  <div key={i} className="overflow-hidden">
-                    <button 
-                      onClick={() => handleNavClick(item.id)}
-                      className={`text-4xl sm:text-5xl font-bold tracking-tighter text-gray-900 hover:text-amber-500 transition-colors transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} duration-700`}
-                      style={{ transitionDelay: isMenuOpen ? `${i * 100 + 100}ms` : '0ms' }}
-                    >
-                      {item.name}
-                    </button>
-                  </div>
-                ))}
+        {/* 🟢 Mobile Menu Overlay (ออกแบบโครงสร้างใหม่ให้ลากเลื่อนได้สมบูรณ์) */}
+        <div 
+          className={`fixed inset-0 bg-white z-[999] overflow-y-auto overscroll-y-contain flex flex-col transition-transform duration-500 ease-in-out ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="min-h-full flex flex-col">
+            {/* Header ของเมนูมือถือ */}
+            <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
+              <button onClick={() => handleNavClick('hero')} className="font-serif text-lg font-bold tracking-widest flex items-center gap-2 text-gray-900">
+                <span className="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-sm">P</span>
+                POONSIN
+              </button>
+              <button 
+                onClick={() => setIsMenuOpen(false)} 
+                className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors"
+              >
+                <X size={26} />
+              </button>
             </div>
-            
-            <div className={`mt-20 flex gap-6 transform transition-all duration-700 delay-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">FB</a>
-               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">IG</a>
-               <a href="#" className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-900 border border-gray-100">LI</a>
+
+            {/* รายการเมนูมือถือ */}
+            <div className="flex-1 flex flex-col items-center justify-center py-12 px-6 space-y-10">
+               {[ { name: 'หน้าหลัก', id: 'hero' }, ...navItems ].map((item, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => handleNavClick(item.id)} 
+                  className="text-2xl font-bold text-gray-900 hover:text-amber-600 transition-colors w-full text-center tracking-wide py-2"
+                >
+                  {item.name}
+                </button>
+              ))}
+              
+              <div className="pt-10 flex gap-6 text-gray-400 border-t border-gray-100 w-1/2 justify-center">
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] transition-colors">
+                  {/* Assuming simple text if icons aren't perfectly mapped in exact component file, but we can assume we'll use Facebook/Instagram */}
+                  <span className="sr-only">Facebook</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#dc2743] transition-colors">
+                  <span className="sr-only">Instagram</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>

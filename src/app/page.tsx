@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* สไตล์สำหรับ Scrollbar ในกรอบรูปเล็ก */}
       <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar { height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #fcd34d; border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #f59e0b; }

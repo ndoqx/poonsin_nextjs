@@ -4,34 +4,34 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export const Contact = () => {
   return (
-    <section id="contact" className="bg-white text-gray-900 py-32 px-6 border-t border-gray-200 relative overflow-hidden">
+    <section id="contact" className="bg-white text-gray-900 py-24 md:py-32 px-6 border-t border-gray-200 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
           <h1 className="text-[20vw] font-bold whitespace-nowrap tracking-tighter">POONSIN</h1>
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <Reveal effect="scale-up">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-xl md:rounded-2xl flex items-center justify-center text-3xl md:text-4xl font-serif font-bold mx-auto mb-8 md:mb-10 shadow-xl rotate-45">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl font-serif font-bold mx-auto mb-8 md:mb-10 shadow-xl rotate-45">
               <span className="-rotate-45">P</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-gray-900">
-              พร้อมสำหรับสิ่งที่ดีที่สุด<br/>แล้วหรือยัง?
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 md:mb-8 text-gray-900">
+              พร้อมสำหรับสิ่งที่ดีที่สุด<br className="hidden sm:block"/>แล้วหรือยัง?
             </h2>
-            <p className="text-2xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-600 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed">
               จัดส่งและติดตั้งอย่างดีเยี่ยมทั่วไทย<br/>
               <span className="text-amber-600 font-bold">ดูแลทุกขั้นตอนโดยเจ้าของร้านโดยตรง</span>
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 mb-12 md:mb-16">
-              <a href="tel:0818890173" className="w-full sm:w-auto group relative overflow-hidden bg-gray-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-2xl hover:shadow-gray-900/40 hover:-translate-y-1 flex items-center justify-center gap-4">
-                <div className="absolute inset-0 bg-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
-                <Phone size={24} className="md:w-[28px] md:h-[28px] relative z-10 group-hover:rotate-12 transition-transform" /> 
+            <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-12 md:mb-16">
+              <a href="tel:0818890173" className="group relative overflow-hidden bg-gray-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-xl hover:shadow-gray-900/40 hover:-translate-y-1 flex items-center justify-center gap-3">
+                <div className="absolute inset-0 bg-amber-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                <Phone size={24} className="relative z-10 group-hover:rotate-12 transition-transform" /> 
                 <span className="relative z-10 break-keep">081-8890173 (สิงหะ)</span>
               </a>
               
-              <a href="https://line.me/ti/p/" target="_blank" rel="noreferrer" className="w-full sm:w-auto group relative overflow-hidden bg-[#00B900] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-2xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-4">
-                <div className="absolute inset-0 bg-[#009900] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
-                <MessageCircle size={24} className="md:w-[28px] md:h-[28px] relative z-10 group-hover:scale-110 transition-transform" /> 
+              <a href="https://line.me/ti/p/" target="_blank" rel="noreferrer" className="group relative overflow-hidden bg-[#00B900] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-3">
+                <div className="absolute inset-0 bg-[#009900] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                <MessageCircle size={24} className="relative z-10 group-hover:scale-110 transition-transform" /> 
                 <span className="relative z-10 break-keep">LINE: 0611733389</span>
               </a>
             </div>
