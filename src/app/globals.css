@@ -28,3 +28,20 @@ h1, h2, h3, h4, .font-heading {
 html {
   scroll-behavior: smooth;
 }
+
+@plugin "tailwindcss-animate";
+
+/* Custom Scrollbar for Carousel Thumbs */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #fcd34d;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}

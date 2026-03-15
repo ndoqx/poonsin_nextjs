@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Facebook, Instagram } from 'lucide-react';
 
 interface NavbarProps {
   scrollToSection: (id: string) => void;
@@ -107,13 +107,10 @@ export const Navbar = ({ scrollToSection }: NavbarProps) => {
               
               <div className="pt-10 flex gap-6 text-gray-400 border-t border-gray-100 w-1/2 justify-center">
                 <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] transition-colors">
-                  {/* Assuming simple text if icons aren't perfectly mapped in exact component file, but we can assume we'll use Facebook/Instagram */}
-                  <span className="sr-only">Facebook</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  <Facebook size={36} />
                 </a>
                 <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#dc2743] transition-colors">
-                  <span className="sr-only">Instagram</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <Instagram size={36} />
                 </a>
               </div>
             </div>

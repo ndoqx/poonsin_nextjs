@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import React from 'react';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 
 interface RevealProps {
   children: React.ReactNode;
@@ -25,11 +25,7 @@ export const Reveal = ({ children, delay = 0, effect = "fade-up", className = ""
   };
 
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-[800ms] ease-out ${getEffectClasses()} ${className}`}
-    >
+    <div ref={ref} style={{ transitionDelay: `${delay}ms` }} className={`transition-all duration-[800ms] ease-out ${getEffectClasses()} ${className}`}>
       {children}
     </div>
   );
