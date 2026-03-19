@@ -21,17 +21,15 @@ export default function SectionHeading({
         </span>
       )}
       <h2
-        className={`font-heading text-3xl md:text-4xl font-bold mt-2 ${
-          light ? "text-white" : "text-gray-900"
-        }`}
+        className={`font-heading text-3xl md:text-4xl font-bold mt-2 ${light ? "text-white" : "text-gray-900"
+          }`}
       >
         {title}
       </h2>
       {description && (
         <p
-          className={`mt-4 max-w-2xl ${centered ? "mx-auto" : ""} ${
-            light ? "text-gray-300" : "text-gray-600"
-          }`}
+          className={`mt-4 max-w-2xl ${centered ? "mx-auto" : ""} ${light ? "text-gray-300" : "text-gray-600"
+            }`}
         >
           {description}
         </p>

@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  heroBgImage: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=2670&auto=format&fit=crop",
+  heroBgImage: "/images/19330.jpg",
 
   // 📂 ระบบ Catalog
   catalog: {
@@ -16,7 +16,7 @@ export const SITE_CONFIG = {
           description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่",
           features: ["โครงสร้างคอนกรีตเสริมเหล็ก", "สีพรีเมียมกันเชื้อรา", "ถูกต้องตามหลักฮวงจุ้ย"],
           images: [
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2670&auto=format&fit=crop"
           ]
         },
@@ -29,7 +29,7 @@ export const SITE_CONFIG = {
           description: "ยกระดับความหรูหราด้วยการปิดผิวลายหินอ่อน นำเข้าจากต่างประเทศ โดดเด่นไม่ซ้ำใคร",
           features: ["ปิดผิวลายหินอ่อนพรีเมียม", "ดีไซน์โปร่ง รับลม", "ฐานกว้างพิเศษ"],
           images: [
-            "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
           ]
         }
@@ -48,7 +48,7 @@ export const SITE_CONFIG = {
           description: "สถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลว",
           features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
           images: [
-            "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2670&auto=format&fit=crop"
           ]
         },
@@ -61,7 +61,7 @@ export const SITE_CONFIG = {
           description: "ศาลเจ้าที่จำลองแบบจากเรือนไทยโบราณ แกะสลักอย่างวิจิตรบรรจง คลาสสิกและทรงคุณค่า",
           features: ["ไม้เนื้อแข็งทนแดดทนฝน", "ลงน้ำยาเคลือบเงาพิเศษ", "เสริมบารมีเจ้าของบ้าน"],
           images: [
-            "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2670&auto=format&fit=crop"
           ]
         }
@@ -80,7 +80,7 @@ export const SITE_CONFIG = {
           description: "ความยิ่งใหญ่และสง่างามขั้นสุด ศูนย์รวมศรัทธาที่ออกแบบมาเพื่อเสริมสิริมงคลให้กับธุรกิจ อาคารสำนักงานขนาดใหญ่",
           features: ["ขนาดถูกต้องตามหลักคติพราหมณ์", "วัสดุเกรดพรีเมียมที่สุดทนแดดฝน", "บริการดูพื้นที่และฤกษ์ตั้งศาล"],
           images: [
-            "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1565610222536-ef125c5972e3?q=80&w=2574&auto=format&fit=crop"
           ]
         },
@@ -93,7 +93,7 @@ export const SITE_CONFIG = {
           description: "ที่สุดของความมั่งคั่ง ด้วยการประดับทองคำเปลวและกระจกสีอย่างประณีตทั้งองค์",
           features: ["ปิดทองคำเปลว 100%", "สถาปัตยกรรมชั้นครู", "สำหรับคฤหาสน์และโรงแรม"],
           images: [
-            "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop", 
+            "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop"
           ]
         }
@@ -108,7 +108,7 @@ export const SITE_CONFIG = {
       role: "เจ้าของโครงการอสังหาริมทรัพย์",
       content: "งานละเอียดมากครับ ไม่มีรอยต่อที่ไม่เรียบร้อยเลย บริการติดตั้งก็มืออาชีพ แนะนำได้ครบถ้วน ประทับใจมากครับ สมกับประสบการณ์ 60 ปี",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop",
-      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" 
+      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr"
     },
     {
       id: 2,
@@ -116,7 +116,7 @@ export const SITE_CONFIG = {
       role: "ลูกค้าบ้านเดี่ยว",
       content: "ศาลโมเดิร์นสวยเข้ากับตัวบ้านมากค่ะ ทีมงานคุณสิงหะดูแลดีตั้งแต่การเลือกแบบจนถึงวันตั้งศาล แนะนำร้านนี้เลยค่ะ ไม่ผิดหวัง",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2576&auto=format&fit=crop",
-      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" 
+      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr"
     },
     {
       id: 3,
@@ -124,7 +124,7 @@ export const SITE_CONFIG = {
       role: "ลูกค้าองค์กร",
       content: "สั่งทำศาลพระพรหมสำหรับหน้าอาคารสำนักงานใหญ่ งานวิจิตรบรรจง ปิดทองสวยงามมาก ช่วยเสริมบารมีให้องค์กรได้ดีเยี่ยมครับ",
       avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2574&auto=format&fit=crop",
-      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" 
+      link: "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr"
     }
   ],
 
