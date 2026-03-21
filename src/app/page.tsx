@@ -103,12 +103,6 @@ export default function Home() {
             <Reveal delay={100} effect="fade-up" className="flex justify-center flex-col items-center group">
               <img src="/images/1.webp" alt="Shrine 1" className="h-64 md:h-80 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" />
             </Reveal>
-            <Reveal delay={200} effect="fade-up" className="flex justify-center flex-col items-center group relative z-10">
-              <img src="/images/2.webp" alt="Shrine 2" className="h-80 md:h-96 object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500" />
-            </Reveal>
-            <Reveal delay={300} effect="fade-up" className="flex justify-center flex-col items-center group">
-              <img src="/images/3.webp" alt="Shrine 3" className="h-64 md:h-80 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" />
-            </Reveal>
           </div>
 
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6">
