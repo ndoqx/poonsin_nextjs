@@ -6,8 +6,16 @@ import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
 import Link from 'next/link';
 
+// กำหนดรายการรูปภาพศาลพระภูมิ (สามารถเปลี่ยน Path เป็นรูปจริงของคุณได้เลย)
+const SHRINES_LIST = [
+  "/images/1.webp",
+  "/images/2.webp", // รูปที่ 2 (แก้เป็น Path จริง)
+  "/images/3.webp", // รูปที่ 3 (แก้เป็น Path จริง)
+];
+
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [currentShrine, setCurrentShrine] = useState(0); // State สำหรับ Slider
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +25,20 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // ฟังก์ชันเลื่อนรูปถัดไป
+  const nextShrine = () => {
+    setCurrentShrine((prev) => (prev === SHRINES_LIST.length - 1 ? 0 : prev + 1));
+  };
+
+  // ฟังก์ชันเลื่อนรูปก่อนหน้า
+  const prevShrine = () => {
+    setCurrentShrine((prev) => (prev === 0 ? SHRINES_LIST.length - 1 : prev - 1));
+  };
+
   return (
     <div className="bg-[#FAF9F6] text-gray-900 font-sans overflow-x-hidden selection:bg-orange-200 selection:text-gray-900">
 
-      {/* --- CSS สำหรับ Font เท่านั้น (เอาเงาออกหมด) --- */}
+      {/* --- CSS สำหรับ Font --- */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700;800&display=swap');
         
@@ -40,8 +58,6 @@ export default function Home() {
 
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-[130vh] flex flex-col items-center justify-start overflow-hidden bg-white">
-
-        {/* --- BACKGROUND LAYER (รูปชัด 100% คลีนๆ ไม่มีหมอก ไม่มีแสงออร่า) --- */}
         <div
           className="absolute inset-0 z-0 origin-top transition-transform duration-75 ease-out will-change-transform"
           style={{
@@ -56,7 +72,6 @@ export default function Home() {
           />
         </div>
 
-        {/* --- CONTENT LAYER --- */}
         <div
           className="relative z-10 text-center flex flex-col items-center pt-48 md:pt-64 px-4 w-full will-change-transform"
           style={{
@@ -65,18 +80,14 @@ export default function Home() {
           }}
         >
           <Reveal effect="blur-in" delay={100}>
-            {/* ปรับสีตามภาพตัวอย่าง: สีเทาอมน้ำเงินเข้ม ตัดกับ สีส้มทึบ ไม่ใช้เงา */}
             <h1 className="text-6xl md:text-[7rem] lg:text-[8.5rem] font-extrabold mb-10 md:mb-14 leading-[1.1] md:leading-[0.95]">
               <span className="block mb-2 text-[#F18911]">ร้านพูนสิน</span>
               <span className="text-[#F18911]">ประสบการณ์</span>
-              <span className="text-[#F18911]">
-                กว่า 60 ปี
-              </span>
+              <span className="text-[#F18911]"> กว่า 60 ปี</span>
             </h1>
           </Reveal>
 
           <Reveal effect="fade-up" delay={400}>
-            {/* ปรับปุ่มให้เป็นสีเทาเข้มแบบเดียวกับตัวหนังสือ (Dark Slate) */}
             <Link
               href="/collection"
               className="group relative overflow-hidden bg-[#3D404A] text-white px-12 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-[#F18911]/30 transition-all duration-300 hover:-translate-y-1 inline-flex"
@@ -89,8 +100,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- ALL SHRINES SECTION --- */}
+      {/* --- ALL SHRINES SECTION (Carousel 3D) --- */}
       <section className="bg-white py-24 md:py-32 px-6 relative overflow-hidden z-20 shadow-[0_-30px_60px_rgba(255,255,255,1)]">
+        {/* ลายน้ำพื้นหลัง */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] pointer-events-none text-[#F18911]">
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0z" />
@@ -99,18 +111,65 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-4 items-end justify-center mb-16">
-            <Reveal delay={100} effect="fade-up" className="flex justify-center flex-col items-center group">
-              <img src="/images/1.webp" alt="Shrine 1" className="h-64 md:h-80 object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500" />
-            </Reveal>
-          </div>
+          {/* พื้นที่ Slider */}
+          <Reveal delay={200} effect="fade-up">
+            <div className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12">
+              {SHRINES_LIST.map((src, index) => {
+                // คำนวณระยะห่างเพื่อจัดตำแหน่ง (Coverflow effect)
+                let diff = index - currentShrine;
+                const total = SHRINES_LIST.length;
+                if (diff > total / 2) diff -= total;
+                if (diff < -total / 2) diff += total;
 
-          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6">
-            <button className="w-12 h-12 md:w-14 md:h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:-translate-x-1 duration-300">
-              <ChevronLeft size={24} />
+                // กำหนด Class เบื้องต้นสำหรับรูปที่ซ่อนอยู่ไกลๆ
+                let positionClass = "translate-x-[200%] opacity-0 scale-50 z-0 pointer-events-none";
+
+                // จัดตำแหน่งตามระยะห่าง (diff)
+                if (diff === 0) {
+                  // รูปตรงกลาง (โชว์เต็ม 100%)
+                  positionClass = "translate-x-0 opacity-100 scale-100 z-30 drop-shadow-2xl";
+                } else if (diff === -1) {
+                  // รูปด้านซ้าย (แอบอยู่ครึ่งนึง เล็กลง และโปร่งแสงนิดๆ)
+                  positionClass = "-translate-x-[60%] md:-translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
+                } else if (diff === 1) {
+                  // รูปด้านขวา (แอบอยู่ครึ่งนึง เล็กลง และโปร่งแสงนิดๆ)
+                  positionClass = "translate-x-[60%] md:translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
+                }
+
+                return (
+                  <div
+                    key={index}
+                    className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
+                    onClick={() => {
+                      // กดที่รูปด้านหลังเพื่อเลื่อนได้เลย
+                      if (diff === 1) nextShrine();
+                      if (diff === -1) prevShrine();
+                    }}
+                  >
+                    <img
+                      src={src}
+                      alt={`Shrine ${index + 1}`}
+                      className="h-72 md:h-[500px] w-auto object-contain rounded-xl"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          {/* ปุ่มกดซ้าย-ขวา */}
+          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
+            <button
+              onClick={prevShrine}
+              className="w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:-translate-x-1 duration-300 z-40"
+            >
+              <ChevronLeft size={28} />
             </button>
-            <button className="w-12 h-12 md:w-14 md:h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:translate-x-1 duration-300">
-              <ChevronLeft size={24} className="rotate-180" />
+            <button
+              onClick={nextShrine}
+              className="w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:translate-x-1 duration-300 z-40"
+            >
+              <ChevronLeft size={28} className="rotate-180" />
             </button>
           </Reveal>
         </div>
