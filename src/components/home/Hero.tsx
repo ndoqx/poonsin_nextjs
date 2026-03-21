@@ -1,15 +1,12 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
-import { SITE_CONFIG } from '@/config/site';
+import { ArrowRight, Star, ExternalLink } from 'lucide-react'; // ลบ ChevronLeft ออกเพราะไม่ได้ใช้แล้ว
 import { Reveal } from '@/components/ui/Reveal';
+import { SITE_CONFIG } from '@/lib/site-config';
+import Link from 'next/link';
 
-interface HeroProps {
-  scrollToSection: (id: string) => void;
-}
-
-export const Hero = ({ scrollToSection }: HeroProps) => {
+export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -21,68 +18,106 @@ export const Hero = ({ scrollToSection }: HeroProps) => {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-white">
-      {/* --- BACKGROUND SECTION --- */}
-      <div
-        className="absolute inset-0 z-0 origin-center transition-transform duration-100 ease-out will-change-transform"
-        style={{
-          transform: `scale(${1 + scrollY * 0.0005}) translateY(${scrollY * 0.3}px)`,
-          opacity: Math.max(0, 0.9 - scrollY * 0.0015) // ปรับ opacity เริ่มต้นให้ชัดขึ้นนิดนึง
-        }}
-      >
-        <img
-          src={SITE_CONFIG.heroBgImage}
-          alt="ศาลพระภูมิพูนสิน"
-          className="w-full h-full object-cover"
-        />
+    <div className="bg-[#FAF9F6] text-gray-900 font-sans overflow-x-hidden selection:bg-orange-200 selection:text-gray-900">
 
-        {/* 1. จางเฉพาะขอบล่างสุด (เพื่อให้กลืนกับ Section ถัดไป) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/5 to-transparent"></div>
+      {/* --- CSS สำหรับ Font (Anuphan) --- */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+          --font-anuphan: 'Anuphan', sans-serif;
+        }
 
-        {/* 2. จางขอบซ้าย-ขวา แบบบางเฉียบ (Vignette) - แก้ปัญหาหมอกบังรูป */}
-        {/* ใช้ via-transparent ในช่วง 15% ถึง 85% เพื่อให้ตรงกลาง "เคลียร์" ที่สุด */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-15% via-transparent to-85% to-white opacity-40"></div>
+        body {
+          font-family: var(--font-anuphan);
+        }
 
-        {/* 3. เพิ่มความคมชัดด้วย Overlay มืดบางๆ (Optional: ถ้าต้องการให้ตัวหนังสือเด่นขึ้นอีก) */}
-        <div className="absolute inset-0 bg-black/5"></div>
+        h1, h2 {
+          font-family: var(--font-anuphan);
+          letter-spacing: -0.02em !important;
+        }
+      `}</style>
 
-        {/* 4. แสงออร่าสีทองจางๆ ตรงกลาง */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] max-w-[1200px] max-h-[1200px] bg-[radial-gradient(circle,rgba(245,158,11,0.05)_0%,rgba(255,255,255,0)_60%)] animate-[spin_60s_linear_infinite] pointer-events-none"></div>
-      </div>
+      {/* --- HERO SECTION --- */}
+      <section className="relative min-h-[130vh] flex flex-col items-center justify-start overflow-hidden bg-white">
 
-      {/* --- CONTENT SECTION --- */}
-      <div
-        className="relative z-10 text-center flex flex-col items-center mt-20 px-4 w-full will-change-transform"
-        style={{
-          transform: `translateY(${-scrollY * 0.4}px)`,
-          opacity: Math.max(0, 1 - scrollY * 0.002)
-        }}
-      >
-        <Reveal effect="blur-in" delay={100}>
-          <h1 className="text-6xl md:text-[7rem] lg:text-[8rem] font-bold tracking-tighter mb-4 md:mb-6 text-gray-900 drop-shadow-xl leading-[1.1] md:leading-[0.9]">
-            เหนือกว่า<br />คำว่า<span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-amber-700">ทนทาน.</span>
-          </h1>
+        {/* --- BACKGROUND LAYER --- */}
+        <div
+          className="absolute inset-0 z-0 origin-top transition-transform duration-75 ease-out will-change-transform"
+          style={{
+            transform: `scale(${1 + scrollY * 0.0003}) translateY(${scrollY * 0.12}px)`,
+            opacity: Math.max(0, 1 - scrollY * 0.0008)
+          }}
+        >
+          <img
+            src={SITE_CONFIG.heroBgImage}
+            alt="ศาลพระภูมิพูนสิน"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+
+        {/* --- CONTENT LAYER --- */}
+        <div
+          className="relative z-10 text-center flex flex-col items-center pt-48 md:pt-64 px-4 w-full will-change-transform"
+          style={{
+            transform: `translateY(${-scrollY * 0.2}px)`,
+            opacity: Math.max(0, 1 - scrollY * 0.0015)
+          }}
+        >
+          <Reveal effect="blur-in" delay={100}>
+            <h1 className="text-6xl md:text-[7rem] lg:text-[8.5rem] font-extrabold mb-10 md:mb-14 leading-[1.1] md:leading-[0.95]">
+              <span className="block mb-2 text-[#3D404A]">ร้านพูนสิน</span>
+              <span className="text-[#3D404A]">ประสบการณ์</span>
+              <span className="text-[#F18911]">
+                กว่า 60 ปี
+              </span>
+            </h1>
+          </Reveal>
+
+          <Reveal effect="fade-up" delay={400}>
+            <Link
+              href="/collection"
+              className="group relative overflow-hidden bg-[#3D404A] text-white px-12 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-[#F18911]/30 transition-all duration-300 hover:-translate-y-1 inline-flex"
+            >
+              <span className="relative flex items-center gap-3">
+                เลือกชมสินค้า <ArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
+              </span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* --- REVIEWS SECTION --- */}
+      {/* ปรับให้มีเงาด้านบน (Shadow) เพื่อแบ่งแยก Section ให้ชัดเจนแทน Section ที่โดนตัดไป */}
+      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 relative z-20 shadow-[0_-30px_60px_rgba(255,255,255,1)]">
+        <div className="max-w-7xl mx-auto text-center">
+          <Reveal effect="scale-up">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#3D404A] mb-20 tracking-tight">ความไว้วางใจ.</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {SITE_CONFIG.reviews.map((review, index) => (
+              <Reveal key={review.id} delay={index * 100} effect="fade-up">
+                <div className="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(241,137,17,0.1)] transition-all duration-300 hover:-translate-y-2">
+                  <p className="text-gray-600 italic leading-relaxed">"{review.content}"</p>
+                  <h4 className="mt-8 font-bold text-[#3D404A]">{review.author}</h4>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- CTA SECTION --- */}
+      <section className="bg-white py-24 md:py-32 px-6 text-center border-t border-gray-100 relative overflow-hidden">
+        <Reveal effect="scale-up">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#3D404A] tracking-tight">ค้นพบความงามเหนือระดับ</h2>
+          <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">สัมผัสคอลเลกชันศาลพระภูมิระดับมาสเตอร์พีซที่พร้อมยกระดับพื้นที่ของคุณ</p>
+          <Link href="/collection" className="inline-flex items-center gap-3 bg-[#F18911] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#F18911]/40 hover:-translate-y-1 transition-all duration-300">
+            ดูคอลเลกชันทั้งหมด <ArrowRight size={20} />
+          </Link>
         </Reveal>
+      </section>
 
-        <Reveal effect="fade-up" delay={300}>
-          <p className="text-lg md:text-2xl lg:text-3xl text-gray-700 font-medium mb-10 md:mb-12 max-w-3xl mx-auto tracking-tight leading-relaxed drop-shadow-sm">
-            สถาปัตยกรรมแห่งศรัทธา<br className="hidden md:block" />
-            โดยประสบการณ์มากกว่า 60 ปี
-          </p>
-        </Reveal>
-
-        <Reveal effect="fade-up" delay={500}>
-          <button
-            onClick={() => scrollToSection('collection')}
-            className="group relative overflow-hidden bg-gray-900 text-white px-10 md:px-12 py-4 md:py-5 rounded-full font-bold text-base md:text-lg shadow-2xl hover:shadow-amber-500/40 transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-400 via-amber-600 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center"></div>
-            <span className="relative flex items-center gap-3">
-              เลือกชมสินค้า <ArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-          </button>
-        </Reveal>
-      </div>
-    </section>
+    </div>
   );
-};
+}

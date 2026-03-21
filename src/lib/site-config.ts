@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  heroBgImage: "/images/19330.jpg",
+  heroBgImage: "/images/herobanner.webp",
 
   // 📂 ระบบ Catalog
   catalog: {
