@@ -13,9 +13,104 @@ const SHRINES_LIST = [
   "/images/3.webp", // รูปที่ 3 (แก้เป็น Path จริง)
 ];
 
+// กำหนดรายการรูปภาพรีวิว (6 รูป)
+const REVIEW_IMAGES_LIST = [
+  "/images/review-1.jpg",
+  "/images/review-2.jpg",
+  "/images/review-3.jpg",
+  "/images/review-4.jpg",
+  "/images/review-5.jpg",
+  "/images/review-6.jpg",
+];
+
+// --- REUSABLE COMPONENTS & HELPERS ---
+
+// 1. Helper Function for Carousel Navigation
+const getNextIndex = (currentIndex: number, total: number, direction: 'next' | 'prev') => {
+  if (direction === 'next') {
+    return currentIndex === total - 1 ? 0 : currentIndex + 1;
+  }
+  return currentIndex === 0 ? total - 1 : currentIndex - 1;
+};
+
+// 2. Carousel Button Component
+const CarouselButton = ({ 
+  direction, 
+  onClick 
+}: { 
+  direction: 'next' | 'prev'; 
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={`w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md duration-300 z-40 ${
+      direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
+    }`}
+  >
+    <ChevronLeft size={28} className={direction === 'next' ? 'rotate-180' : ''} />
+  </button>
+);
+
+// 3. Carousel Item Component
+const CarouselItem = ({
+  src,
+  index,
+  currentShrine,
+  total,
+  onNext,
+  onPrev
+}: {
+  src: string;
+  index: number;
+  currentShrine: number;
+  total: number;
+  onNext: () => void;
+  onPrev: () => void;
+}) => {
+  let diff = index - currentShrine;
+  if (diff > total / 2) diff -= total;
+  if (diff < -total / 2) diff += total;
+
+  let positionClass = "translate-x-[200%] opacity-0 scale-50 z-0 pointer-events-none";
+
+  if (diff === 0) {
+    positionClass = "translate-x-0 opacity-100 scale-100 z-30 drop-shadow-2xl";
+  } else if (diff === -1) {
+    positionClass = "-translate-x-[60%] md:-translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
+  } else if (diff === 1) {
+    positionClass = "translate-x-[60%] md:translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
+  }
+
+  return (
+    <div
+      className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
+      onClick={() => {
+        if (diff === 1) onNext();
+        if (diff === -1) onPrev();
+      }}
+    >
+      <img
+        src={src}
+        alt={`Shrine ${index + 1}`}
+        className="h-72 md:h-[500px] w-auto object-contain rounded-xl"
+      />
+    </div>
+  );
+};
+
+// 4. Review Card Component
+const ReviewCardItem = ({ review }: { review: { id: string | number; content: string; author: string } }) => (
+  <div className="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(241,137,17,0.1)] transition-all duration-300 hover:-translate-y-2">
+    <p className="text-gray-600 italic leading-relaxed">"{review.content}"</p>
+    <h4 className="mt-8 font-bold text-gray-900">{review.author}</h4>
+  </div>
+);
+
+// --- MAIN COMPONENT ---
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const [currentShrine, setCurrentShrine] = useState(0); // State สำหรับ Slider
+  const [currentShrine, setCurrentShrine] = useState(0); // State สำหรับ Slider ศาล
+  const [currentReview, setCurrentReview] = useState(0); // State สำหรับ Slider รีวิว
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,14 +120,14 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ฟังก์ชันเลื่อนรูปถัดไป
-  const nextShrine = () => {
-    setCurrentShrine((prev) => (prev === SHRINES_LIST.length - 1 ? 0 : prev + 1));
+  // ฟังก์ชันเลื่อนรูปศาล
+  const changeShrine = (direction: 'next' | 'prev') => {
+    setCurrentShrine((prev) => getNextIndex(prev, SHRINES_LIST.length, direction));
   };
 
-  // ฟังก์ชันเลื่อนรูปก่อนหน้า
-  const prevShrine = () => {
-    setCurrentShrine((prev) => (prev === 0 ? SHRINES_LIST.length - 1 : prev - 1));
+  // ฟังก์ชันเลื่อนรูปรัีวิว
+  const changeReview = (direction: 'next' | 'prev') => {
+    setCurrentReview((prev) => getNextIndex(prev, REVIEW_IMAGES_LIST.length, direction));
   };
 
   return (
@@ -114,83 +209,57 @@ export default function Home() {
           {/* พื้นที่ Slider */}
           <Reveal delay={200} effect="fade-up">
             <div className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12">
-              {SHRINES_LIST.map((src, index) => {
-                // คำนวณระยะห่างเพื่อจัดตำแหน่ง (Coverflow effect)
-                let diff = index - currentShrine;
-                const total = SHRINES_LIST.length;
-                if (diff > total / 2) diff -= total;
-                if (diff < -total / 2) diff += total;
-
-                // กำหนด Class เบื้องต้นสำหรับรูปที่ซ่อนอยู่ไกลๆ
-                let positionClass = "translate-x-[200%] opacity-0 scale-50 z-0 pointer-events-none";
-
-                // จัดตำแหน่งตามระยะห่าง (diff)
-                if (diff === 0) {
-                  // รูปตรงกลาง (โชว์เต็ม 100%)
-                  positionClass = "translate-x-0 opacity-100 scale-100 z-30 drop-shadow-2xl";
-                } else if (diff === -1) {
-                  // รูปด้านซ้าย (แอบอยู่ครึ่งนึง เล็กลง และโปร่งแสงนิดๆ)
-                  positionClass = "-translate-x-[60%] md:-translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
-                } else if (diff === 1) {
-                  // รูปด้านขวา (แอบอยู่ครึ่งนึง เล็กลง และโปร่งแสงนิดๆ)
-                  positionClass = "translate-x-[60%] md:translate-x-[80%] opacity-50 scale-75 md:scale-[0.85] z-10 cursor-pointer hover:opacity-80";
-                }
-
-                return (
-                  <div
-                    key={index}
-                    className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
-                    onClick={() => {
-                      // กดที่รูปด้านหลังเพื่อเลื่อนได้เลย
-                      if (diff === 1) nextShrine();
-                      if (diff === -1) prevShrine();
-                    }}
-                  >
-                    <img
-                      src={src}
-                      alt={`Shrine ${index + 1}`}
-                      className="h-72 md:h-[500px] w-auto object-contain rounded-xl"
-                    />
-                  </div>
-                );
-              })}
+              {SHRINES_LIST.map((src, index) => (
+                <CarouselItem
+                  key={index}
+                  src={src}
+                  index={index}
+                  currentShrine={currentShrine}
+                  total={SHRINES_LIST.length}
+                  onNext={() => changeShrine('next')}
+                  onPrev={() => changeShrine('prev')}
+                />
+              ))}
             </div>
           </Reveal>
 
           {/* ปุ่มกดซ้าย-ขวา */}
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
-            <button
-              onClick={prevShrine}
-              className="w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:-translate-x-1 duration-300 z-40"
-            >
-              <ChevronLeft size={28} />
-            </button>
-            <button
-              onClick={nextShrine}
-              className="w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md hover:translate-x-1 duration-300 z-40"
-            >
-              <ChevronLeft size={28} className="rotate-180" />
-            </button>
+            <CarouselButton direction="prev" onClick={() => changeShrine('prev')} />
+            <CarouselButton direction="next" onClick={() => changeShrine('next')} />
           </Reveal>
         </div>
       </section>
 
       {/* --- REVIEWS SECTION --- */}
-      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-t border-gray-100 relative z-20">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-t border-gray-100 relative overflow-hidden z-20">
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
           <Reveal effect="scale-up">
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-20 tracking-tight">ความไว้วางใจ.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-16 tracking-tight">ความไว้วางใจ.</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SITE_CONFIG.reviews.map((review, index) => (
-              <Reveal key={review.id} delay={index * 100} effect="fade-up">
-                <div className="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(241,137,17,0.1)] transition-all duration-300 hover:-translate-y-2">
-                  <p className="text-gray-600 italic leading-relaxed">"{review.content}"</p>
-                  <h4 className="mt-8 font-bold text-gray-900">{review.author}</h4>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+
+          {/* พื้นที่ Slider สำหรับรีวิว */}
+          <Reveal delay={200} effect="fade-up">
+            <div className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12">
+              {REVIEW_IMAGES_LIST.map((src, index) => (
+                <CarouselItem
+                  key={index}
+                  src={src}
+                  index={index}
+                  currentShrine={currentReview}
+                  total={REVIEW_IMAGES_LIST.length}
+                  onNext={() => changeReview('next')}
+                  onPrev={() => changeReview('prev')}
+                />
+              ))}
+            </div>
+          </Reveal>
+
+          {/* ปุ่มกดซ้าย-ขวา */}
+          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
+            <CarouselButton direction="prev" onClick={() => changeReview('prev')} />
+            <CarouselButton direction="next" onClick={() => changeReview('next')} />
+          </Reveal>
         </div>
       </section>
 
