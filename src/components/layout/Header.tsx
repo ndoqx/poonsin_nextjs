@@ -29,19 +29,16 @@ export function Header() {
     { name: 'หน้าหลัก', href: '/' },
     { name: 'คอลเลกชัน', href: '/collection' },
     { name: 'ประวัติร้านพูนสิน', href: '/about' },
-    { name: 'บทความ', href: '/articles' },
     { name: 'ติดต่อเรา', href: '/contact' }
   ];
-
-  const isArticlePage = pathname.startsWith('/articles/');
 
   return (
     <>
       <nav className={`fixed top-0 w-full z-[60] transition-all duration-500 ${
-        scrolled || isArticlePage ? 'bg-white/98 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm' : 'bg-transparent border-transparent py-4 md:py-6'
+        scrolled ? 'bg-white/98 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm' : 'bg-transparent border-transparent py-4 md:py-6'
       }`}>
         <div className="container mx-auto px-4 md:px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider relative z-[61]">
-          <Link href="/" onClick={closeMenu} className={`font-serif text-lg md:text-xl font-bold tracking-widest transition-colors flex items-center gap-2 md:gap-3 ${scrolled || isArticlePage ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}>
+          <Link href="/" onClick={closeMenu} className={`font-serif text-lg md:text-xl font-bold tracking-widest transition-colors flex items-center gap-2 md:gap-3 ${scrolled ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}>
             <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-lg">P</span>
             POONSIN
           </Link>
@@ -51,7 +48,7 @@ export function Header() {
               const isActive = pathname === item.href;
               return (
                 <Link key={i} href={item.href} className={`uppercase font-bold tracking-widest transition-colors ${
-                  isActive ? 'text-amber-600' : scrolled || isArticlePage ? 'text-gray-600 hover:text-amber-600' : 'text-gray-800 hover:text-amber-600 drop-shadow-sm'
+                  isActive ? 'text-amber-600' : scrolled ? 'text-gray-600 hover:text-amber-600' : 'text-gray-800 hover:text-amber-600 drop-shadow-sm'
                 }`}>
                   {item.name}
                 </Link>
@@ -60,7 +57,7 @@ export function Header() {
           </div>
 
           <button className="md:hidden relative p-2 text-gray-900" onClick={() => setIsMenuOpen(true)}>
-             <Menu size={28} className={!scrolled && !isArticlePage ? "drop-shadow-sm" : ""} />
+             <Menu size={28} className={!scrolled ? "drop-shadow-sm" : ""} />
           </button>
         </div>
       </nav>

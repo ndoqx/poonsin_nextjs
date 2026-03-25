@@ -34,18 +34,17 @@ const getNextIndex = (currentIndex: number, total: number, direction: 'next' | '
 };
 
 // 2. Carousel Button Component
-const CarouselButton = ({ 
-  direction, 
-  onClick 
-}: { 
-  direction: 'next' | 'prev'; 
+const CarouselButton = ({
+  direction,
+  onClick
+}: {
+  direction: 'next' | 'prev';
   onClick: () => void;
 }) => (
   <button
     onClick={onClick}
-    className={`w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md duration-300 z-40 ${
-      direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
-    }`}
+    className={`w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md duration-300 z-40 ${direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
+      }`}
   >
     <ChevronLeft size={28} className={direction === 'next' ? 'rotate-180' : ''} />
   </button>
@@ -235,7 +234,7 @@ export default function Home() {
       <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-t border-gray-100 relative overflow-hidden z-20">
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <Reveal effect="scale-up">
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-16 tracking-tight">ความไว้วางใจ.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-16 tracking-tight">รีวิวสินค้าของเรา</h2>
           </Reveal>
 
           {/* พื้นที่ Slider สำหรับรีวิว */}
@@ -266,10 +265,8 @@ export default function Home() {
       {/* --- CTA SECTION --- */}
       <section className="bg-white py-24 md:py-32 px-6 text-center border-t border-gray-100 relative overflow-hidden">
         <Reveal effect="scale-up">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 tracking-tight">ค้นพบความงามเหนือระดับ</h2>
-          <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">สัมผัสคอลเลกชันศาลพระภูมิระดับมาสเตอร์พีซที่พร้อมยกระดับพื้นที่ของคุณ</p>
           <Link href="/collection" className="inline-flex items-center gap-3 bg-[#F18911] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#F18911]/40 hover:-translate-y-1 transition-all duration-300">
-            ดูคอลเลกชันทั้งหมด <ArrowRight size={20} />
+            คลิกเพื่อดูรูปแบบเพิ่มเติม <ArrowRight size={20} />
           </Link>
         </Reveal>
       </section>
