@@ -6,14 +6,14 @@ import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
 import Link from 'next/link';
 
-// กำหนดรายการรูปภาพศาลพระภูมิ (สามารถเปลี่ยน Path เป็นรูปจริงของคุณได้เลย)
+// กำหนดรายการรูปภาพศาลพระภูมิ 
 const SHRINES_LIST = [
   "/images/1.webp",
-  "/images/2.webp", // รูปที่ 2 (แก้เป็น Path จริง)
-  "/images/3.webp", // รูปที่ 3 (แก้เป็น Path จริง)
+  "/images/2.webp",
+  "/images/3.webp",
 ];
 
-// กำหนดรายการรูปภาพรีวิว (6 รูป)
+// กำหนดรายการรูปภาพรีวิว
 const REVIEW_IMAGES_LIST = [
   "/images/review-1.jpg",
   "/images/review-2.jpg",
@@ -57,7 +57,8 @@ const CarouselItem = ({
   currentShrine,
   total,
   onNext,
-  onPrev
+  onPrev,
+  canClick // เพิ่ม prop เช็คว่ากำลังลากเมาส์อยู่หรือไม่
 }: {
   src: string;
   index: number;
@@ -65,6 +66,7 @@ const CarouselItem = ({
   total: number;
   onNext: () => void;
   onPrev: () => void;
+  canClick: boolean;
 }) => {
   let diff = index - currentShrine;
   if (diff > total / 2) diff -= total;
@@ -84,6 +86,7 @@ const CarouselItem = ({
     <div
       className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
       onClick={() => {
+        if (!canClick) return; // ถ้าลากเมาส์อยู่ จะไม่นับเป็นการคลิก
         if (diff === 1) onNext();
         if (diff === -1) onPrev();
       }}
@@ -91,13 +94,13 @@ const CarouselItem = ({
       <img
         src={src}
         alt={`Shrine ${index + 1}`}
-        className="h-72 md:h-[500px] w-auto object-contain rounded-xl"
+        className="h-72 md:h-[500px] w-auto object-contain rounded-xl pointer-events-none"
       />
     </div>
   );
 };
 
-// 4. Review Card Component
+// 4. Review Card Component (ไม่ได้ใช้งานในส่วนนี้ แต่อยู่ในโค้ดเดิม)
 const ReviewCardItem = ({ review }: { review: { id: string | number; content: string; author: string } }) => (
   <div className="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(241,137,17,0.1)] transition-all duration-300 hover:-translate-y-2">
     <p className="text-gray-600 italic leading-relaxed">"{review.content}"</p>
@@ -108,26 +111,68 @@ const ReviewCardItem = ({ review }: { review: { id: string | number; content: st
 // --- MAIN COMPONENT ---
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const [currentShrine, setCurrentShrine] = useState(0); // State สำหรับ Slider ศาล
-  const [currentReview, setCurrentReview] = useState(0); // State สำหรับ Slider รีวิว
+  const [currentShrine, setCurrentShrine] = useState(0);
+  const [currentReview, setCurrentReview] = useState(0);
 
+  // --- States สำหรับการ Pause และ Drag ---
+  const [isShrinePaused, setIsShrinePaused] = useState(false);
+  const [isReviewPaused, setIsReviewPaused] = useState(false);
+
+  const [dragStart, setDragStart] = useState(0);
+  const [dragEnd, setDragEnd] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // การตรวจจับ Scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ฟังก์ชันเลื่อนรูปศาล
-  const changeShrine = (direction: 'next' | 'prev') => {
-    setCurrentShrine((prev) => getNextIndex(prev, SHRINES_LIST.length, direction));
+  // ฟังก์ชันเลื่อนรูป
+  const changeShrine = (direction: 'next' | 'prev') => setCurrentShrine((prev) => getNextIndex(prev, SHRINES_LIST.length, direction));
+  const changeReview = (direction: 'next' | 'prev') => setCurrentReview((prev) => getNextIndex(prev, REVIEW_IMAGES_LIST.length, direction));
+
+  // --- Auto Play Effects ---
+  useEffect(() => {
+    if (isShrinePaused) return;
+    const timer = setInterval(() => changeShrine('next'), 3000);
+    return () => clearInterval(timer);
+  }, [currentShrine, isShrinePaused]);
+
+  useEffect(() => {
+    if (isReviewPaused) return;
+    const timer = setInterval(() => changeReview('next'), 3000);
+    return () => clearInterval(timer);
+  }, [currentReview, isReviewPaused]);
+
+  // --- Drag & Swipe Handlers ---
+  const onDragStart = (clientX: number) => {
+    setDragStart(clientX);
+    setDragEnd(clientX);
+    setIsDragging(true);
   };
 
-  // ฟังก์ชันเลื่อนรูปรัีวิว
-  const changeReview = (direction: 'next' | 'prev') => {
-    setCurrentReview((prev) => getNextIndex(prev, REVIEW_IMAGES_LIST.length, direction));
+  const onDragMove = (clientX: number) => {
+    if (isDragging) setDragEnd(clientX);
   };
+
+  const onDragEnd = (onNext: () => void, onPrev: () => void) => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    if (!dragStart || !dragEnd) return;
+
+    const distance = dragStart - dragEnd;
+    if (distance > 50) onNext(); // ปัดซ้าย
+    else if (distance < -50) onPrev(); // ปัดขวา
+
+    setDragStart(0);
+    setDragEnd(0);
+  };
+
+  // ตัวแปรเช็คว่าแค่คลิกหรือตั้งใจลาก (เพื่อกันไม่ให้รูปเปลี่ยนซ้อนกันตอนลากเมาส์)
+  const canClick = !isDragging || Math.abs(dragStart - dragEnd) < 10;
 
   return (
     <div className="bg-[#FAF9F6] text-gray-900 font-sans overflow-x-hidden selection:bg-orange-200 selection:text-gray-900">
@@ -205,9 +250,22 @@ export default function Home() {
 
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
-          {/* พื้นที่ Slider */}
+          {/* พื้นที่ Slider ศาลพระภูมิ */}
           <Reveal delay={200} effect="fade-up">
-            <div className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12">
+            <div
+              className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
+              onMouseEnter={() => setIsShrinePaused(true)}
+              onMouseLeave={() => {
+                setIsShrinePaused(false);
+                onDragEnd(() => changeShrine('next'), () => changeShrine('prev'));
+              }}
+              onTouchStart={(e) => { setIsShrinePaused(true); onDragStart(e.targetTouches[0].clientX); }}
+              onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
+              onTouchEnd={() => { setIsShrinePaused(false); onDragEnd(() => changeShrine('next'), () => changeShrine('prev')); }}
+              onMouseDown={(e) => onDragStart(e.clientX)}
+              onMouseMove={(e) => onDragMove(e.clientX)}
+              onMouseUp={() => onDragEnd(() => changeShrine('next'), () => changeShrine('prev'))}
+            >
               {SHRINES_LIST.map((src, index) => (
                 <CarouselItem
                   key={index}
@@ -217,6 +275,7 @@ export default function Home() {
                   total={SHRINES_LIST.length}
                   onNext={() => changeShrine('next')}
                   onPrev={() => changeShrine('prev')}
+                  canClick={canClick}
                 />
               ))}
             </div>
@@ -224,8 +283,14 @@ export default function Home() {
 
           {/* ปุ่มกดซ้าย-ขวา */}
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
-            <CarouselButton direction="prev" onClick={() => changeShrine('prev')} />
-            <CarouselButton direction="next" onClick={() => changeShrine('next')} />
+            <div
+              className="flex gap-6"
+              onMouseEnter={() => setIsShrinePaused(true)}
+              onMouseLeave={() => setIsShrinePaused(false)}
+            >
+              <CarouselButton direction="prev" onClick={() => changeShrine('prev')} />
+              <CarouselButton direction="next" onClick={() => changeShrine('next')} />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -239,7 +304,20 @@ export default function Home() {
 
           {/* พื้นที่ Slider สำหรับรีวิว */}
           <Reveal delay={200} effect="fade-up">
-            <div className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12">
+            <div
+              className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
+              onMouseEnter={() => setIsReviewPaused(true)}
+              onMouseLeave={() => {
+                setIsReviewPaused(false);
+                onDragEnd(() => changeReview('next'), () => changeReview('prev'));
+              }}
+              onTouchStart={(e) => { setIsReviewPaused(true); onDragStart(e.targetTouches[0].clientX); }}
+              onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
+              onTouchEnd={() => { setIsReviewPaused(false); onDragEnd(() => changeReview('next'), () => changeReview('prev')); }}
+              onMouseDown={(e) => onDragStart(e.clientX)}
+              onMouseMove={(e) => onDragMove(e.clientX)}
+              onMouseUp={() => onDragEnd(() => changeReview('next'), () => changeReview('prev'))}
+            >
               {REVIEW_IMAGES_LIST.map((src, index) => (
                 <CarouselItem
                   key={index}
@@ -249,6 +327,7 @@ export default function Home() {
                   total={REVIEW_IMAGES_LIST.length}
                   onNext={() => changeReview('next')}
                   onPrev={() => changeReview('prev')}
+                  canClick={canClick}
                 />
               ))}
             </div>
@@ -256,8 +335,14 @@ export default function Home() {
 
           {/* ปุ่มกดซ้าย-ขวา */}
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
-            <CarouselButton direction="prev" onClick={() => changeReview('prev')} />
-            <CarouselButton direction="next" onClick={() => changeReview('next')} />
+            <div
+              className="flex gap-6"
+              onMouseEnter={() => setIsReviewPaused(true)}
+              onMouseLeave={() => setIsReviewPaused(false)}
+            >
+              <CarouselButton direction="prev" onClick={() => changeReview('prev')} />
+              <CarouselButton direction="next" onClick={() => changeReview('next')} />
+            </div>
           </Reveal>
         </div>
       </section>
