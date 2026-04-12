@@ -3,12 +3,31 @@ export const SITE_CONFIG = {
 
   // 📂 ระบบ Catalog
   catalog: {
-    modern: {
-      categoryName: "ศาลพระภูมิ สไตล์โมเดิร์น (Modern Series)",
+    spiritTraditional: {
+      categoryName: "ศาลพระภูมิดั้งเดิม (Traditional Spirit House)",
+      coverImage: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=2670&auto=format&fit=crop",
+      items: [
+        {
+          id: "st1",
+          name: "ศาลพระภูมิ ทรงไทยประยุกต์ ปิดทองคำเปลว",
+          price: "35,900",
+          sold: "340",
+          rating: "4.9",
+          description: "สถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลว",
+          features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+          images: [
+            "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2670&auto=format&fit=crop"
+          ]
+        }
+      ]
+    },
+    spiritModern: {
+      categoryName: "ศาลพระภูมิโมเดิร์น (Modern Spirit House)",
       coverImage: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=2680&auto=format&fit=crop",
       items: [
         {
-          id: "m1",
+          id: "sm1",
           name: "โมเดิร์น รุ่น M-01 (Minimalist White)",
           price: "29,900",
           sold: "125",
@@ -21,7 +40,7 @@ export const SITE_CONFIG = {
           ]
         },
         {
-          id: "m2",
+          id: "sm2",
           name: "โมเดิร์น รุ่น M-02 (Luxury Marble)",
           price: "45,000",
           sold: "84",
@@ -35,25 +54,50 @@ export const SITE_CONFIG = {
         }
       ]
     },
-    classic: {
-      categoryName: "ศาลพระภูมิ และ ศาลเจ้าที่ (Classic Heritage)",
-      coverImage: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?q=80&w=2670&auto=format&fit=crop",
+    brahmaTraditional: {
+      categoryName: "ศาลพระพรหมดั้งเดิม (Traditional Brahma Shrine)",
+      coverImage: "https://images.unsplash.com/photo-1540324155974-7523202daa3f?q=80&w=2592&auto=format&fit=crop",
       items: [
         {
-          id: "c1",
-          name: "ศาลพระภูมิ ทรงไทยประยุกต์ ปิดทองคำเปลว",
-          price: "35,900",
-          sold: "340",
-          rating: "4.9",
-          description: "สถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลว",
-          features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+          id: "bt1",
+          name: "ศาลพระพรหม ขนาดมาตรฐาน สำหรับองค์กร",
+          price: "89,000",
+          sold: "89",
+          rating: "5.0",
+          description: "ความยิ่งใหญ่และสง่างามขั้นสุด ศูนย์รวมศรัทธาที่ออกแบบมาเพื่อเสริมสิริมงคลให้กับธุรกิจ อาคารสำนักงานขนาดใหญ่",
+          features: ["ขนาดถูกต้องตามหลักคติพราหมณ์", "วัสดุเกรดพรีเมียมที่สุดทนแดดฝน", "บริการดูพื้นที่และฤกษ์ตั้งศาล"],
           images: [
-            "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2670&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1565610222536-ef125c5972e3?q=80&w=2574&auto=format&fit=crop"
           ]
-        },
+        }
+      ]
+    },
+    brahmaModern: {
+      categoryName: "ศาลพระพรหมโมเดิร์น (Modern Brahma Shrine)",
+      coverImage: "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
+      items: [
         {
-          id: "c2",
+          id: "bm1",
+          name: "ศาลพระพรหม รุ่นพิเศษ (Gold Edition)",
+          price: "129,000",
+          sold: "32",
+          rating: "5.0",
+          description: "ที่สุดของความมั่งคั่ง ด้วยการประดับทองคำเปลวและกระจกสีอย่างประณีตทั้งองค์",
+          features: ["ปิดทองคำเปลว 100%", "สถาปัตยกรรมชั้นครู", "สำหรับคฤหาสน์และโรงแรม"],
+          images: [
+            "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop"
+          ]
+        }
+      ]
+    },
+    guardianSpirit: {
+      categoryName: "ศาลเจ้าที่ (Guardian Spirit House)",
+      coverImage: "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
+      items: [
+        {
+          id: "gs1",
           name: "ศาลเจ้าที่ ทรงเรือนไทยโบราณไม้สัก",
           price: "59,000",
           sold: "120",
@@ -67,34 +111,21 @@ export const SITE_CONFIG = {
         }
       ]
     },
-    brahma: {
-      categoryName: "ศาลพระพรหม ขนาดใหญ่ (The Grand Brahma)",
-      coverImage: "https://images.unsplash.com/photo-1540324155974-7523202daa3f?q=80&w=2592&auto=format&fit=crop",
+    roman: {
+      categoryName: "ศาลโรมัน (Roman Shrine)",
+      coverImage: "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
       items: [
         {
-          id: "b1",
-          name: "ศาลพระพรหม ขนาดมาตรฐาน สำหรับองค์กร",
-          price: "89,000",
-          sold: "89",
-          rating: "5.0",
-          description: "ความยิ่งใหญ่และสง่างามขั้นสุด ศูนย์รวมศรัทธาที่ออกแบบมาเพื่อเสริมสิริมงคลให้กับธุรกิจ อาคารสำนักงานขนาดใหญ่",
-          features: ["ขนาดถูกต้องตามหลักคติพราหมณ์", "วัสดุเกรดพรีเมียมที่สุดทนแดดฝน", "บริการดูพื้นที่และฤกษ์ตั้งศาล"],
+          id: "r1",
+          name: "ศาลทรงยุโรป โรมันคลาสสิก",
+          price: "95,000",
+          sold: "45",
+          rating: "4.8",
+          description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน เหมาะกับบ้านสไตล์คลาสสิก หรือลักชัวรี่วิลล่า",
+          features: ["เสาโรมัน แกะสลักอย่างประณีต", "โครงสร้างหินอ่อนเทียมกันแดดกันฝน", "ดีไซน์หรูหราระดับคฤหาสน์"],
           images: [
-            "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1565610222536-ef125c5972e3?q=80&w=2574&auto=format&fit=crop"
-          ]
-        },
-        {
-          id: "b2",
-          name: "ศาลพระพรหม รุ่นพิเศษ (Gold Edition)",
-          price: "129,000",
-          sold: "32",
-          rating: "5.0",
-          description: "ที่สุดของความมั่งคั่ง ด้วยการประดับทองคำเปลวและกระจกสีอย่างประณีตทั้งองค์",
-          features: ["ปิดทองคำเปลว 100%", "สถาปัตยกรรมชั้นครู", "สำหรับคฤหาสน์และโรงแรม"],
-          images: [
-            "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop"
+            "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543482705-1a8dfc8ac604?q=80&w=2670&auto=format&fit=crop"
           ]
         }
       ]

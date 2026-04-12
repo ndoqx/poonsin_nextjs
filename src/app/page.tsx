@@ -8,9 +8,14 @@ import Link from 'next/link';
 
 // กำหนดรายการรูปภาพศาลพระภูมิ 
 const SHRINES_LIST = [
-  "/images/1.webp",
-  "/images/2.webp",
-  "/images/3.webp",
+  "/images/mainpic/4.png",
+  "/images/mainpic/5.png",
+  "/images/mainpic/6.png",
+  "/images/mainpic/7.png",
+  "/images/mainpic/8.png",
+  "/images/mainpic/9.png",
+  "/images/mainpic/10.png",
+  "/images/mainpic/11.png",
 ];
 
 // กำหนดรายการรูปภาพรีวิว

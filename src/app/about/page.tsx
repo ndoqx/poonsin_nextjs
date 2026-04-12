@@ -5,9 +5,17 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export default function AboutPage() {
   const bannerImages = [
-    "/images/history1.jpg",
-    "/images/history2.jpg",
-    "/images/history3.jpg",
+    "/images/history/history1.jpg",
+    "/images/history/history2.jpg",
+    "/images/history/history3.jpg",
+    "/images/history/history4.png",
+    "/images/history/history5.png",
+    "/images/history/history6.png",
+    "/images/history/history7.png",
+    "/images/history/history8.png",
+    "/images/history/history9.png",
+    "/images/history/history10.png",
+    "/images/history/history11.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

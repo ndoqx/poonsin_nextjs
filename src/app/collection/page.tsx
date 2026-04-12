@@ -9,14 +9,10 @@ import { Reveal } from '@/components/ui/Reveal';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // --- MOCK DATA ---
-type ProductType = 'พระภูมิ' | 'พระพรหม';
-type ProductStyle = 'ดั้งเดิม' | 'โมเดิร์น';
-
 interface CollectionItem {
   id: string;
   name: string;
-  type: ProductType;
-  style: ProductStyle;
+  category: string;
   price: string;
   sold: string;
   rating: string;
@@ -28,10 +24,9 @@ interface CollectionItem {
 
 const COLLECTION_PRODUCTS: CollectionItem[] = [
   {
-    id: "c-spirit-1",
+    id: "st-1",
     name: "ศาลพระภูมิ ทรงไทยประยุกต์ ปิดทองคำเปลว",
-    type: "พระภูมิ",
-    style: "ดั้งเดิม",
+    category: "ศาลพระภูมิดั้งเดิม",
     price: "35,900",
     sold: "340",
     rating: "4.9",
@@ -44,45 +39,39 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     ]
   },
   {
-    id: "m-spirit-1",
+    id: "sm-1",
     name: "ศาลพระภูมิ โมเดิร์น รุ่น M-01 (Minimalist White)",
-    type: "พระภูมิ",
-    style: "โมเดิร์น",
+    category: "ศาลพระภูมิโมเดิร์น",
     price: "29,900",
     sold: "125",
     rating: "5.0",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["โครงสร้างคอนกรีตเสริมเหล็ก", "สีพรีเมียมกันเชื้อรา", "ถูกต้องตามหลักฮวงจุ้ย"],
-    coverImage: "/images/modernspirithouse/modernspirithouse1.1.jpg",
+    coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop",
     images: [
-      "/images/modernspirithouse/modernspirithouse1.1.jpg",
-      "/images/modernspirithouse/modernspirithouse1.2.jpg",
-      "/images/modernspirithouse/modernspirithouse1.3.jpg"
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2670&auto=format&fit=crop"
     ]
   },
   {
-    id: "m-spirit-2",
+    id: "sm-2",
     name: "ศาลพระภูมิ โมเดิร์น รุ่น M-02 (Luxury Marble)",
-    type: "พระภูมิ",
-    style: "โมเดิร์น",
+    category: "ศาลพระภูมิโมเดิร์น",
     price: "45,000",
     sold: "84",
     rating: "4.9",
     description: "ยกระดับความหรูหราด้วยการปิดผิวลายหินอ่อน นำเข้าจากต่างประเทศ โดดเด่นไม่ซ้ำใคร ออกแบบมาเพื่อรับลมและแสงได้อย่างดีเยี่ยม",
     features: ["ปิดผิวลายหินอ่อนพรีเมียม", "ดีไซน์โปร่ง รับลม", "ฐานกว้างพิเศษ"],
-    coverImage: "/images/modernspirithouse/modernspirithouse2.1.jpg",
+    coverImage: "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop",
     images: [
-      "/images/modernspirithouse/modernspirithouse2.1.jpg",
-      "/images/modernspirithouse/modernspirithouse2.2.jpg",
-      "/images/modernspirithouse/modernspirithouse2.3.jpg",
-      "/images/modernspirithouse/modernspirithouse2.4.jpg"
+      "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
     ]
   },
   {
-    id: "c-brahma-1",
+    id: "bt-1",
     name: "ศาลพระพรหม ดั้งเดิม ขนาดมาตรฐานสำหรับองค์กร",
-    type: "พระพรหม",
-    style: "ดั้งเดิม",
+    category: "ศาลพระพรหมดั้งเดิม",
     price: "89,000",
     sold: "89",
     rating: "5.0",
@@ -95,40 +84,53 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     ]
   },
   {
-    id: "m-brahma-1",
+    id: "bm-1",
     name: "ศาลพระพรหม โมเดิร์น (The Executive Glass)",
-    type: "พระพรหม",
-    style: "โมเดิร์น",
+    category: "ศาลพระพรหมโมเดิร์น",
     price: "115,000",
     sold: "42",
     rating: "4.8",
     description: "ศาลพระพรหมสไตล์โมเดิร์นที่ฉีกทิ้งทุกกรอบเดิม ด้วยการผสานกระจกนิรภัยและโครงสร้างโลหะพรีเมียม เข้ากับอาคารสำนักงานทรง Glass House",
     features: ["โครงสร้างโลหะและกระจกนิรภัย", "ระบบไฟ LED ซ่อนขอบ", "ดีไซน์ล้ำสมัยแห่งอนาคต"],
-    coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2569&auto=format&fit=crop",
+    coverImage: "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2569&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=3501&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop"
     ]
   },
   {
-    id: "c-brahma-2",
-    name: "ศาลพระพรหม ดั้งเดิม รุ่นพิเศษ (Gold Edition)",
-    type: "พระพรหม",
-    style: "ดั้งเดิม",
-    price: "129,000",
-    sold: "32",
+    id: "gs-1",
+    name: "ศาลเจ้าที่ ทรงเรือนไทยโบราณไม้สัก",
+    category: "ศาลเจ้าที่",
+    price: "59,000",
+    sold: "120",
     rating: "5.0",
-    description: "ที่สุดของความมั่งคั่ง ด้วยการประดับทองคำเปลวและกระจกสีอย่างประณีตทั้งองค์ สำหรับคฤหาสน์และโรงแรมระดับ 5 ดาว",
-    features: ["ปิดทองคำเปลว 100%", "สถาปัตยกรรมชั้นครู", "ประดับกระจกสีรอบองค์"],
-    coverImage: "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop",
+    description: "ศาลเจ้าที่จำลองแบบจากเรือนไทยโบราณ แกะสลักอย่างวิจิตรบรรจง คลาสสิกและทรงคุณค่า",
+    features: ["ไม้เนื้อแข็งทนแดดทนฝน", "ลงน้ำยาเคลือบเงาพิเศษ", "เสริมบารมีเจ้าของบ้าน"],
+    coverImage: "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
     images: [
-      "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2670&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: "r-1",
+    name: "ศาลทรงยุโรป โรมันคลาสสิก",
+    category: "ศาลโรมัน",
+    price: "95,000",
+    sold: "45",
+    rating: "4.8",
+    description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน เหมาะกับบ้านสไตล์คลาสสิก หรือลักชัวรี่วิลล่า",
+    features: ["เสาโรมัน แกะสลักอย่างประณีต", "โครงสร้างหินอ่อนเทียมกันแดดกันฝน", "ดีไซน์หรูหราระดับคฤหาสน์"],
+    coverImage: "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1543482705-1a8dfc8ac604?q=80&w=2670&auto=format&fit=crop"
     ]
   }
 ];
 
-const FILTERS = ["ทั้งหมด", "ศาลพระภูมิ", "ศาลพระพรหม", "สไตล์โมเดิร์น", "สไตล์ดั้งเดิม"];
+const FILTERS = ["ทั้งหมด", "ศาลพระภูมิดั้งเดิม", "ศาลพระภูมิโมเดิร์น", "ศาลพระพรหมดั้งเดิม", "ศาลพระพรหมโมเดิร์น", "ศาลเจ้าที่", "ศาลโรมัน"];
 
 export default function CollectionPage() {
   const [filter, setFilter] = useState<string>("ทั้งหมด");
@@ -159,11 +161,7 @@ export default function CollectionPage() {
 
   const filteredItems = COLLECTION_PRODUCTS.filter(item => {
     if (filter === 'ทั้งหมด') return true;
-    if (filter === 'ศาลพระภูมิ') return item.type === 'พระภูมิ';
-    if (filter === 'ศาลพระพรหม') return item.type === 'พระพรหม';
-    if (filter === 'สไตล์โมเดิร์น') return item.style === 'โมเดิร์น';
-    if (filter === 'สไตล์ดั้งเดิม') return item.style === 'ดั้งเดิม';
-    return true;
+    return item.category === filter;
   });
 
   return (
@@ -218,7 +216,7 @@ export default function CollectionPage() {
               >
                 <div className="aspect-[4/3] w-full overflow-hidden relative">
                   <span className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm text-amber-600 font-bold text-xs px-3 py-1.5 rounded-full shadow-sm">
-                    {item.style}
+                    {item.category}
                   </span>
                   <img src={item.coverImage} alt={item.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
@@ -322,7 +320,7 @@ export default function CollectionPage() {
                 {/* ฝั่งขวา: รายละเอียด */}
                 <div className="lg:w-1/2 p-6 md:p-10 flex flex-col">
                   <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-white bg-amber-500 px-2 md:px-3 py-1 rounded-sm w-max mb-3 md:mb-4 uppercase tracking-wider">
-                    {activeProduct.style} • {activeProduct.type}
+                    {activeProduct.category}
                   </div>
 
                   <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
