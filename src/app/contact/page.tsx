@@ -31,7 +31,7 @@ export default function ContactPage() {
                 <span className="relative z-10">081-8890173 (สิงหะ)</span>
               </a>
 
-              <a href="https://line.me/ti/p/" target="_blank" rel="noreferrer" className="group relative overflow-hidden bg-[#00B900] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto">
+              <a href="https://line.me/ti/p/~0611733389" target="_blank" rel="noreferrer" className="group relative overflow-hidden bg-[#00B900] text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-xl hover:shadow-[#00B900]/40 hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto">
                 <div className="absolute inset-0 bg-[#009900] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
                 <MessageCircle size={24} className="relative z-10 group-hover:scale-110 transition-transform" />
                 <span className="relative z-10">LINE: 0611733389</span>
