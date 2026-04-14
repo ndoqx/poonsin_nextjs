@@ -761,30 +761,30 @@ export default function CollectionPage() {
           {/* Review Banner to fill the white space seamlessly */}
           <Reveal effect="fade-up" delay={200}>
             <div className="max-w-4xl mx-auto mt-12 md:mt-16 bg-[#FAF9F6] border border-gray-100/80 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-2xl shadow-gray-200/50 hover:shadow-gray-300/60 transition-all duration-500">
-               <div className="w-full md:w-2/5 overflow-hidden rounded-2xl shadow-sm">
-                 <img 
-                   src="/images/review-1.jpg" 
-                   alt="รีวิวความทนทาน" 
-                   className="w-full h-56 md:h-64 object-cover hover:scale-105 transition-transform duration-700" 
-                 />
-               </div>
-               <div className="w-full md:w-3/5 text-left flex flex-col justify-center">
-                 <div className="flex items-center gap-1 text-amber-500 mb-3">
-                    <Star size={20} fill="currentColor" />
-                    <Star size={20} fill="currentColor" />
-                    <Star size={20} fill="currentColor" />
-                    <Star size={20} fill="currentColor" />
-                    <Star size={20} fill="currentColor" />
-                    <span className="text-gray-500 text-sm ml-2 font-medium">รีวิวจากลูกค้าจริง</span>
-                 </div>
-                 <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 tracking-tight leading-snug">
-                   การันตีความทนทาน <br className="hidden md:block" />
-                   <span className="text-amber-600">ยาวนานกว่า 5 ปี สีไม่ตก</span>
-                 </h3>
-                 <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                   "ศาลพระภูมิร้านพูนสิน ติดตั้งมาเกิน 5 ปีแล้ว สีไม่ตก โครงสร้างยังแข็งแรงเหมือนใหม่ ทนแดดทนฝนได้อย่างดีเยี่ยม มั่นใจได้เลยครับ"
-                 </p>
-               </div>
+              <div className="w-full md:w-2/5 overflow-hidden rounded-2xl shadow-sm">
+                <img
+                  src="/images/review-1.jpg"
+                  alt="รีวิวความทนทาน"
+                  className="w-full h-56 md:h-64 object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="w-full md:w-3/5 text-left flex flex-col justify-center">
+                <div className="flex items-center gap-1 text-amber-500 mb-3">
+                  <Star size={20} fill="currentColor" />
+                  <Star size={20} fill="currentColor" />
+                  <Star size={20} fill="currentColor" />
+                  <Star size={20} fill="currentColor" />
+                  <Star size={20} fill="currentColor" />
+                  <span className="text-gray-500 text-sm ml-2 font-medium">รีวิวจากลูกค้าจริง</span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 tracking-tight leading-snug">
+                  การันตีความทนทาน <br className="hidden md:block" />
+                  <span className="text-amber-600">ยาวนานกว่า 5 ปี สีไม่ตก</span>
+                </h3>
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                  "ศาลพระภูมิร้านพูนสิน ติดตั้งมาเกิน 5 ปีแล้ว สีไม่ตก โครงสร้างยังแข็งแรงเหมือนใหม่ ทนแดดทนฝนได้อย่างดีเยี่ยม มั่นใจได้เลยครับ"
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -881,7 +881,7 @@ export default function CollectionPage() {
             >
 
               {/* Header Mobile Only */}
-              <div className="flex md:hidden justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-20 shadow-sm">
+              <div className="flex md:hidden justify-between items-center p-4 border-b border-gray-100 bg-white shrink-0 z-50 relative shadow-sm w-full">
                 <button onClick={() => setActiveProduct(null)} className="p-2 -ml-2 text-gray-600">
                   <ChevronLeft size={28} />
                 </button>
