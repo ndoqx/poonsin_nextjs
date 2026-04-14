@@ -48,7 +48,7 @@ export default function ContactPage() {
               </a>
 
               {/* ปรับแก้ส่วน Instagram */}
-              <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-2 md:gap-3">
+              <a href="https://www.instagram.com/poonsin.shop?igsh=MW1xd29jNDl2emUxdg==" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-2 md:gap-3">
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-md group-hover:shadow-xl group-hover:shadow-[#dc2743]/40 group-hover:-translate-y-1 group-hover:scale-110">
                   <Instagram size={28} />
                 </div>

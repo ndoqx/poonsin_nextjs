@@ -18,6 +18,14 @@ const SHRINES_LIST = [
   "/images/mainpic/11.png",
 ];
 
+// รูปภาพ 4 ภาพที่ต้องการเน้น
+const FEATURED_IMAGES_LIST = [
+  "/images/mainpic/1.1.jpg",
+  "/images/mainpic/1.2.jpg",
+  "/images/mainpic/1.3.jpg",
+  "/images/mainpic/1.4.jpg",
+];
+
 // กำหนดรายการรูปภาพรีวิว
 const REVIEW_IMAGES_LIST = [
   "/images/review-1.jpg",
@@ -118,10 +126,12 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [currentShrine, setCurrentShrine] = useState(0);
   const [currentReview, setCurrentReview] = useState(0);
+  const [currentFeatured, setCurrentFeatured] = useState(0);
 
   // --- States สำหรับการ Pause และ Drag ---
   const [isShrinePaused, setIsShrinePaused] = useState(false);
   const [isReviewPaused, setIsReviewPaused] = useState(false);
+  const [isFeaturedPaused, setIsFeaturedPaused] = useState(false);
 
   const [dragStart, setDragStart] = useState(0);
   const [dragEnd, setDragEnd] = useState(0);
@@ -137,19 +147,25 @@ export default function Home() {
   // ฟังก์ชันเลื่อนรูป
   const changeShrine = (direction: 'next' | 'prev') => setCurrentShrine((prev) => getNextIndex(prev, SHRINES_LIST.length, direction));
   const changeReview = (direction: 'next' | 'prev') => setCurrentReview((prev) => getNextIndex(prev, REVIEW_IMAGES_LIST.length, direction));
+  const changeFeatured = (direction: 'next' | 'prev') => setCurrentFeatured((prev) => getNextIndex(prev, FEATURED_IMAGES_LIST.length, direction));
 
-  // --- Auto Play Effects ---
   useEffect(() => {
     if (isShrinePaused) return;
-    const timer = setInterval(() => changeShrine('next'), 3000);
+    const timer = setInterval(() => changeShrine('next'), 1500);
     return () => clearInterval(timer);
   }, [currentShrine, isShrinePaused]);
 
   useEffect(() => {
     if (isReviewPaused) return;
-    const timer = setInterval(() => changeReview('next'), 3000);
+    const timer = setInterval(() => changeReview('next'), 1500);
     return () => clearInterval(timer);
   }, [currentReview, isReviewPaused]);
+
+  useEffect(() => {
+    if (isFeaturedPaused) return;
+    const timer = setInterval(() => changeFeatured('next'), 1500);
+    return () => clearInterval(timer);
+  }, [currentFeatured, isFeaturedPaused]);
 
   // --- Drag & Swipe Handlers ---
   const onDragStart = (clientX: number) => {
@@ -230,15 +246,56 @@ export default function Home() {
               <span className="text-[#F18911]"> กว่า 60 ปี</span>
             </h1>
           </Reveal>
+        </div>
+      </section>
 
-          <Reveal effect="fade-up" delay={400}>
-            <Link
-              href="/collection"
-              className="group relative overflow-hidden bg-[#3D404A] text-white px-12 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-[#F18911]/30 transition-all duration-300 hover:-translate-y-1 inline-flex"
+      {/* --- FEATURED SECTION (NEW) --- */}
+      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-b border-gray-100 relative overflow-hidden z-20">
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
+
+          {/* พื้นที่ Slider สินค้าแนะนำ */}
+          <Reveal delay={200} effect="fade-up">
+            <div
+              className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
+              onMouseEnter={() => setIsFeaturedPaused(true)}
+              onMouseLeave={() => {
+                setIsFeaturedPaused(false);
+                onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev'));
+              }}
+              onTouchStart={(e) => { setIsFeaturedPaused(true); onDragStart(e.targetTouches[0].clientX); }}
+              onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
+              onTouchEnd={() => { setIsFeaturedPaused(false); onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev')); }}
+              onMouseDown={(e) => onDragStart(e.clientX)}
+              onMouseMove={(e) => onDragMove(e.clientX)}
+              onMouseUp={() => onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev'))}
             >
-              <span className="relative flex items-center gap-3">
-                เลือกชมสินค้า <ArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
-              </span>
+              {FEATURED_IMAGES_LIST.map((src, index) => (
+                <CarouselItem
+                  key={index}
+                  src={src}
+                  index={index}
+                  currentShrine={currentFeatured}
+                  total={FEATURED_IMAGES_LIST.length}
+                  onNext={() => changeFeatured('next')}
+                  onPrev={() => changeFeatured('prev')}
+                  canClick={canClick}
+                />
+              ))}
+            </div>
+          </Reveal>
+
+          {/* ปุ่มกดซ้าย-ขวา */}
+          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
+            <div className="flex gap-6" onMouseEnter={() => setIsFeaturedPaused(true)} onMouseLeave={() => setIsFeaturedPaused(false)}>
+              <CarouselButton direction="prev" onClick={() => changeFeatured('prev')} />
+              <CarouselButton direction="next" onClick={() => changeFeatured('next')} />
+            </div>
+          </Reveal>
+
+          {/* ปุ่มขนาดใหญ่ เลือกชมสินค้าทั้งหมด */}
+          <Reveal delay={600} effect="fade-up" className="mt-20">
+            <Link href="/collection" className="inline-flex items-center gap-4 bg-[#F18911] text-white px-10 py-5 md:px-20 md:py-8 rounded-full font-extrabold text-2xl md:text-5xl shadow-2xl hover:shadow-[#F18911]/50 hover:-translate-y-2 transition-all duration-300">
+              เลือกชมสินค้าทั้งหมด <ArrowRight className="w-8 h-8 md:w-12 md:h-12" />
             </Link>
           </Reveal>
         </div>

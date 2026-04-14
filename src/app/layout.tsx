@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     "ร้านพูนสิน",
     "ศาลพระพรหม",
   ],
+  icons: {
+    icon: "/images/logo.jpg",
+  },
 };
 
 export default function RootLayout({

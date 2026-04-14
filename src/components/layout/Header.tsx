@@ -38,9 +38,8 @@ export function Header() {
         scrolled ? 'bg-white/98 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm' : 'bg-transparent border-transparent py-4 md:py-6'
       }`}>
         <div className="container mx-auto px-4 md:px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider relative z-[61]">
-          <Link href="/" onClick={closeMenu} className={`font-serif text-lg md:text-xl font-bold tracking-widest transition-colors flex items-center gap-2 md:gap-3 ${scrolled ? 'text-gray-900 hover:text-amber-600' : 'text-gray-900 drop-shadow-md hover:text-amber-400'}`}>
-            <span className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-lg">P</span>
-            POONSIN
+          <Link href="/" onClick={closeMenu} className="flex items-center transition-transform hover:scale-105">
+            <img src="/images/logo.jpg" alt="Poonsin Logo" className="h-12 md:h-16 w-auto object-contain rounded-md shadow-sm" />
           </Link>
           
           <div className="hidden md:flex space-x-12">
@@ -66,9 +65,8 @@ export function Header() {
       <div className={`fixed inset-0 bg-white z-[999] overflow-y-auto overscroll-y-contain flex flex-col transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="min-h-full flex flex-col">
           <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
-            <Link href="/" onClick={closeMenu} className="font-serif text-lg font-bold tracking-widest flex items-center gap-2 text-gray-900">
-              <span className="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center rounded-sm shadow-sm">P</span>
-              POONSIN
+            <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
+              <img src="/images/logo.jpg" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
             </Link>
             <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors">
               <X size={26} />

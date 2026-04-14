@@ -2,20 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  X, Phone, MessageCircle, Star, ChevronLeft,
-  Truck, CheckCircle2
+  X, Phone, ChevronLeft, CheckCircle2, Star
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { AnimatePresence, motion } from 'framer-motion';
 
-// --- MOCK DATA ---
+// --- DATA ---
 interface CollectionItem {
   id: string;
   name: string;
   category: string;
   price: string;
-  sold: string;
-  rating: string;
   description: string;
   features: string[];
   coverImage: string;
@@ -25,112 +22,699 @@ interface CollectionItem {
 const COLLECTION_PRODUCTS: CollectionItem[] = [
   {
     id: "st-1",
-    name: "ศาลพระภูมิ ทรงไทยประยุกต์ ปิดทองคำเปลว",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-1",
     category: "ศาลพระภูมิดั้งเดิม",
     price: "35,900",
-    sold: "340",
-    rating: "4.9",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
     features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
-    coverImage: "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop",
+    coverImage: "/images/poom/1.1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1599619585752-c3c94d6d4ba7?q=80&w=2669&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2670&auto=format&fit=crop"
+      "/images/poom/1.1.jpg",
+    ]
+  },
+  {
+    id: "st-2",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-2",
+    category: "ศาลพระภูมิดั้งเดิม",
+    price: "35,900",
+    description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
+    features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+    coverImage: "/images/poom/2.1.jpg",
+    images: [
+      "/images/poom/2.1.jpg",
+    ]
+  },
+  {
+    id: "st-3",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-3",
+    category: "ศาลพระภูมิดั้งเดิม",
+    price: "35,900",
+    description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
+    features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+    coverImage: "/images/poom/3.1.jpg",
+    images: [
+      "/images/poom/3.1.jpg",
+    ]
+  },
+  {
+    id: "st-4",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-4",
+    category: "ศาลพระภูมิดั้งเดิม",
+    price: "35,900",
+    description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
+    features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+    coverImage: "/images/poom/4.1.jpg",
+    images: [
+      "/images/poom/4.1.jpg",
+    ]
+  },
+  {
+    id: "st-5",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-5",
+    category: "ศาลพระภูมิดั้งเดิม",
+    price: "35,900",
+    description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
+    features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+    coverImage: "/images/poom/5.1.jpg",
+    images: [
+      "/images/poom/5.1.jpg",
+    ]
+  },
+  {
+    id: "st-6",
+    name: "ศาลพระภูมิ ทรงไทยประยุกต์ st-6",
+    category: "ศาลพระภูมิดั้งเดิม",
+    price: "35,900",
+    description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม ความวิจิตรบรรจงระดับสูงสุด พร้อมประดับลวดลายและปิดทองคำเปลวแท้ 100% ตัวศาลทำจากวัสดุคงทนแข็งแรง เป็นมรดกตกทอดได้ยาวนาน",
+    features: ["งานช่างฝีมือประสบการณ์ 60 ปี", "ประดับลวดลายวิจิตรและปิดทอง", "โครงสร้างแข็งแรงทนทานเป็นมรดก"],
+    coverImage: "/images/poom/6.1.jpg",
+    images: [
+      "/images/poom/6.1.jpg",
     ]
   },
   {
     id: "sm-1",
-    name: "ศาลพระภูมิ โมเดิร์น รุ่น M-01 (Minimalist White)",
+    name: "ศาลพระภูมิ โมเดิร์น sm-1",
     category: "ศาลพระภูมิโมเดิร์น",
-    price: "29,900",
-    sold: "125",
-    rating: "5.0",
+    price: "1x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
-    features: ["โครงสร้างคอนกรีตเสริมเหล็ก", "สีพรีเมียมกันเชื้อรา", "ถูกต้องตามหลักฮวงจุ้ย"],
-    coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
+    coverImage: "/images/modernpoom/small/1.1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2670&auto=format&fit=crop"
+      "/images/modernpoom/small/1.1.jpg",
+      "/images/modernpoom/small/1.2.jpg"
     ]
   },
   {
     id: "sm-2",
-    name: "ศาลพระภูมิ โมเดิร์น รุ่น M-02 (Luxury Marble)",
+    name: "ศาลพระภูมิ โมเดิร์น sm-2",
     category: "ศาลพระภูมิโมเดิร์น",
-    price: "45,000",
-    sold: "84",
-    rating: "4.9",
-    description: "ยกระดับความหรูหราด้วยการปิดผิวลายหินอ่อน นำเข้าจากต่างประเทศ โดดเด่นไม่ซ้ำใคร ออกแบบมาเพื่อรับลมและแสงได้อย่างดีเยี่ยม",
-    features: ["ปิดผิวลายหินอ่อนพรีเมียม", "ดีไซน์โปร่ง รับลม", "ฐานกว้างพิเศษ"],
-    coverImage: "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop",
+    price: "1x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
+    coverImage: "/images/modernpoom/small/2.1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1583847268964-b28ce8f25f2b?q=80&w=2574&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
+      "/images/modernpoom/small/2.1.jpg",
+      "/images/modernpoom/small/2.2.jpg",
+      "/images/modernpoom/small/2.3.jpg",
+      "/images/modernpoom/small/2.4.jpg",
+      "/images/modernpoom/small/2.5.jpg"
+    ]
+  },
+  {
+    id: "sm-3",
+    name: "ศาลพระภูมิ โมเดิร์น sm-3",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "1x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
+    coverImage: "/images/modernpoom/small/3.1.jpg",
+    images: [
+      "/images/modernpoom/small/3.1.jpg",
+      "/images/modernpoom/small/3.2.jpg",
+      "/images/modernpoom/small/3.3.jpg",
+      "/images/modernpoom/small/3.4.jpg",
+      "/images/modernpoom/small/3.5.jpg",
+      "/images/modernpoom/small/3.6.jpg",
+      "/images/modernpoom/small/3.7.jpg",
+      "/images/modernpoom/small/3.8.jpg",
+      "/images/modernpoom/small/3.9.jpg",
+      "/images/modernpoom/small/3.10.jpg"
+    ]
+  },
+  {
+    id: "sm-4",
+    name: "ศาลพระภูมิ โมเดิร์น sm-4",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/small/4.1.png",
+    images: [
+      "/images/modernpoom/small/4.1.png",
+      "/images/modernpoom/small/4.2.png",
+      "/images/modernpoom/small/4.3.png"
+    ]
+  },
+  {
+    id: "sm-5",
+    name: "ศาลพระภูมิ โมเดิร์น sm-5",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/1.1.jpg",
+    images: [
+      "/images/modernpoom/medium/1.1.jpg",
+      "/images/modernpoom/medium/1.2.jpg"
+    ]
+  },
+  {
+    id: "sm-6",
+    name: "ศาลพระภูมิ โมเดิร์น sm-6",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/2.1.jpg",
+    images: [
+      "/images/modernpoom/medium/2.1.jpg",
+      "/images/modernpoom/medium/2.2.jpg",
+      "/images/modernpoom/medium/2.3.jpg",
+      "/images/modernpoom/medium/2.4.jpg",
+      "/images/modernpoom/medium/2.5.jpg",
+      "/images/modernpoom/medium/2.6.jpg",
+      "/images/modernpoom/medium/2.7.jpg"
+    ]
+  },
+  {
+    id: "sm-7",
+    name: "ศาลพระภูมิ โมเดิร์น sm-7",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/3.1.jpg",
+    images: [
+      "/images/modernpoom/medium/3.1.jpg",
+      "/images/modernpoom/medium/3.2.jpg",
+      "/images/modernpoom/medium/3.3.jpg"
+    ]
+  },
+  {
+    id: "sm-8",
+    name: "ศาลพระภูมิ โมเดิร์น sm-8",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/4.1.jpg",
+    images: [
+      "/images/modernpoom/medium/4.1.jpg",
+      "/images/modernpoom/medium/4.2.jpg",
+      "/images/modernpoom/medium/4.3.jpg"
+    ]
+  },
+  {
+    id: "sm-9",
+    name: "ศาลพระภูมิ โมเดิร์น sm-9",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/5.1.jpg",
+    images: [
+      "/images/modernpoom/medium/5.1.jpg",
+      "/images/modernpoom/medium/5.2.jpg"
+    ]
+  },
+  {
+    id: "sm-10",
+    name: "ศาลพระภูมิ โมเดิร์น sm-10",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/6.1.jpg",
+    images: [
+      "/images/modernpoom/medium/6.1.jpg",
+      "/images/modernpoom/medium/6.2.jpg"
+    ]
+  },
+  {
+    id: "sm-11",
+    name: "ศาลพระภูมิ โมเดิร์น sm-11",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/7.1.jpg",
+    images: [
+      "/images/modernpoom/medium/7.1.jpg",
+      "/images/modernpoom/medium/7.2.jpg",
+      "/images/modernpoom/medium/7.3.jpg"
+    ]
+  },
+  {
+    id: "sm-12",
+    name: "ศาลพระภูมิ โมเดิร์น sm-12",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/8.1.jpg",
+    images: [
+      "/images/modernpoom/medium/8.1.jpg",
+      "/images/modernpoom/medium/8.2.jpg",
+      "/images/modernpoom/medium/8.3.jpg"
+    ]
+  },
+  {
+    id: "sm-13",
+    name: "ศาลพระภูมิ โมเดิร์น sm-13",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "2x,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/medium/9.1.jpg",
+    images: [
+      "/images/modernpoom/medium/9.1.jpg"
+    ]
+  },
+  {
+    id: "sm-14",
+    name: "ศาลพระภูมิ โมเดิร์น sm-14",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/large/1.1.jpg",
+    images: [
+      "/images/modernpoom/large/1.1.jpg",
+      "/images/modernpoom/large/1.2.jpg"
+    ]
+  },
+  {
+    id: "sm-15",
+    name: "ศาลพระภูมิ โมเดิร์น sm-15",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/large/2.1.jpg",
+    images: [
+      "/images/modernpoom/large/2.1.jpg",
+      "/images/modernpoom/large/2.2.jpg"
+    ]
+  },
+  {
+    id: "sm-16",
+    name: "ศาลพระภูมิ โมเดิร์น sm-16",
+    category: "ศาลพระภูมิโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
+    coverImage: "/images/modernpoom/large/3.1.jpg",
+    images: [
+      "/images/modernpoom/large/3.1.jpg"
     ]
   },
   {
     id: "bt-1",
-    name: "ศาลพระพรหม ดั้งเดิม ขนาดมาตรฐานสำหรับองค์กร",
+    name: "ศาลพระพรหม ดั้งเดิม bt-1",
     category: "ศาลพระพรหมดั้งเดิม",
-    price: "89,000",
-    sold: "89",
-    rating: "5.0",
-    description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่ ความยิ่งใหญ่และสง่างามขั้นสุด ศูนย์รวมศรัทธาที่ออกแบบมาเพื่อเสริมสิริมงคลให้กับธุรกิจ และอาคารสำนักงาน",
-    features: ["ขนาดถูกต้องตามหลักคติพราหมณ์", "วัสดุเกรดพรีเมียมที่สุดทนแดดฝน", "บริการดูพื้นที่และฤกษ์ตั้งศาล"],
-    coverImage: "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop",
+    price: "8x,xxx",
+    description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา"],
+    coverImage: "/images/promp/1.1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1574087913340-7ec878da6b98?q=80&w=2574&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1565610222536-ef125c5972e3?q=80&w=2574&auto=format&fit=crop"
+      "/images/promp/1.1.jpg"
+    ]
+  },
+  {
+    id: "bt-2",
+    name: "ศาลพระพรหม ดั้งเดิม bt-2",
+    category: "ศาลพระพรหมดั้งเดิม",
+    price: "8x,xxx",
+    description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา"],
+    coverImage: "/images/promp/2.1.jpg",
+    images: [
+      "/images/promp/2.1.jpg"
+    ]
+  },
+  {
+    id: "bt-3",
+    name: "ศาลพระพรหม ดั้งเดิม bt-3",
+    category: "ศาลพระพรหมดั้งเดิม",
+    price: "8x,xxx",
+    description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว"],
+    coverImage: "/images/promp/3.1.jpg",
+    images: [
+      "/images/promp/3.1.jpg"
     ]
   },
   {
     id: "bm-1",
-    name: "ศาลพระพรหม โมเดิร์น (The Executive Glass)",
+    name: "ศาลพระพรหม โมเดิร์น bm-1",
     category: "ศาลพระพรหมโมเดิร์น",
-    price: "115,000",
-    sold: "42",
-    rating: "4.8",
-    description: "ศาลพระพรหมสไตล์โมเดิร์นที่ฉีกทิ้งทุกกรอบเดิม ด้วยการผสานกระจกนิรภัยและโครงสร้างโลหะพรีเมียม เข้ากับอาคารสำนักงานทรง Glass House",
-    features: ["โครงสร้างโลหะและกระจกนิรภัย", "ระบบไฟ LED ซ่อนขอบ", "ดีไซน์ล้ำสมัยแห่งอนาคต"],
-    coverImage: "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/1.1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1568013821213-911369b76a71?q=80&w=2574&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1523544545175-92e04b96d26b?q=80&w=2574&auto=format&fit=crop"
+      "/images/modernpromp/medium/1.1.jpg"
+    ]
+  },
+  {
+    id: "bm-2",
+    name: "ศาลพระพรหม โมเดิร์น bm-2",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/2.1.jpg",
+    images: [
+      "/images/modernpromp/medium/2.1.jpg"
+    ]
+  },
+  {
+    id: "bm-3",
+    name: "ศาลพระพรหม โมเดิร์น bm-3",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/3.1.jpg",
+    images: [
+      "/images/modernpromp/medium/3.1.jpg"
+    ]
+  },
+  {
+    id: "bm-4",
+    name: "ศาลพระพรหม โมเดิร์น bm-4",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/4.1.jpg",
+    images: [
+      "/images/modernpromp/medium/4.1.jpg"
+    ]
+  },
+  {
+    id: "bm-5",
+    name: "ศาลพระพรหม โมเดิร์น bm-5",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/5.1.jpg",
+    images: [
+      "/images/modernpromp/medium/5.1.jpg"
+    ]
+  },
+  {
+    id: "bm-6",
+    name: "ศาลพระพรหม โมเดิร์น bm-6",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/6.1.jpg",
+    images: [
+      "/images/modernpromp/medium/6.1.jpg"
+    ]
+  },
+  {
+    id: "bm-7",
+    name: "ศาลพระพรหม โมเดิร์น bm-7",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/7.1.jpg",
+    images: [
+      "/images/modernpromp/medium/7.1.jpg"
+    ]
+  },
+  {
+    id: "bm-8",
+    name: "ศาลพระพรหม โมเดิร์น และ ศาลเจ้าที่ bm-8",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น ตั้งคู่กับศาลเจ้าที่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/8.1.jpg",
+    images: [
+      "/images/modernpromp/medium/8.1.jpg"
+    ]
+  },
+  {
+    id: "bm-9",
+    name: "ศาลพระพรหม โมเดิร์น bm-9",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/9.1.jpg",
+    images: [
+      "/images/modernpromp/medium/9.1.jpg",
+      "/images/modernpromp/medium/9.2.jpg",
+      "/images/modernpromp/medium/9.3.jpg"
+    ]
+  },
+  {
+    id: "bm-10",
+    name: "ศาลพระพรหม โมเดิร์น bm-10",
+    category: "ศาลพระพรหมโมเดิร์น",
+    price: "xx,xxx",
+    description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
+    coverImage: "/images/modernpromp/medium/10.1.png",
+    images: [
+      "/images/modernpromp/medium/10.1.png",
+      "/images/modernpromp/medium/10.2.png"
     ]
   },
   {
     id: "gs-1",
-    name: "ศาลเจ้าที่ ทรงเรือนไทยโบราณไม้สัก",
-    category: "ศาลเจ้าที่",
-    price: "59,000",
-    sold: "120",
-    rating: "5.0",
-    description: "ศาลเจ้าที่จำลองแบบจากเรือนไทยโบราณ แกะสลักอย่างวิจิตรบรรจง คลาสสิกและทรงคุณค่า",
-    features: ["ไม้เนื้อแข็งทนแดดทนฝน", "ลงน้ำยาเคลือบเงาพิเศษ", "เสริมบารมีเจ้าของบ้าน"],
-    coverImage: "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
+    name: "ศาลเจ้าที่ gs-1",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "3x,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เรือนแฝดสุดคลาสสิค"],
+    coverImage: "/images/shrine/1.1.png",
     images: [
-      "https://images.unsplash.com/photo-1620023758287-c4664a754117?q=80&w=2670&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2670&auto=format&fit=crop"
+      "/images/shrine/1.1.png"
+    ]
+  },
+  {
+    id: "gs-2",
+    name: "ศาลเจ้าที่ gs-2",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "1x,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["เรือนแฝดสุดคลาสสิค"],
+    coverImage: "/images/shrine/2.1.jpg",
+    images: [
+      "/images/shrine/2.1.jpg"
+    ]
+  },
+  {
+    id: "gs-3",
+    name: "ศาลเจ้าที่ gs-3",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/3.1.jpg",
+    images: [
+      "/images/shrine/3.1.jpg"
+    ]
+  },
+  {
+    id: "gs-4",
+    name: "ศาลเจ้าที่ gs-4",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "1x,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/4.1.jpg",
+    images: [
+      "/images/shrine/4.1.jpg"
+    ]
+  },
+  {
+    id: "gs-5",
+    name: "ศาลเจ้าที่ gs-5",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/5.1.jpg",
+    images: [
+      "/images/shrine/5.1.jpg"
+    ]
+  },
+  {
+    id: "gs-6",
+    name: "ศาลเจ้าที่ gs-6",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/6.1.jpg",
+    images: [
+      "/images/shrine/6.1.jpg"
+    ]
+  },
+  {
+    id: "gs-7",
+    name: "ศาลเจ้าที่ gs-7",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/7.1.jpg",
+    images: [
+      "/images/shrine/7.1.jpg"
+    ]
+  },
+  {
+    id: "gs-8",
+    name: "ศาลเจ้าที่ gs-8",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/8.1.jpg",
+    images: [
+      "/images/shrine/8.1.jpg"
+    ]
+  },
+  {
+    id: "gs-9",
+    name: "ศาลเจ้าที่ gs-9",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/9.1.jpg",
+    images: [
+      "/images/shrine/9.1.jpg",
+      "/images/shrine/9.2.jpg"
+    ]
+  },
+  {
+    id: "gs-10",
+    name: "ศาลเจ้าที่ gs-10",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/10.1.jpg",
+    images: [
+      "/images/shrine/10.1.jpg"
+    ]
+  },
+  {
+    id: "gs-11",
+    name: "ศาลเจ้าที่ gs-11",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "1x,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/11.1.jpg",
+    images: [
+      "/images/shrine/11.1.jpg"
+    ]
+  },
+  {
+    id: "gs-12",
+    name: "ศาลเจ้าที่ gs-12",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "1x,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/12.1.jpg",
+    images: [
+      "/images/shrine/12.1.jpg"
+    ]
+  },
+  {
+    id: "gs-13",
+    name: "ศาลเจ้าที่ gs-13",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/13.1.jpg",
+    images: [
+      "/images/shrine/13.1.jpg",
+      "/images/shrine/13.2.jpg"
+    ]
+  },
+  {
+    id: "gs-14",
+    name: "ศาลเจ้าที่ gs-14",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/14.1.jpg",
+    images: [
+      "/images/shrine/14.1.jpg"
+    ]
+  },
+  {
+    id: "gs-15",
+    name: "ศาลเจ้าที่ gs-15",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/15.1.jpg",
+    images: [
+      "/images/shrine/15.1.jpg"
+    ]
+  },
+  {
+    id: "gs-16",
+    name: "ศาลเจ้าที่ gs-16",
+    category: "ศาลเจ้าที่ ตา,ยาย",
+    price: "xx,xxx",
+    description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
+    coverImage: "/images/shrine/16.1.jpg",
+    images: [
+      "/images/shrine/16.1.jpg",
+      "/images/shrine/16.1.jpg"
     ]
   },
   {
     id: "r-1",
-    name: "ศาลทรงยุโรป โรมันคลาสสิก",
+    name: "ศาลทรงยุโรป r-1",
     category: "ศาลโรมัน",
-    price: "95,000",
-    sold: "45",
-    rating: "4.8",
-    description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน เหมาะกับบ้านสไตล์คลาสสิก หรือลักชัวรี่วิลล่า",
-    features: ["เสาโรมัน แกะสลักอย่างประณีต", "โครงสร้างหินอ่อนเทียมกันแดดกันฝน", "ดีไซน์หรูหราระดับคฤหาสน์"],
-    coverImage: "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
+    price: "xx,xxx",
+    description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["ดีไซน์ทันสมัย"],
+    coverImage: "/images/roman/1.1.png",
     images: [
-      "https://images.unsplash.com/photo-1582570881907-7cb52ea02dce?q=80&w=2670&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1543482705-1a8dfc8ac604?q=80&w=2670&auto=format&fit=crop"
+      "/images/roman/1.1.png",
+      "/images/roman/1.2.png"
     ]
-  }
+  },
+  {
+    id: "r-2",
+    name: "ศาลทรงยุโรป r-2",
+    category: "ศาลโรมัน",
+    price: "3x,xxx",
+    description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["ดีไซน์ทันสมัย"],
+    coverImage: "/images/roman/2.1.jpg",
+    images: [
+      "/images/roman/2.1.jpg",
+      "/images/roman/2.2.jpg"
+    ]
+  },
+  {
+    id: "r-3",
+    name: "ศาลทรงยุโรป r-3",
+    category: "ศาลโรมัน",
+    price: "xx,xxx",
+    description: "ศาลดีไซน์ผสมผสานสไตล์ยุโรป โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
+    features: ["ดีไซน์ทันสมัย"],
+    coverImage: "/images/roman/3.1.jpg",
+    images: [
+      "/images/roman/3.1.jpg",
+      "/images/roman/3.2.jpg"
+    ]
+  },
 ];
 
-const FILTERS = ["ทั้งหมด", "ศาลพระภูมิดั้งเดิม", "ศาลพระภูมิโมเดิร์น", "ศาลพระพรหมดั้งเดิม", "ศาลพระพรหมโมเดิร์น", "ศาลเจ้าที่", "ศาลโรมัน"];
+const FILTERS = ["ทั้งหมด", "ศาลพระภูมิโมเดิร์น", "ศาลเจ้าที่ ตา,ยาย", "ศาลโรมัน", "ศาลพระพรหมโมเดิร์น", "ศาลพระพรหมดั้งเดิม", "ศาลพระภูมิดั้งเดิม"];
 
 export default function CollectionPage() {
   const [filter, setFilter] = useState<string>("ทั้งหมด");
@@ -173,6 +757,36 @@ export default function CollectionPage() {
           <Reveal effect="blur-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">สินค้าทั้งหมดของเรา</h1>
           </Reveal>
+
+          {/* Review Banner to fill the white space seamlessly */}
+          <Reveal effect="fade-up" delay={200}>
+            <div className="max-w-4xl mx-auto mt-12 md:mt-16 bg-[#FAF9F6] border border-gray-100/80 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-2xl shadow-gray-200/50 hover:shadow-gray-300/60 transition-all duration-500">
+               <div className="w-full md:w-2/5 overflow-hidden rounded-2xl shadow-sm">
+                 <img 
+                   src="/images/review-1.jpg" 
+                   alt="รีวิวความทนทาน" 
+                   className="w-full h-56 md:h-64 object-cover hover:scale-105 transition-transform duration-700" 
+                 />
+               </div>
+               <div className="w-full md:w-3/5 text-left flex flex-col justify-center">
+                 <div className="flex items-center gap-1 text-amber-500 mb-3">
+                    <Star size={20} fill="currentColor" />
+                    <Star size={20} fill="currentColor" />
+                    <Star size={20} fill="currentColor" />
+                    <Star size={20} fill="currentColor" />
+                    <Star size={20} fill="currentColor" />
+                    <span className="text-gray-500 text-sm ml-2 font-medium">รีวิวจากลูกค้าจริง</span>
+                 </div>
+                 <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 tracking-tight leading-snug">
+                   การันตีความทนทาน <br className="hidden md:block" />
+                   <span className="text-amber-600">ยาวนานกว่า 5 ปี สีไม่ตก</span>
+                 </h3>
+                 <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                   "ศาลพระภูมิร้านพูนสิน ติดตั้งมาเกิน 5 ปีแล้ว สีไม่ตก โครงสร้างยังแข็งแรงเหมือนใหม่ ทนแดดทนฝนได้อย่างดีเยี่ยม มั่นใจได้เลยครับ"
+                 </p>
+               </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -200,7 +814,7 @@ export default function CollectionPage() {
           </div>
         </Reveal>
 
-        {/* CSS Grid for Products using Framer Motion for smooth layout shifts */}
+        {/* CSS Grid for Products */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
@@ -214,14 +828,19 @@ export default function CollectionPage() {
                 onClick={() => handleOpenProduct(item)}
                 className="bg-white rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:border-amber-200 transition-all duration-300 group cursor-pointer overflow-hidden flex flex-col h-full"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden relative">
+                {/* Image Container (Front Grid) */}
+                <div className="aspect-[4/3] w-full bg-white overflow-hidden relative flex items-center justify-center p-2">
                   <span className="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm text-amber-600 font-bold text-xs px-3 py-1.5 rounded-full shadow-sm">
                     {item.category}
                   </span>
-                  <img src={item.coverImage} alt={item.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                  <img
+                    src={item.coverImage}
+                    alt={item.name}
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors pointer-events-none"></div>
                 </div>
-                <div className="p-6 md:p-8 flex flex-col flex-1">
+                <div className="p-6 md:p-8 flex flex-col flex-1 border-t border-gray-50">
                   <h3 className="font-bold text-xl md:text-2xl text-gray-900 mb-2 line-clamp-2 leading-tight group-hover:text-amber-600 transition-colors">{item.name}</h3>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-2">{item.description}</p>
                   <p className="text-amber-600 font-bold text-xl md:text-2xl mb-6 mt-auto">฿{item.price}</p>
@@ -243,7 +862,7 @@ export default function CollectionPage() {
 
       </section>
 
-      {/* 🟢 MODAL: หน้าต่างรายละเอียดสินค้ารายตัว (Shopee-Style Modal) */}
+      {/* 🟢 MODAL: หน้าต่างรายละเอียดสินค้ารายตัว */}
       <AnimatePresence>
         {activeProduct && (
           <motion.div
@@ -286,7 +905,8 @@ export default function CollectionPage() {
 
                 {/* ฝั่งซ้าย: รูปภาพ */}
                 <div className="lg:w-1/2 p-4 md:p-10 bg-[#FAF9F6] flex flex-col gap-3 md:gap-4 shrink-0">
-                  <div className="w-full aspect-square bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-sm relative">
+                  {/* Main Image in Modal */}
+                  <div className="w-full aspect-square bg-white rounded-xl md:rounded-2xl overflow-hidden border border-gray-100 shadow-sm relative flex items-center justify-center p-2 md:p-4">
                     {activeProduct.images && activeProduct.images[selectedImgIdx] ? (
                       <motion.img
                         key={selectedImgIdx}
@@ -295,22 +915,23 @@ export default function CollectionPage() {
                         transition={{ duration: 0.3 }}
                         src={activeProduct.images[selectedImgIdx]}
                         alt="Product"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-400">ไม่มีรูปภาพ</div>
                     )}
                   </div>
 
+                  {/* Thumbnails in Modal */}
                   {activeProduct.images && activeProduct.images.length > 1 && (
                     <div className="flex overflow-x-auto gap-2 pb-2 custom-scrollbar snap-x">
                       {activeProduct.images.map((img, idx) => (
                         <button
                           key={idx}
                           onClick={() => setSelectedImgIdx(idx)}
-                          className={`w-20 h-20 md:w-24 md:h-24 flex-shrink-0 snap-start rounded-lg md:rounded-xl overflow-hidden border-2 transition-all duration-200 ${idx === selectedImgIdx ? 'border-amber-500 opacity-100 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                          className={`w-20 h-20 md:w-24 md:h-24 flex-shrink-0 snap-start rounded-lg md:rounded-xl overflow-hidden border-2 bg-white transition-all duration-200 ${idx === selectedImgIdx ? 'border-amber-500 opacity-100 shadow-md p-1' : 'border-transparent opacity-60 hover:opacity-100 p-1'}`}
                         >
-                          <img src={img} alt={`Thumb ${idx}`} className="w-full h-full object-cover" />
+                          <img src={img} alt={`Thumb ${idx}`} className="w-full h-full object-contain" />
                         </button>
                       ))}
                     </div>
@@ -327,12 +948,7 @@ export default function CollectionPage() {
                     {activeProduct.name}
                   </h2>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm mb-6 md:mb-8 pb-4 md:pb-6 border-b border-gray-100">
-                    <div className="flex items-center gap-1 text-amber-500 font-bold border-r border-gray-300 pr-4">
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-amber-50 to-orange-50/30 p-4 md:p-6 rounded-xl md:rounded-2xl mb-6 md:mb-8 border border-amber-100/50">
+                  <div className="bg-gradient-to-r from-amber-50 to-orange-50/30 p-4 md:p-6 rounded-xl md:rounded-2xl mb-6 md:mb-8 border border-amber-100/50 mt-2">
                     <p className="text-gray-500 text-xs md:text-sm mb-1 font-medium">ราคาเริ่มต้น</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-xl md:text-2xl text-amber-600 font-bold">฿</span>
