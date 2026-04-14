@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Phone, MessageCircle, Facebook, Instagram } from 'lucide-react';
+import { Phone, MessageCircle, Facebook, Instagram, MapPin } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 
 export default function ContactPage() {
@@ -16,9 +16,11 @@ export default function ContactPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <Reveal effect="scale-up">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl md:text-4xl font-serif font-bold mx-auto mb-8 md:mb-10 shadow-xl rotate-45">
-              <span className="-rotate-45">P</span>
-            </div>
+            <img 
+              src="/images/logo.jpg" 
+              alt="Poonsin Logo" 
+              className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-8 md:mb-10 object-contain rounded-2xl shadow-xl transition-transform hover:scale-105"
+            />
             <p className="text-lg md:text-2xl text-gray-600 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed">
               จัดส่งและติดตั้งอย่างทั่วไทย<br />
               <span className="text-amber-600 font-bold">ดูแลทุกขั้นตอนโดยเจ้าของร้านโดยตรง</span>
@@ -39,6 +41,14 @@ export default function ContactPage() {
             </div>
 
             <div className="flex justify-center gap-8 md:gap-10">
+              {/* แผนที่ร้าน */}
+              <a href="https://www.google.com/maps?rlz=1C5CHFA_enTH1175TH1175&sca_esv=c11289b76da90c62&sxsrf=ANbL-n6CHoqRGBS7s7mKwwFL0zCu-OVjNA:1776172656677&biw=1440&bih=778&um=1&ie=UTF-8&fb=1&gl=th&sa=X&geocode=KRnU0Kbr5eIwMbngK2Ix4ej9&daddr=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-2 md:gap-3">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-white border-2 border-[#EA4335] rounded-full flex items-center justify-center text-[#EA4335] transition-all duration-300 shadow-sm group-hover:bg-[#EA4335] group-hover:text-white group-hover:shadow-xl group-hover:shadow-[#EA4335]/40 group-hover:-translate-y-1 group-hover:scale-110">
+                  <MapPin size={28} />
+                </div>
+                <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-[#EA4335] transition-colors">Google Maps</span>
+              </a>
+
               {/* ปรับแก้ส่วน Facebook */}
               <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="group flex flex-col items-center gap-2 md:gap-3">
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-[#1877F2] rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-md group-hover:shadow-xl group-hover:shadow-[#1877F2]/40 group-hover:-translate-y-1 group-hover:scale-110">
