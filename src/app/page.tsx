@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronLeft, Star, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Star, ExternalLink } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
 import Link from 'next/link';
@@ -292,10 +292,13 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* ปุ่มขนาดใหญ่ เลือกชมสินค้าทั้งหมด */}
+          {/* ปุ่มขนาดใหญ่ เลือกชมสินค้าทั้งหมด Premium 3D */}
           <Reveal delay={600} effect="fade-up" className="mt-20">
-            <Link href="/collection" className="inline-flex items-center gap-4 bg-[#F18911] text-white px-10 py-5 md:px-20 md:py-8 rounded-full font-extrabold text-2xl md:text-5xl shadow-2xl hover:shadow-[#F18911]/50 hover:-translate-y-2 transition-all duration-300">
-              เลือกชมสินค้าทั้งหมด <ArrowRight className="w-8 h-8 md:w-12 md:h-12" />
+            <Link href="/collection" className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6),inset_0_2px_8px_rgba(255,255,255,0.8),inset_0_-4px_8px_rgba(180,60,0,0.5)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/40 border-b-orange-800/60 ring-4 ring-white/30 backdrop-blur-sm">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(0,0,0,0.1)] z-10 text-gray-700 group-hover:scale-105 transition-transform duration-300">
+                <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800 drop-shadow-sm" />
+              </div>
+              <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md text-shadow-sm">เลือกชมสินค้าทั้งหมด</span>
             </Link>
           </Reveal>
         </div>
@@ -412,8 +415,11 @@ export default function Home() {
       {/* --- CTA SECTION --- */}
       <section className="bg-white py-24 md:py-32 px-6 text-center border-t border-gray-100 relative overflow-hidden">
         <Reveal effect="scale-up" className="mt-8">
-          <Link href="/collection" className="inline-flex items-center gap-4 bg-[#F18911] text-white px-10 py-5 md:px-20 md:py-8 rounded-full font-extrabold text-2xl md:text-5xl shadow-2xl hover:shadow-[#F18911]/50 hover:-translate-y-2 transition-all duration-300">
-            เลือกชมสินค้าทั้งหมด <ArrowRight className="w-8 h-8 md:w-12 md:h-12" />
+          <Link href="/collection" className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6),inset_0_2px_8px_rgba(255,255,255,0.8),inset_0_-4px_8px_rgba(180,60,0,0.5)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/40 border-b-orange-800/60 ring-4 ring-white/30 backdrop-blur-sm">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(0,0,0,0.1)] z-10 text-gray-700 group-hover:scale-105 transition-transform duration-300">
+              <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800 drop-shadow-sm" />
+            </div>
+            <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md text-shadow-sm">เลือกชมสินค้าทั้งหมด</span>
           </Link>
         </Reveal>
       </section>

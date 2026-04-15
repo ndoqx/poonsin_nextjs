@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Facebook, Instagram } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Search, User, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -11,7 +11,7 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     // Check initial scroll
     handleScroll();
@@ -34,29 +34,33 @@ export function Header() {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-[60] transition-all duration-500 ${
-        scrolled ? 'bg-white/98 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm' : 'bg-transparent border-transparent py-4 md:py-6'
+      <nav className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-[60] transition-all duration-500 rounded-full border border-white/50 backdrop-blur-xl ${
+        scrolled ? 'top-2 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2.5' : 'top-4 bg-white/70 shadow-lg py-3.5'
       }`}>
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider relative z-[61]">
-          <Link href="/" onClick={closeMenu} className="flex items-center transition-transform hover:scale-105">
-            <img src="/images/logo.png" alt="Poonsin Logo" className="h-12 md:h-16 w-auto object-contain rounded-md shadow-sm" />
+        <div className="px-6 md:px-8 flex justify-between items-center text-sm font-medium">
+          <Link href="/" onClick={closeMenu} className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 shrink-0">
+            <img src="/images/logo.png" alt="Poonsin Logo" className="h-10 md:h-12 w-auto object-contain rounded-md shadow-sm" />
+            <span className="font-bold text-lg md:text-xl text-gray-900 hidden md:block tracking-wide">ร้านพูนสิน</span>
           </Link>
           
-          <div className="hidden md:flex space-x-12">
+          <div className="hidden md:flex space-x-10 items-center">
             {navLinks.map((item, i) => {
               const isActive = pathname === item.href;
               return (
-                <Link key={i} href={item.href} className={`uppercase font-bold tracking-widest transition-colors ${
-                  isActive ? 'text-amber-600' : scrolled ? 'text-gray-600 hover:text-amber-600' : 'text-gray-800 hover:text-amber-600 drop-shadow-sm'
+                <Link key={i} href={item.href} className={`tracking-wide transition-colors relative group py-2 ${
+                  isActive ? 'text-amber-600 font-semibold' : 'text-gray-700 hover:text-amber-600'
                 }`}>
                   {item.name}
+                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
               );
             })}
           </div>
 
-          <button className="md:hidden relative p-2 text-gray-900" onClick={() => setIsMenuOpen(true)}>
-             <Menu size={28} className={!scrolled ? "drop-shadow-sm" : ""} />
+
+
+          <button className="md:hidden relative p-2 text-gray-900 bg-white/50 rounded-full border border-gray-200" onClick={() => setIsMenuOpen(true)}>
+             <Menu size={24} />
           </button>
         </div>
       </nav>
