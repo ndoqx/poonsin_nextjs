@@ -411,9 +411,9 @@ export default function Home() {
 
       {/* --- CTA SECTION --- */}
       <section className="bg-white py-24 md:py-32 px-6 text-center border-t border-gray-100 relative overflow-hidden">
-        <Reveal effect="scale-up">
-          <Link href="/collection" className="inline-flex items-center gap-3 bg-[#F18911] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-[#F18911]/40 hover:-translate-y-1 transition-all duration-300">
-            คลิกเพื่อดูรูปแบบเพิ่มเติม <ArrowRight size={20} />
+        <Reveal effect="scale-up" className="mt-8">
+          <Link href="/collection" className="inline-flex items-center gap-4 bg-[#F18911] text-white px-10 py-5 md:px-20 md:py-8 rounded-full font-extrabold text-2xl md:text-5xl shadow-2xl hover:shadow-[#F18911]/50 hover:-translate-y-2 transition-all duration-300">
+            เลือกชมสินค้าทั้งหมด <ArrowRight className="w-8 h-8 md:w-12 md:h-12" />
           </Link>
         </Reveal>
       </section>

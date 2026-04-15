@@ -39,7 +39,7 @@ export function Header() {
       }`}>
         <div className="container mx-auto px-4 md:px-6 max-w-7xl flex justify-between items-center text-xs tracking-wider relative z-[61]">
           <Link href="/" onClick={closeMenu} className="flex items-center transition-transform hover:scale-105">
-            <img src="/images/logo.jpg" alt="Poonsin Logo" className="h-12 md:h-16 w-auto object-contain rounded-md shadow-sm" />
+            <img src="/images/logo.png" alt="Poonsin Logo" className="h-12 md:h-16 w-auto object-contain rounded-md shadow-sm" />
           </Link>
           
           <div className="hidden md:flex space-x-12">
@@ -66,7 +66,7 @@ export function Header() {
         <div className="min-h-full flex flex-col">
           <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
             <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
-              <img src="/images/logo.jpg" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
+              <img src="/images/logo.png" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
             </Link>
             <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors">
               <X size={26} />

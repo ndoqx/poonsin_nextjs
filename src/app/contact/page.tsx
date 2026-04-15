@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <Reveal effect="scale-up">
             <img 
-              src="/images/logo.jpg" 
+              src="/images/logo.png" 
               alt="Poonsin Logo" 
               className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-8 md:mb-10 object-contain rounded-2xl shadow-xl transition-transform hover:scale-105"
             />
@@ -63,6 +63,20 @@ export default function ContactPage() {
                   <Instagram size={28} />
                 </div>
                 <span className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-[#dc2743] transition-colors">Instagram</span>
+              </a>
+            </div>
+
+            <div className="mt-16 md:mt-24 max-w-2xl mx-auto">
+              <a href="https://www.google.com/maps?rlz=1C5CHFA_enTH1175TH1175&sca_esv=c11289b76da90c62&sxsrf=ANbL-n6CHoqRGBS7s7mKwwFL0zCu-OVjNA:1776172656677&biw=1440&bih=778&um=1&ie=UTF-8&fb=1&gl=th&sa=X&geocode=KRnU0Kbr5eIwMbngK2Ix4ej9&daddr=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000" target="_blank" rel="noreferrer" className="group flex flex-col md:flex-row items-center justify-center gap-5 bg-white px-8 py-6 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-14 h-14 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-amber-600 group-hover:text-white transition-colors duration-300 shadow-inner">
+                  <MapPin size={28} />
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="font-bold text-gray-900 text-lg md:text-xl mb-1.5 group-hover:text-amber-600 transition-colors">ที่ตั้งร้านพูนสิน</h3>
+                  <p className="text-gray-600 font-medium text-sm md:text-base leading-relaxed">
+                    420 ถนน เทศา ตำบลพระประโทน อำเภอเมืองนครปฐม นครปฐม 73000
+                  </p>
+                </div>
               </a>
             </div>
           </Reveal>

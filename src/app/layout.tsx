@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "ศาลพระพรหม",
   ],
   icons: {
-    icon: "/images/logo.jpg",
+    icon: "/images/logo.png",
   },
 };
 
