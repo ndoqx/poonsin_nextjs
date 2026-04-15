@@ -183,7 +183,7 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
       "/images/modernpoom/medium/2.3.jpg",
       "/images/modernpoom/medium/2.4.jpg",
       "/images/modernpoom/medium/2.5.jpg",
-      "/images/modernpoom/medium/2.6.jpg",
+      //"/images/modernpoom/medium/2.6.jpg",
       "/images/modernpoom/medium/2.7.jpg"
     ]
   },
