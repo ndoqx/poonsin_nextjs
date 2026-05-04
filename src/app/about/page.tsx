@@ -5,17 +5,17 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export default function AboutPage() {
   const bannerImages = [
-    "/images/history/history1.jpg",
-    "/images/history/history2.jpg",
-    "/images/history/history3.jpg",
-    "/images/history/history4.png",
-    "/images/history/history5.png",
-    "/images/history/history6.png",
-    "/images/history/history7.png",
-    "/images/history/history8.png",
-    "/images/history/history9.png",
-    "/images/history/history10.png",
-    "/images/history/history11.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history1.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history2.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history3.jpgg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history4.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history5.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history6.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history7.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history8.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history9.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history10.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history11.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

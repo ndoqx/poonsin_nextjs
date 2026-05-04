@@ -27,9 +27,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "2x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt1.1.jpg",
     images: [
-      "/images/poom/1.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt1.1.jpg",
     ]
   },
   {
@@ -39,9 +39,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "3x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt2.1.jpg",
     images: [
-      "/images/poom/2.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt2.1.jpg",
     ]
   },
   {
@@ -51,9 +51,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "3x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt3.1.jpg",
     images: [
-      "/images/poom/3.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt3.1.jpg",
     ]
   },
   {
@@ -63,9 +63,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "3x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/4.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt4.1.jpg",
     images: [
-      "/images/poom/4.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt4.1.jpg",
     ]
   },
   {
@@ -75,9 +75,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "6x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/5.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt5.1.jpg",
     images: [
-      "/images/poom/5.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt5.1.jpg",
     ]
   },
   {
@@ -87,9 +87,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "6x,xxx",
     description: "ศาลพระภูมิสถาปัตยกรรมแบบดั้งเดิม พร้อมประดับลวดลายสวยงาม โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิดั้งเดิม"],
-    coverImage: "/images/poom/6.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt6.1.jpg",
     images: [
-      "/images/poom/6.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/poom/ppt6.1.jpg",
     ]
   },
   {
@@ -99,10 +99,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "1x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
-    coverImage: "/images/modernpoom/small/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms1.1.jpg",
     images: [
-      "/images/modernpoom/small/1.1.jpg",
-      "/images/modernpoom/small/1.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms1.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms1.1.jpghttps://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms1.2.jpg"
     ]
   },
   {
@@ -112,13 +112,13 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
-    coverImage: "/images/modernpoom/small/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.1.jpg",
     images: [
-      "/images/modernpoom/small/2.1.jpg",
-      "/images/modernpoom/small/2.2.jpg",
-      "/images/modernpoom/small/2.3.jpg",
-      "/images/modernpoom/small/2.4.jpg",
-      "/images/modernpoom/small/2.5.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.3.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.4.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms2.5.jpg"
     ]
   },
   {
@@ -128,18 +128,17 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดเล็ก"],
-    coverImage: "/images/modernpoom/small/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.3.jpg",
     images: [
-      "/images/modernpoom/small/3.1.jpg",
-      "/images/modernpoom/small/3.2.jpg",
-      "/images/modernpoom/small/3.3.jpg",
-      "/images/modernpoom/small/3.4.jpg",
-      "/images/modernpoom/small/3.5.jpg",
-      "/images/modernpoom/small/3.6.jpg",
-      "/images/modernpoom/small/3.7.jpg",
-      "/images/modernpoom/small/3.8.jpg",
-      "/images/modernpoom/small/3.9.jpg",
-      "/images/modernpoom/small/3.10.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.3.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.5.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.6.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.7.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.8.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.9.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.4.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms3.2.jpg"
     ]
   },
   {
@@ -149,11 +148,11 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "2x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/small/4.1.png",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms4.1.png",
     images: [
-      "/images/modernpoom/small/4.1.png",
-      "/images/modernpoom/small/4.2.png",
-      "/images/modernpoom/small/4.3.png"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms4.1.png",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms4.2.png",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/small/ppms4.3.png"
     ]
   },
   {
@@ -163,10 +162,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm1.1.jpg",
     images: [
-      "/images/modernpoom/medium/1.1.jpg",
-      "/images/modernpoom/medium/1.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm1.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm1.2.jpg"
     ]
   },
   {
@@ -176,15 +175,15 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "2x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.1.jpg",
     images: [
-      "/images/modernpoom/medium/2.1.jpg",
-      "/images/modernpoom/medium/2.2.jpg",
-      "/images/modernpoom/medium/2.3.jpg",
-      "/images/modernpoom/medium/2.4.jpg",
-      "/images/modernpoom/medium/2.5.jpg",
-      //"/images/modernpoom/medium/2.6.jpg",
-      "/images/modernpoom/medium/2.7.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.3.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.4.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.5.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.6.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm2.7.jpg"
     ]
   },
   {
@@ -194,11 +193,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm3.3.jpg",
     images: [
-      "/images/modernpoom/medium/3.1.jpg",
-      "/images/modernpoom/medium/3.2.jpg",
-      "/images/modernpoom/medium/3.3.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm3.3.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm3.2.jpg"
     ]
   },
   {
@@ -208,11 +206,11 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/4.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm4.1.jpg",
     images: [
-      "/images/modernpoom/medium/4.1.jpg",
-      "/images/modernpoom/medium/4.2.jpg",
-      "/images/modernpoom/medium/4.3.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm4.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm4.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm4.3.jpg"
     ]
   },
   {
@@ -222,10 +220,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/5.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm5.1.jpg",
     images: [
-      "/images/modernpoom/medium/5.1.jpg",
-      "/images/modernpoom/medium/5.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm5.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm5.2.jpg"
     ]
   },
   {
@@ -235,10 +233,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "2x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/6.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/pppm6.1.jpg",
     images: [
-      "/images/modernpoom/medium/6.1.jpg",
-      "/images/modernpoom/medium/6.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm6.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm6.2.jpg"
     ]
   },
   {
@@ -248,11 +246,11 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/7.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm7.2.jpg",
     images: [
-      "/images/modernpoom/medium/7.1.jpg",
-      "/images/modernpoom/medium/7.2.jpg",
-      "/images/modernpoom/medium/7.3.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm7.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm7.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm7.3.jpg"
     ]
   },
   {
@@ -262,11 +260,11 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/8.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm8.3.jpg",
     images: [
-      "/images/modernpoom/medium/8.1.jpg",
-      "/images/modernpoom/medium/8.2.jpg",
-      "/images/modernpoom/medium/8.3.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm8.3.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm8.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm8.1.jpg"
     ]
   },
   {
@@ -276,9 +274,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/medium/9.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg",
     images: [
-      "/images/modernpoom/medium/9.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg"
     ]
   },
   {
@@ -288,10 +286,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/large/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg",
     images: [
-      "/images/modernpoom/large/1.1.jpg",
-      "/images/modernpoom/large/1.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.2.jpg"
     ]
   },
   {
@@ -301,10 +299,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/large/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml2.1.jpg",
     images: [
-      "/images/modernpoom/large/2.1.jpg",
-      "/images/modernpoom/large/2.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml2.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml2.2.jpg"
     ]
   },
   {
@@ -314,9 +312,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "/images/modernpoom/large/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml3.1.jpg",
     images: [
-      "/images/modernpoom/large/3.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml3.1.jpg"
     ]
   },
   {
@@ -326,9 +324,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "8x,xxx",
     description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา"],
-    coverImage: "/images/promp/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt1.1.jpg",
     images: [
-      "/images/promp/1.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt1.1.jpg"
     ]
   },
   {
@@ -338,9 +336,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "8x,xxx",
     description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา"],
-    coverImage: "/images/promp/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt2.1.jpg",
     images: [
-      "/images/promp/2.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt2.1.jpg"
     ]
   },
   {
@@ -350,9 +348,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "8x,xxx",
     description: "ศาลพระพรหมดั้งเดิมขนาดใหญ่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 12 นิ้ว"],
-    coverImage: "/images/promp/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt3.1.jpg",
     images: [
-      "/images/promp/3.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/promp/pbt3.1.jpg"
     ]
   },
   {
@@ -362,9 +360,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/1.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm1.1.jpg",
     images: [
-      "/images/modernpromp/medium/1.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm1.1.jpg"
     ]
   },
   {
@@ -374,9 +372,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm2.1.jpg",
     images: [
-      "/images/modernpromp/medium/2.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm2.1.jpg"
     ]
   },
   {
@@ -386,9 +384,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm3.1.jpg",
     images: [
-      "/images/modernpromp/medium/3.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm3.1.jpg"
     ]
   },
   {
@@ -398,9 +396,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/4.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm4.1.jpg",
     images: [
-      "/images/modernpromp/medium/4.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm4.1.jpg"
     ]
   },
   {
@@ -410,9 +408,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/5.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm5.1.jpg",
     images: [
-      "/images/modernpromp/medium/5.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm5.1.jpg"
     ]
   },
   {
@@ -422,9 +420,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/6.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm6.1.jpg",
     images: [
-      "/images/modernpromp/medium/6.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm6.1.jpg"
     ]
   },
   {
@@ -434,9 +432,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/7.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm7.1.jpg",
     images: [
-      "/images/modernpromp/medium/7.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm7.1.jpg"
     ]
   },
   {
@@ -446,9 +444,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น ตั้งคู่กับศาลเจ้าที่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/8.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm8.1.jpg",
     images: [
-      "/images/modernpromp/medium/8.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm8.1.jpg"
     ]
   },
   {
@@ -458,11 +456,11 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/9.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm9.1.jpg",
     images: [
-      "/images/modernpromp/medium/9.1.jpg",
-      "/images/modernpromp/medium/9.2.jpg",
-      "/images/modernpromp/medium/9.3.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm9.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm9.2.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm9.3.jpg"
     ]
   },
   {
@@ -472,10 +470,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลพระพรหมสไตล์โมเดิร์น โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เหมาะสำหรับตั้งองค์พระพรหม 9 นิ้ว"],
-    coverImage: "/images/modernpromp/medium/10.1.png",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm10.1.png",
     images: [
-      "/images/modernpromp/medium/10.1.png",
-      "/images/modernpromp/medium/10.2.png"
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm10.1.png",
+      "https://storage.googleapis.com/poonsinshop-images/images/modernpromp/medium/pbmm10.2.png"
     ]
   },
   {
@@ -485,9 +483,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "3x,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เรือนแฝดสุดคลาสสิค"],
-    coverImage: "/images/shrine/1.1.png",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty1.1.png",
     images: [
-      "/images/shrine/1.1.png"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty1.1.png"
     ]
   },
   {
@@ -497,9 +495,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "1x,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["เรือนแฝดสุดคลาสสิค"],
-    coverImage: "/images/shrine/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty2.1.jpg",
     images: [
-      "/images/shrine/2.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty2.1.jpg"
     ]
   },
   {
@@ -509,9 +507,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty3.1.jpg",
     images: [
-      "/images/shrine/3.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty3.1.jpg"
     ]
   },
   {
@@ -521,9 +519,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "1x,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/4.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.jpg",
     images: [
-      "/images/shrine/4.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.jpg"
     ]
   },
   {
@@ -533,9 +531,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/5.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty5.1.jpg",
     images: [
-      "/images/shrine/5.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty5.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty5.1.jpg"
     ]
   },
   {
@@ -545,9 +544,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/6.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty6.1.jpg",
     images: [
-      "/images/shrine/6.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty6.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty6.2.jpg"
     ]
   },
   {
@@ -557,9 +557,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/7.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty7.1.jpg",
     images: [
-      "/images/shrine/7.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty7.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty7.2.jpg"
     ]
   },
   {
@@ -569,9 +570,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/8.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty8.1.jpg",
     images: [
-      "/images/shrine/8.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty8.1.jpg"
     ]
   },
   {
@@ -581,10 +582,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/9.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty9.1.jpg",
     images: [
-      "/images/shrine/9.1.jpg",
-      "/images/shrine/9.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty9.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty9.2.jpg"
     ]
   },
   {
@@ -594,9 +595,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/10.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty10.1.jpg",
     images: [
-      "/images/shrine/10.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty10.1.jpg"
     ]
   },
   {
@@ -606,9 +607,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "1x,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/11.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty11.1.jpg",
     images: [
-      "/images/shrine/11.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty11.1.jpg"
     ]
   },
   {
@@ -618,9 +619,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "1x,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/12.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty12.1.jpg",
     images: [
-      "/images/shrine/12.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty12.1.jpg"
     ]
   },
   {
@@ -630,10 +631,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/13.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty13.1.jpg",
     images: [
-      "/images/shrine/13.1.jpg",
-      "/images/shrine/13.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty13.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty13.2.jpg"
     ]
   },
   {
@@ -643,9 +644,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/14.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty14.1.jpg",
     images: [
-      "/images/shrine/14.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty14.1.jpg"
     ]
   },
   {
@@ -655,9 +656,9 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/15.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty15.1.jpg",
     images: [
-      "/images/shrine/15.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty15.1.jpg"
     ]
   },
   {
@@ -667,10 +668,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["สไตล์โมเดิร์นเข้ากับทุกยุคสมัย"],
-    coverImage: "/images/shrine/16.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty16.1.jpg",
     images: [
-      "/images/shrine/16.1.jpg",
-      "/images/shrine/16.1.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty16.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty16.2.jpg"
     ]
   },
   {
@@ -680,10 +681,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลดีไซน์ผสมผสานสไตล์โรมัน โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["ดีไซน์ทันสมัย"],
-    coverImage: "/images/roman/1.1.png",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm1.1.png",
     images: [
-      "/images/roman/1.1.png",
-      "/images/roman/1.2.png"
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm1.1.png",
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm1.2.png"
     ]
   },
   {
@@ -693,10 +694,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "3x,xxx",
     description: "ศาลดีไซน์ผสมผสานสไตล์โรมัน โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["ดีไซน์ทันสมัย"],
-    coverImage: "/images/roman/2.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.jpg",
     images: [
-      "/images/roman/2.1.jpg",
-      "/images/roman/2.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.2.jpg"
     ]
   },
   {
@@ -706,10 +707,10 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "xx,xxx",
     description: "ศาลดีไซน์ผสมผสานสไตล์โรมัน โดดเด่นด้วยเสาโรมัน พร้อมสีพรีเมียมกันเชื้อรา อายุการใช้งานยาวนาน",
     features: ["ดีไซน์ทันสมัย"],
-    coverImage: "/images/roman/3.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm3.1.jpg",
     images: [
-      "/images/roman/3.1.jpg",
-      "/images/roman/3.2.jpg"
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm3.1.jpg",
+      "https://storage.googleapis.com/poonsinshop-images/images/roman/rm3.1."
     ]
   },
 ];
@@ -763,7 +764,7 @@ export default function CollectionPage() {
             <div className="max-w-4xl mx-auto mt-12 md:mt-16 bg-[#FAF9F6] border border-gray-100/80 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-2xl shadow-gray-200/50 hover:shadow-gray-300/60 transition-all duration-500">
               <div className="w-full md:w-2/5 overflow-hidden rounded-2xl shadow-sm">
                 <img
-                  src="/images/review-1.jpg"
+                  src="https://storage.googleapis.com/poonsinshop-images/images/review1.jpg"
                   alt="รีวิวความทนทาน"
                   className="w-full h-56 md:h-64 object-cover hover:scale-105 transition-transform duration-700"
                 />
