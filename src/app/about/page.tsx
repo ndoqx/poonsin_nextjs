@@ -7,15 +7,15 @@ export default function AboutPage() {
   const bannerImages = [
     "https://storage.googleapis.com/poonsinshop-images/images/history/history1.jpg",
     "https://storage.googleapis.com/poonsinshop-images/images/history/history2.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history3.jpgg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history4.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history5.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history6.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history7.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history8.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history9.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history10.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history11.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history3.jpg",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history4.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history5.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history6.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history7.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history8.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history9.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history10.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history11.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
