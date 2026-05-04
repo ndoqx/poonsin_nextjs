@@ -233,7 +233,7 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
     price: "2x,xxx",
     description: "ศาลพระภูมิสไตล์โมเดิร์นทรงมินิมอล เน้นความเรียบหรู เข้ากันได้ดีกับบ้านเดี่ยวยุคใหม่ โครงสร้างคอนกรีตเสริมเหล็ก พร้อมสีพรีเมียมกันเชื้อรา",
     features: ["ศาลพระภูมิโมเดิร์นขนาดกลาง"],
-    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/pppm6.1.jpg",
+    coverImage: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm6.1.jpg",
     images: [
       "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm6.1.jpg",
       "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm6.2.jpg"
