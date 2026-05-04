@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  heroBgImage: "/images/herobanner.webp",
+  heroBgImage: "https://storage.googleapis.com/poonsinshop-images/images/herobanner.webp",
 
   // 📂 ระบบ Catalog
   catalog: {
