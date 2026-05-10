@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <Reveal effect="scale-up">
             <img
-              src="https://storage.googleapis.com/poonsinshop-images/images/logo.png"
+              src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp"
               alt="Poonsin Logo"
               className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-8 md:mb-10 object-contain rounded-2xl shadow-xl transition-transform hover:scale-105"
             />

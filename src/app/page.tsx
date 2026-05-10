@@ -8,22 +8,22 @@ import Link from 'next/link';
 
 // กำหนดรายการรูปภาพศาลพระภูมิ 
 const SHRINES_LIST = [
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic4.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic5.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic6.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic7.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic8.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic9.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic10.png",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic11.png",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic4.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic5.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic6.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic7.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic8.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic9.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic10.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic11.webp",
 ];
 
 // รูปภาพ 4 ภาพที่ต้องการเน้น
 const FEATURED_IMAGES_LIST = [
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.1.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.2.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.3.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.4.jpg",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.1.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.2.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.3.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.4.webp",
   "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.webp",
   "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic2.webp",
   "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic3.webp",
@@ -31,12 +31,12 @@ const FEATURED_IMAGES_LIST = [
 
 // กำหนดรายการรูปภาพรีวิว
 const REVIEW_IMAGES_LIST = [
-  "https://storage.googleapis.com/poonsinshop-images/images/review1.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/review2.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/review3.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/review4.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/review5.jpg",
-  "https://storage.googleapis.com/poonsinshop-images/images/review6.jpg",
+  "https://storage.googleapis.com/poonsinshop-images/images/review1.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/review2.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/review3.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/review4.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/review5.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/review6.webp",
 ];
 
 // --- REUSABLE COMPONENTS & HELPERS ---

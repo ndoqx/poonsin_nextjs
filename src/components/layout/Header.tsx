@@ -38,7 +38,7 @@ export function Header() {
         }`}>
         <div className="px-6 md:px-8 flex justify-between items-center text-sm font-medium">
           <Link href="/" onClick={closeMenu} className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 shrink-0">
-            <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.png" alt="Poonsin Logo" className="h-10 md:h-12 w-auto object-contain rounded-md shadow-sm" />
+            <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-10 md:h-12 w-auto object-contain rounded-md shadow-sm" />
             <span className="font-bold text-lg md:text-xl text-gray-900 hidden md:block tracking-wide">ร้านพูนสิน</span>
           </Link>
 
@@ -68,7 +68,7 @@ export function Header() {
         <div className="min-h-full flex flex-col">
           <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
             <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
-              <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.png" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
+              <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
             </Link>
             <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors">
               <X size={26} />

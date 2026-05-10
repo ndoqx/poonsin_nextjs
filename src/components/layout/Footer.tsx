@@ -11,7 +11,7 @@ export function Footer() {
           {/* Column 1: Brand & Logo */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3 w-fit transition-transform hover:scale-105 active:scale-95">
-              <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.png" alt="Poonsin Logo" className="h-14 md:h-16 w-auto object-contain rounded-md shadow-sm" />
+              <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-14 md:h-16 w-auto object-contain rounded-md shadow-sm" />
             </Link>
             <p className="text-gray-500 text-sm leading-relaxed pr-4">
               จำหน่ายศาลพระภูมิ ศาลเจ้าที่ สไตล์โมเดิร์น และแบบดั้งเดิม พร้อมบริการจัดส่งและติดตั้งครบวงจร ประสบการณ์ยาวนานกว่า 60 ปี

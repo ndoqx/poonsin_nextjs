@@ -5,17 +5,17 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export default function AboutPage() {
   const bannerImages = [
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history1.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history2.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history3.jpg",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history4.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history5.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history6.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history7.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history8.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history9.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history10.png",
-    "https://storage.googleapis.com/poonsinshop-images/images/history/history11.png",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history1.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history2.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history3.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history4.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history5.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history6.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history7.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history8.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history9.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history10.webp",
+    "https://storage.googleapis.com/poonsinshop-images/images/history/history11.webp",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
