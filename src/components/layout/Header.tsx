@@ -63,8 +63,14 @@ export function Header() {
         </div>
       </nav>
 
+      {/* Mobile Menu Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-[998] transition-opacity duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={closeMenu}
+      />
+
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-white z-[999] overflow-y-auto overscroll-y-contain flex flex-col transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 bottom-0 right-0 w-[300px] max-w-[85vw] bg-white z-[999] shadow-2xl border-l border-gray-100 overflow-y-auto overscroll-y-contain flex flex-col transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="min-h-full flex flex-col">
           <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
             <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
