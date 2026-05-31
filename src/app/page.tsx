@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Star, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
 import Link from 'next/link';
@@ -39,9 +39,38 @@ const REVIEW_IMAGES_LIST = [
   "https://storage.googleapis.com/poonsinshop-images/images/review6.webp",
 ];
 
+// History images สำหรับ Timeline Section
+const HISTORY_IMAGES = [
+  "https://storage.googleapis.com/poonsinshop-images/images/history/history1.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/history/history2.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/history/history3.webp",
+  "https://storage.googleapis.com/poonsinshop-images/images/history/history4.webp",
+];
+
+// Collection grid items
+const COLLECTION_GRID = [
+  {
+    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.1.webp",
+    label: "ศาลพระภูมิโมเดิร์น",
+    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+    span: "large",
+  },
+  {
+    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.2.webp",
+    label: "ศาลพระภูมิโมเดิร์น",
+    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+    span: "small",
+  },
+  {
+    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.3.webp",
+    label: "ศาลพระภูมิโมเดิร์น",
+    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+    span: "small",
+  },
+];
+
 // --- REUSABLE COMPONENTS & HELPERS ---
 
-// 1. Helper Function for Carousel Navigation
 const getNextIndex = (currentIndex: number, total: number, direction: 'next' | 'prev') => {
   if (direction === 'next') {
     return currentIndex === total - 1 ? 0 : currentIndex + 1;
@@ -49,7 +78,6 @@ const getNextIndex = (currentIndex: number, total: number, direction: 'next' | '
   return currentIndex === 0 ? total - 1 : currentIndex - 1;
 };
 
-// 2. Carousel Button Component
 const CarouselButton = ({
   direction,
   onClick
@@ -59,14 +87,13 @@ const CarouselButton = ({
 }) => (
   <button
     onClick={onClick}
-    className={`w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#F18911] transition-colors shadow-md duration-300 z-40 ${direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
+    className={`w-12 h-12 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#B8882A] transition-colors shadow-md duration-300 z-40 ${direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
       }`}
   >
-    <ChevronLeft size={28} className={direction === 'next' ? 'rotate-180' : ''} />
+    <ChevronLeft size={24} className={direction === 'next' ? 'rotate-180' : ''} />
   </button>
 );
 
-// 3. Carousel Item Component
 const CarouselItem = ({
   src,
   index,
@@ -74,7 +101,7 @@ const CarouselItem = ({
   total,
   onNext,
   onPrev,
-  canClick // เพิ่ม prop เช็คว่ากำลังลากเมาส์อยู่หรือไม่
+  canClick
 }: {
   src: string;
   index: number;
@@ -102,7 +129,7 @@ const CarouselItem = ({
     <div
       className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
       onClick={() => {
-        if (!canClick) return; // ถ้าลากเมาส์อยู่ จะไม่นับเป็นการคลิก
+        if (!canClick) return;
         if (diff === 1) onNext();
         if (diff === -1) onPrev();
       }}
@@ -116,41 +143,27 @@ const CarouselItem = ({
   );
 };
 
-// 4. Review Card Component (ไม่ได้ใช้งานในส่วนนี้ แต่อยู่ในโค้ดเดิม)
-const ReviewCardItem = ({ review }: { review: { id: string | number; content: string; author: string } }) => (
-  <div className="bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-[0_15px_40px_rgba(241,137,17,0.1)] transition-all duration-300 hover:-translate-y-2">
-    <p className="text-gray-600 italic leading-relaxed">"{review.content}"</p>
-    <h4 className="mt-8 font-bold text-gray-900">{review.author}</h4>
-  </div>
-);
-
 // --- MAIN COMPONENT ---
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [currentShrine, setCurrentShrine] = useState(0);
   const [currentReview, setCurrentReview] = useState(0);
-  const [currentFeatured, setCurrentFeatured] = useState(0);
 
-  // --- States สำหรับการ Pause และ Drag ---
   const [isShrinePaused, setIsShrinePaused] = useState(false);
   const [isReviewPaused, setIsReviewPaused] = useState(false);
-  const [isFeaturedPaused, setIsFeaturedPaused] = useState(false);
 
   const [dragStart, setDragStart] = useState(0);
   const [dragEnd, setDragEnd] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
-  // การตรวจจับ Scroll
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ฟังก์ชันเลื่อนรูป
   const changeShrine = (direction: 'next' | 'prev') => setCurrentShrine((prev) => getNextIndex(prev, SHRINES_LIST.length, direction));
   const changeReview = (direction: 'next' | 'prev') => setCurrentReview((prev) => getNextIndex(prev, REVIEW_IMAGES_LIST.length, direction));
-  const changeFeatured = (direction: 'next' | 'prev') => setCurrentFeatured((prev) => getNextIndex(prev, FEATURED_IMAGES_LIST.length, direction));
 
   useEffect(() => {
     if (isShrinePaused) return;
@@ -164,13 +177,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [currentReview, isReviewPaused]);
 
-  useEffect(() => {
-    if (isFeaturedPaused) return;
-    const timer = setInterval(() => changeFeatured('next'), 1500);
-    return () => clearInterval(timer);
-  }, [currentFeatured, isFeaturedPaused]);
-
-  // --- Drag & Swipe Handlers ---
   const onDragStart = (clientX: number) => {
     setDragStart(clientX);
     setDragEnd(clientX);
@@ -184,141 +190,179 @@ export default function Home() {
   const onDragEnd = (onNext: () => void, onPrev: () => void) => {
     if (!isDragging) return;
     setIsDragging(false);
-
     if (!dragStart || !dragEnd) return;
-
     const distance = dragStart - dragEnd;
-    if (distance > 50) onNext(); // ปัดซ้าย
-    else if (distance < -50) onPrev(); // ปัดขวา
-
+    if (distance > 50) onNext();
+    else if (distance < -50) onPrev();
     setDragStart(0);
     setDragEnd(0);
   };
 
-  // ตัวแปรเช็คว่าแค่คลิกหรือตั้งใจลาก (เพื่อกันไม่ให้รูปเปลี่ยนซ้อนกันตอนลากเมาส์)
   const canClick = !isDragging || Math.abs(dragStart - dragEnd) < 10;
 
   return (
-    <div className="bg-[#FAF9F6] text-gray-900 font-sans overflow-x-hidden selection:bg-orange-200 selection:text-gray-900">
+    <div className="bg-white text-gray-900 overflow-x-hidden selection:bg-amber-100 selection:text-gray-900">
 
-      {/* --- CSS สำหรับ Font --- */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700;800&display=swap');
-        
-        :root {
-          --font-anuphan: 'Anuphan', sans-serif;
-        }
-
-        body {
-          font-family: var(--font-anuphan);
-        }
-
-        h1, h2 {
-          font-family: var(--font-anuphan);
-          letter-spacing: -0.02em !important;
-        }
-      `}</style>
-
-      {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[130vh] flex flex-col items-center justify-start overflow-hidden bg-white">
+      {/* ─── HERO SECTION ─── */}
+      <section className="relative w-full h-[100vh] min-h-[600px] max-h-[900px] overflow-hidden">
+        {/* Background Image */}
         <div
-          className="absolute inset-0 z-0 origin-top transition-transform duration-75 ease-out will-change-transform"
+          className="absolute inset-0 z-0"
           style={{
-            transform: `scale(${1 + scrollY * 0.0003}) translateY(${scrollY * 0.12}px)`,
-            opacity: Math.max(0, 1 - scrollY * 0.0008)
+            transform: `scale(${1 + scrollY * 0.0002}) translateY(${scrollY * 0.08}px)`,
           }}
         >
           <img
             src={SITE_CONFIG.heroBgImage}
             alt="ศาลพระภูมิพูนสิน"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center"
           />
+          {/* Gradient overlay — left bottom */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         </div>
 
+        {/* Text Content — bottom left */}
         <div
-          className="relative z-10 text-center flex flex-col items-center pt-48 md:pt-64 px-4 w-full will-change-transform"
-          style={{
-            transform: `translateY(${-scrollY * 0.2}px)`,
-            opacity: Math.max(0, 1 - scrollY * 0.0015)
-          }}
+          className="absolute bottom-0 left-0 z-10 p-8 md:p-14 lg:p-20 max-w-2xl"
+          style={{ opacity: Math.max(0, 1 - scrollY * 0.002) }}
         >
-          <Reveal effect="blur-in" delay={100}>
-            <h1 className="text-6xl md:text-[7rem] lg:text-[8.5rem] font-extrabold mb-10 md:mb-14 leading-[1.1] md:leading-[0.95]">
-              <span className="block mb-2 text-[#F18911]">ร้านพูนสิน</span>
-              <span className="text-[#F18911]">ประสบการณ์</span>
-              <span className="text-[#F18911]"> กว่า 60 ปี</span>
+          <Reveal effect="fade-up" delay={100}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-4">
+              ร้านพูนสิน<br />
+              <span className="text-[#E8B84B]">จำหน่ายศาลพระภูมิทุกรูปแบบ</span>
             </h1>
           </Reveal>
-        </div>
-      </section>
-
-      {/* --- FEATURED SECTION (NEW) --- */}
-      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-b border-gray-100 relative overflow-hidden z-20">
-        <div className="max-w-6xl mx-auto relative z-10 text-center">
-
-          {/* พื้นที่ Slider สินค้าแนะนำ */}
-          <Reveal delay={200} effect="fade-up">
-            <div
-              className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
-              onMouseEnter={() => setIsFeaturedPaused(true)}
-              onMouseLeave={() => {
-                setIsFeaturedPaused(false);
-                onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev'));
-              }}
-              onTouchStart={(e) => { setIsFeaturedPaused(true); onDragStart(e.targetTouches[0].clientX); }}
-              onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
-              onTouchEnd={() => { setIsFeaturedPaused(false); onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev')); }}
-              onMouseDown={(e) => onDragStart(e.clientX)}
-              onMouseMove={(e) => onDragMove(e.clientX)}
-              onMouseUp={() => onDragEnd(() => changeFeatured('next'), () => changeFeatured('prev'))}
+          <Reveal effect="fade-up" delay={200}>
+            <p className="text-white/80 text-sm md:text-base mb-8 leading-relaxed">
+              ร้านพูนสิน เปิดมาตั้งแต่ปี 2506<br />
+              ผ่านมากว่า 60 ปี มั่นใจในคุณภาพ
+            </p>
+          </Reveal>
+          <Reveal effect="fade-up" delay={300}>
+            <Link
+              href="/collection"
+              id="hero-cta-btn"
+              className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#B8782A] text-white text-xs font-bold tracking-[0.15em] uppercase px-7 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/30 hover:-translate-y-0.5"
             >
-              {FEATURED_IMAGES_LIST.map((src, index) => (
-                <CarouselItem
-                  key={index}
-                  src={src}
-                  index={index}
-                  currentShrine={currentFeatured}
-                  total={FEATURED_IMAGES_LIST.length}
-                  onNext={() => changeFeatured('next')}
-                  onPrev={() => changeFeatured('prev')}
-                  canClick={canClick}
-                />
-              ))}
-            </div>
-          </Reveal>
-
-          {/* ปุ่มกดซ้าย-ขวา */}
-          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
-            <div className="flex gap-6" onMouseEnter={() => setIsFeaturedPaused(true)} onMouseLeave={() => setIsFeaturedPaused(false)}>
-              <CarouselButton direction="prev" onClick={() => changeFeatured('prev')} />
-              <CarouselButton direction="next" onClick={() => changeFeatured('next')} />
-            </div>
-          </Reveal>
-
-          {/* ปุ่มขนาดใหญ่ เลือกชมสินค้าทั้งหมด Premium 3D */}
-          <Reveal delay={600} effect="fade-up" className="mt-20">
-            <Link href="/collection" className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6),inset_0_2px_8px_rgba(255,255,255,0.8),inset_0_-4px_8px_rgba(180,60,0,0.5)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/40 border-b-orange-800/60 ring-4 ring-white/30 backdrop-blur-sm">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(0,0,0,0.1)] z-10 text-gray-700 group-hover:scale-105 transition-transform duration-300">
-                <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800 drop-shadow-sm" />
-              </div>
-              <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md text-shadow-sm">เลือกชมสินค้าทั้งหมด</span>
+              เลือกชมสินค้าทั้งหมด
             </Link>
           </Reveal>
         </div>
       </section>
 
-      {/* --- ALL SHRINES SECTION (Carousel 3D) --- */}
-      <section className="bg-white py-24 md:py-32 px-6 relative overflow-hidden z-20 shadow-[0_-30px_60px_rgba(255,255,255,1)]">
-        {/* ลายน้ำพื้นหลัง */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] pointer-events-none text-[#F18911]">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0z" />
-          </svg>
-        </div>
+      {/* ─── EXQUISITE COLLECTIONS SECTION ─── */}
+      <section className="bg-[#1A1A1A] py-16 md:py-20 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto">
 
+          {/* Section Header */}
+          <Reveal effect="fade-up">
+            <div className="text-center mb-10">
+              <h2 className="text-xs font-bold tracking-[0.35em] uppercase text-[#B8882A] mb-3">
+                สินค้ายอดฮิต
+              </h2>
+              <div className="w-12 h-px bg-[#B8882A] mx-auto" />
+            </div>
+          </Reveal>
+
+          {/* 3-panel Grid */}
+          <Reveal effect="fade-up" delay={150}>
+            <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-2 md:gap-3 h-[480px] md:h-[580px]">
+
+              {/* Left: Large tall panel */}
+              <Link
+                href="/collection"
+                id="collection-grid-modern"
+                className="relative group col-span-1 row-span-2 overflow-hidden"
+              >
+                <img
+                  src={COLLECTION_GRID[0].image}
+                  alt={COLLECTION_GRID[0].label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-2 group-hover:translate-y-0">
+                  <p className="text-sm font-semibold">{COLLECTION_GRID[0].label}</p>
+                  <p className="text-[11px] text-white/70">{COLLECTION_GRID[0].sublabel}</p>
+                </div>
+              </Link>
+
+              {/* Right Top: Small panel */}
+              <Link
+                href="/collection"
+                id="collection-grid-traditional"
+                className="relative group col-span-1 row-span-1 overflow-hidden md:col-start-2"
+              >
+                <img
+                  src={COLLECTION_GRID[1].image}
+                  alt={COLLECTION_GRID[1].label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-400" />
+                <div className="absolute bottom-3 left-3 text-white">
+                  <p className="text-sm font-semibold">{COLLECTION_GRID[1].label}</p>
+                  <p className="text-[11px] text-white/70">{COLLECTION_GRID[1].sublabel}</p>
+                </div>
+              </Link>
+
+              {/* Right Bottom: Small panel */}
+              <Link
+                href="/collection"
+                id="collection-grid-ornate"
+                className="relative group col-span-1 row-span-1 overflow-hidden"
+              >
+                <img
+                  src={COLLECTION_GRID[2].image}
+                  alt={COLLECTION_GRID[2].label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-2 group-hover:translate-y-0">
+                  <p className="text-sm font-semibold">{COLLECTION_GRID[2].label}</p>
+                  <p className="text-[11px] text-white/70">{COLLECTION_GRID[2].sublabel}</p>
+                </div>
+              </Link>
+
+              {/* Hidden on mobile, show extra panel on desktop */}
+              <Link
+                href="/collection"
+                id="collection-grid-extra"
+                className="relative group col-span-1 row-span-1 overflow-hidden hidden md:block md:col-start-3 md:row-start-1"
+              >
+                <img
+                  src={FEATURED_IMAGES_LIST[4]}
+                  alt="ศาลพระภูมิ"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-400" />
+              </Link>
+
+              <Link
+                href="/collection"
+                id="collection-grid-extra2"
+                className="relative group col-span-1 row-span-1 overflow-hidden hidden md:block md:col-start-3 md:row-start-2"
+              >
+                <img
+                  src={FEATURED_IMAGES_LIST[5]}
+                  alt="ศาลพระภูมิ"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── ALL SHRINES SECTION (Carousel 3D) ─── */}
+      <section className="bg-white py-20 md:py-28 px-6 relative overflow-hidden z-20">
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
-          {/* พื้นที่ Slider ศาลพระภูมิ */}
+          <Reveal effect="fade-up">
+            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-2">สินค้าของเรา</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 tracking-tight">ศาลทุกรูปแบบ</h2>
+          </Reveal>
+
           <Reveal delay={200} effect="fade-up">
             <div
               className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
@@ -349,7 +393,6 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* ปุ่มกดซ้าย-ขวา */}
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
             <div
               className="flex gap-6"
@@ -363,14 +406,100 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- REVIEWS SECTION --- */}
-      <section className="bg-[#FAF9F6] py-24 md:py-32 px-6 border-t border-gray-100 relative overflow-hidden z-20">
-        <div className="max-w-6xl mx-auto relative z-10 text-center">
-          <Reveal effect="scale-up">
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-16 tracking-tight">รีวิวสินค้าของเรา</h2>
+      {/* ─── HISTORICAL TIMELINE SECTION ─── */}
+      <section className="bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Section Header */}
+          <Reveal effect="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+                ประวัติร้านพูนสิน
+              </p>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+                60 ปีแห่งประสบการณ์
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+                ร้านพูนสิน เปิดมาตั้งแต่ปี 2506<br />
+                ผ่านมากว่า 60 ปี ยังคงรักษาคุณภาพไว้ดังเดิม
+              </p>
+            </div>
           </Reveal>
 
-          {/* พื้นที่ Slider สำหรับรีวิว */}
+          {/* 3-column Timeline Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-center">
+
+            {/* Left: Year label */}
+            <Reveal effect="fade-up" delay={100}>
+              <div className="flex flex-col">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#B8882A] mb-1">ก่อตั้งปี</span>
+                <span className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-none tracking-tighter">
+                  2506
+                </span>
+                <div className="w-10 h-1 bg-[#B8882A] mt-4 mb-4" />
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  ร้านพูนสินเปิดร้านที่จังหวัดนครปฐม<br />
+                  เปิดมาตั้งแต่รุ่นอากง-อาม่า เน้นความสวยงามและทนทาน
+                </p>
+              </div>
+            </Reveal>
+
+            {/* Center: 2×2 Image Grid */}
+            <Reveal effect="fade-up" delay={200}>
+              <div className="grid grid-cols-2 gap-2 h-[300px] md:h-[340px]">
+                {HISTORY_IMAGES.map((img, i) => (
+                  <div key={i} className="overflow-hidden rounded-sm">
+                    <img
+                      src={img}
+                      alt={`ประวัติร้านพูนสิน ${i + 1}`}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            {/* Right: 3 Bullet Points */}
+            <Reveal effect="fade-up" delay={300}>
+              <div className="flex flex-col gap-6">
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1.5 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    เราสืบสานวิธีทำศาลแบบดั้งเดิมที่สวยงาม<br />
+                    จากรุ่นสู่รุ่น ไม่ทำให้คุณภาพลดลงเลย
+                  </p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1.5 text-base">งานคราฟต์ที่ประณีต</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    ทุกชิ้นกลึงลอยด้วยความตั้งใจ ประณีต<br />
+                    ด้วยช่างฝีมือที่ทำกันในครอบครัว
+                  </p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1.5 text-base">มั่นใจเรื่องคุณภาพ</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    วัสดุคุณภาพดี ทนทั้งแดดและฝน<br />
+                    ใช้งานได้ยาวนาน
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ─── REVIEWS SECTION ─── */}
+      <section className="bg-white py-20 md:py-28 px-6 border-t border-gray-100 relative overflow-hidden z-20">
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
+          <Reveal effect="fade-up">
+            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-2">รีวิวจากลูกค้า</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 tracking-tight">รีวิวสินค้าของเรา</h2>
+          </Reveal>
+
           <Reveal delay={200} effect="fade-up">
             <div
               className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
@@ -401,7 +530,6 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* ปุ่มกดซ้าย-ขวา */}
           <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
             <div
               className="flex gap-6"
@@ -415,14 +543,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- CTA SECTION --- */}
-      <section className="bg-white py-24 md:py-32 px-6 text-center border-t border-gray-100 relative overflow-hidden">
-        <Reveal effect="scale-up" className="mt-8">
-          <Link href="/collection" className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6),inset_0_2px_8px_rgba(255,255,255,0.8),inset_0_-4px_8px_rgba(180,60,0,0.5)] hover:-translate-y-1 transition-all duration-300 border border-orange-300/40 border-b-orange-800/60 ring-4 ring-white/30 backdrop-blur-sm">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1),inset_0_-2px_4px_rgba(0,0,0,0.1)] z-10 text-gray-700 group-hover:scale-105 transition-transform duration-300">
-              <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800 drop-shadow-sm" />
-            </div>
-            <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md text-shadow-sm">เลือกชมสินค้าทั้งหมด</span>
+      {/* ─── CTA SECTION ─── */}
+      <section className="bg-[#1A1A1A] py-16 md:py-20 px-6 text-center">
+        <Reveal effect="fade-up">
+          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
+            ติดต่อเราได้เลย
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 tracking-tight">
+            เลือกศาลที่ใช่สำหรับคุณ
+          </h2>
+          <Link
+            href="/collection"
+            id="cta-section-btn"
+            className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#B8782A] text-white text-xs font-bold tracking-[0.15em] uppercase px-8 py-4 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
+          >
+            เลือกชมสินค้าทั้งหมด
           </Link>
         </Reveal>
       </section>

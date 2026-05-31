@@ -12,7 +12,7 @@ async function getDynamicRoutes() {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.poonsin.com';
+  const baseUrl = 'https://www.poonsinshop.com';
 
   // Define static routes
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicRoutes: MetadataRoute.Sitemap = dynamicData.map((item) => {
     // Determine the path based on the type of content
     const basePath = item.type === 'collection' ? '/collection' : '/articles';
-    
+
     return {
       url: `${baseUrl}${basePath}/${item.slug}`,
       lastModified: new Date(),
