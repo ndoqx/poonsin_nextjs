@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   X, Phone, ChevronLeft, CheckCircle2, Star
 } from 'lucide-react';
@@ -717,8 +718,16 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
 
 const FILTERS = ["ทั้งหมด", "ศาลพระภูมิโมเดิร์น", "ศาลเจ้าที่ ตา,ยาย", "ศาลโรมัน", "ศาลพระพรหมโมเดิร์น", "ศาลพระพรหมดั้งเดิม", "ศาลพระภูมิดั้งเดิม"];
 
-export default function CollectionPage() {
+function CollectionPageContent() {
+  const searchParams = useSearchParams();
   const [filter, setFilter] = useState<string>("ทั้งหมด");
+
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat && FILTERS.includes(cat)) {
+      setFilter(cat);
+    }
+  }, [searchParams]);
   const [activeProduct, setActiveProduct] = useState<CollectionItem | null>(null);
   const [selectedImgIdx, setSelectedImgIdx] = useState(0);
 
@@ -991,5 +1000,18 @@ export default function CollectionPage() {
       </AnimatePresence>
 
     </div>
+  );
+}
+
+export default function CollectionPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#FAF9F6] pt-32 text-center text-gray-500 flex flex-col items-center justify-center">
+        <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="font-medium text-lg">กำลังโหลดข้อมูลคอลเลกชัน...</p>
+      </div>
+    }>
+      <CollectionPageContent />
+    </Suspense>
   );
 }

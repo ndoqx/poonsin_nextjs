@@ -42,6 +42,7 @@ export function Header() {
 
   return (
     <>
+<<<<<<< HEAD
       <nav
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${scrolled
           ? 'bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.06)] py-2'
@@ -54,6 +55,61 @@ export function Header() {
             {/* Left Nav */}
             <div className="flex items-center gap-8">
               {leftLinks.map((item) => {
+=======
+      <nav className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-[60] transition-all duration-500 rounded-full border border-white/50 backdrop-blur-xl ${scrolled ? 'top-2 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2.5' : 'top-4 bg-white/70 shadow-lg py-3.5'
+        }`}>
+        <div className="px-6 md:px-8 flex justify-between items-center text-sm font-medium">
+          {/* Placeholder for perfect centering of Logo on mobile */}
+          <div className="w-10 md:hidden" />
+
+          <Link href="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 shrink-0">
+            <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-10 md:h-12 w-auto object-contain rounded-md shadow-sm" />
+            <span className="font-bold text-lg md:text-xl text-gray-900 hidden md:block tracking-wide">ร้านพูนสิน</span>
+          </Link>
+
+          <div className="hidden md:flex space-x-10 items-center">
+            {navLinks.map((item, i) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link key={i} href={item.href} className={`tracking-wide transition-colors relative group py-2 ${isActive ? 'text-amber-600 font-semibold' : 'text-gray-700 hover:text-amber-600'
+                  }`}>
+                  {item.name}
+                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </Link>
+              );
+            })}
+          </div>
+
+
+
+          <button className="md:hidden relative p-2 text-gray-900 bg-white/50 rounded-full border border-gray-200" onClick={() => setIsMenuOpen(true)}>
+            <Menu size={24} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-[998] transition-opacity duration-500 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={closeMenu}
+      />
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed top-0 bottom-0 right-0 w-[300px] max-w-[85vw] bg-white z-[999] shadow-2xl border-l border-gray-100 overflow-y-auto overscroll-y-contain flex flex-col transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="min-h-full flex flex-col">
+          <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10 shrink-0">
+            <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
+              <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-12 w-auto object-contain rounded-md shadow-sm" />
+            </Link>
+            <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors">
+              <X size={26} />
+            </button>
+          </div>
+
+          <div className="flex-1 flex flex-col items-center py-12 px-6">
+            <div className="space-y-8 w-full flex flex-col items-center">
+              {navLinks.map((item, i) => {
+>>>>>>> my-fixed-code-branch
                 const isActive = pathname === item.href;
                 return (
                   <Link

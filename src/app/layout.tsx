@@ -83,8 +83,8 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Meta (Facebook) Pixel (ปิดคอมเมนต์ไว้ชั่วคราว) */}
-        {/* <Script id="fb-pixel" strategy="afterInteractive">
+        {/* Meta (Facebook) Pixel - เปิดใช้งานและฝังรหัสจริงเรียบร้อย */}
+        <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -94,11 +94,10 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', 'YOUR_PIXEL_ID');
+            fbq('init', '1729862211763181');
             fbq('track', 'PageView');
           `}
         </Script>
-        */}
 
         {/* JSON-LD LocalBusiness Schema */}
         <script
@@ -155,17 +154,16 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
-        {/* Meta (Facebook) Pixel (noscript) (ปิดคอมเมนต์ไว้ชั่วคราว) */}
-        {/* <noscript>
+        {/* Meta (Facebook) Pixel (noscript) - เปิดใช้งานและฝังรหัสจริงเรียบร้อย */}
+        <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=1729862211763181&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
-        */}
 
         <Header />
         <main>{children}</main>
