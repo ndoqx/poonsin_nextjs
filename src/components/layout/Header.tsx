@@ -37,7 +37,7 @@ export function Header() {
       <nav className={`fixed left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-[60] transition-all duration-500 rounded-full border border-white/50 backdrop-blur-xl ${scrolled ? 'top-2 bg-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2.5' : 'top-4 bg-white/70 shadow-lg py-3.5'
         }`}>
         <div className="px-6 md:px-8 flex justify-between items-center text-sm font-medium">
-          <Link href="/" onClick={closeMenu} className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 shrink-0">
+          <Link href="/" onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 shrink-0">
             <img src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" className="h-10 md:h-12 w-auto object-contain rounded-md shadow-sm" />
             <span className="font-bold text-lg md:text-xl text-gray-900 hidden md:block tracking-wide">ร้านพูนสิน</span>
           </Link>

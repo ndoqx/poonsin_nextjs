@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   X, Phone, ChevronLeft, CheckCircle2, Star
 } from 'lucide-react';
@@ -718,7 +719,15 @@ const COLLECTION_PRODUCTS: CollectionItem[] = [
 const FILTERS = ["ทั้งหมด", "ศาลพระภูมิโมเดิร์น", "ศาลเจ้าที่ ตา,ยาย", "ศาลโรมัน", "ศาลพระพรหมโมเดิร์น", "ศาลพระพรหมดั้งเดิม", "ศาลพระภูมิดั้งเดิม"];
 
 export default function CollectionPage() {
+  const searchParams = useSearchParams();
   const [filter, setFilter] = useState<string>("ทั้งหมด");
+
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat && FILTERS.includes(cat)) {
+      setFilter(cat);
+    }
+  }, [searchParams]);
   const [activeProduct, setActiveProduct] = useState<CollectionItem | null>(null);
   const [selectedImgIdx, setSelectedImgIdx] = useState(0);
 
