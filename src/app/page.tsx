@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 // กำหนดรายการรูปภาพศาลพระภูมิ
 const SHRINES_LIST = [
@@ -240,12 +241,71 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 5-panel grid: 1 ใหญ่ซ้าย + 2×2 ขวา */}
+        {/* ─── Mobile: horizontal scroll strip ─── */}
+        <div className="flex md:hidden gap-[3px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-1">
+          {[
+            {
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
+              id: "grid-mob-1",
+              src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.webp",
+              title: "ศาลพระภูมิโมเดิร์น",
+              sub: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+            },
+            {
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
+              id: "grid-mob-2",
+              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg",
+              title: "ศาลพระภูมิโมเดิร์น",
+              sub: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+            },
+            {
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
+              id: "grid-mob-3",
+              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg",
+              title: "ศาลพระพรหมโมเดิร์น",
+              sub: "สไตล์โมเดิร์น สวยงามสง่างาม",
+            },
+            {
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2",
+              id: "grid-mob-4",
+              src: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.webp",
+              title: "ศาลเจ้าที่ ตา,ยาย",
+              sub: "ตั้งวางได้หลากหลายพื้นที่",
+            },
+            {
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%82%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99",
+              id: "grid-mob-5",
+              src: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.webp",
+              title: "ศาลโรมัน",
+              sub: "สไตล์ยุโรป ทรงคุณค่า สวยงามสง่างาม",
+            },
+          ].map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              id={item.id}
+              className="relative flex-none w-[80vw] max-w-sm snap-start overflow-hidden group aspect-video"
+            >
+              <img
+                src={item.src}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <p className="text-sm font-semibold leading-tight">{item.title}</p>
+                <p className="text-[11px] text-white/70 mt-0.5">{item.sub}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* ─── Desktop: 5-panel grid (ไม่เปลี่ยน) ─── */}
         <div
-          className="grid gap-[3px]"
+          className="hidden md:grid gap-[3px]"
           style={{ gridTemplateColumns: '2fr 1fr 1fr', gridTemplateRows: '1fr 1fr', height: '560px' }}
         >
-          {/* 1. รูปใหญ่ฝั่งซ้าย — เต็มความสูง 2 แถว (ขนาดเดิม Layout เดิม) */}
+          {/* 1. รูปใหญ่ฝั่งซ้าย — เต็มความสูง 2 แถว */}
           <Link
             href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99"
             id="grid-main"
@@ -264,7 +324,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* 2. รูปเล็ก บน-กลาง (ครอปจากข้างล่างก่อน) */}
+          {/* 2. รูปเล็ก บน-กลาง */}
           <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99" id="grid-tr1" className="relative group overflow-hidden">
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg"
@@ -278,7 +338,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* 3. รูปเล็ก บน-ขวา (ครอปจากข้างล่างก่อน) */}
+          {/* 3. รูปเล็ก บน-ขวา */}
           <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99" id="grid-tr2" className="relative group overflow-hidden">
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg"
@@ -292,7 +352,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* 4. รูปเล็ก ล่าง-กลาง (ครอปจากข้างล่างก่อน) */}
+          {/* 4. รูปเล็ก ล่าง-กลาง */}
           <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2" id="grid-br1" className="relative group overflow-hidden">
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.webp"
@@ -306,7 +366,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* 5. รูปเล็ก ล่าง-ขวา (ครอปจากข้างล่างก่อน) */}
+          {/* 5. รูปเล็ก ล่าง-ขวา */}
           <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%82%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99" id="grid-br2" className="relative group overflow-hidden">
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.webp"
@@ -425,13 +485,13 @@ export default function Home() {
 
             {/* กลาง: กริดรูป 2×2 */}
             <Reveal effect="fade-up" delay={200}>
-              <div className="grid grid-cols-2 gap-2 h-[300px] md:h-[340px]">
+              <div className="grid grid-cols-2 gap-2 h-auto md:h-[340px]">
                 {HISTORY_IMAGES.map((img, i) => (
                   <div key={i} className="overflow-hidden">
                     <img
                       src={img}
                       alt={`ประวัติร้านพูนสิน ${i + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 ))}
