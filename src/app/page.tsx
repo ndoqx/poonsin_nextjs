@@ -28,11 +28,7 @@ const REVIEW_IMAGES_LIST = [
   "https://storage.googleapis.com/poonsinshop-images/images/review6.webp",
 ];
 
-<<<<<<< HEAD
-// History images สำหรับ Timeline Section
-=======
 // รูปประวัติร้านสำหรับ Timeline
->>>>>>> my-fixed-code-branch
 const HISTORY_IMAGES = [
   "https://storage.googleapis.com/poonsinshop-images/images/history/history1.webp",
   "https://storage.googleapis.com/poonsinshop-images/images/history/history2.webp",
@@ -40,31 +36,6 @@ const HISTORY_IMAGES = [
   "https://storage.googleapis.com/poonsinshop-images/images/history/history4.webp",
 ];
 
-<<<<<<< HEAD
-// Collection grid items
-const COLLECTION_GRID = [
-  {
-    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.1.webp",
-    label: "ศาลพระภูมิโมเดิร์น",
-    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
-    span: "large",
-  },
-  {
-    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.2.webp",
-    label: "ศาลพระภูมิโมเดิร์น",
-    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
-    span: "small",
-  },
-  {
-    image: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.3.webp",
-    label: "ศาลพระภูมิโมเดิร์น",
-    sublabel: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
-    span: "small",
-  },
-];
-
-=======
->>>>>>> my-fixed-code-branch
 // --- REUSABLE COMPONENTS & HELPERS ---
 
 const getNextIndex = (currentIndex: number, total: number, direction: 'next' | 'prev') => {
@@ -83,11 +54,7 @@ const CarouselButton = ({
 }) => (
   <button
     onClick={onClick}
-<<<<<<< HEAD
-    className={`w-12 h-12 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#B8882A] transition-colors shadow-md duration-300 z-40 ${direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
-=======
     className={`w-14 h-14 bg-[#3D404A] text-white rounded-full flex items-center justify-center hover:bg-[#B8882A] transition-colors shadow-md duration-300 z-40 ${direction === 'prev' ? 'hover:-translate-x-1' : 'hover:translate-x-1'
->>>>>>> my-fixed-code-branch
       }`}
   >
     <ChevronLeft size={24} className={direction === 'next' ? 'rotate-180' : ''} />
@@ -177,10 +144,7 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [currentReview, isReviewPaused]);
 
-<<<<<<< HEAD
-=======
   // --- Drag & Swipe Handlers ---
->>>>>>> my-fixed-code-branch
   const onDragStart = (clientX: number) => {
     setDragStart(clientX);
     setDragEnd(clientX);
@@ -196,13 +160,8 @@ export default function Home() {
     setIsDragging(false);
     if (!dragStart || !dragEnd) return;
     const distance = dragStart - dragEnd;
-<<<<<<< HEAD
-    if (distance > 50) onNext();
-    else if (distance < -50) onPrev();
-=======
     if (distance > 50) onNext(); // ปัดซ้าย
     else if (distance < -50) onPrev(); // ปัดขวา
->>>>>>> my-fixed-code-branch
     setDragStart(0);
     setDragEnd(0);
   };
@@ -212,203 +171,64 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-900 overflow-x-hidden selection:bg-amber-100 selection:text-gray-900">
 
-<<<<<<< HEAD
-  {/* ─── HERO SECTION ─── */ }
-  <section className="relative w-full h-[100vh] min-h-[600px] max-h-[900px] overflow-hidden">
-=======
       {/* --- CSS สำหรับ Font --- */}
-    <style jsx global>{`
+      <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700;800&display=swap');
         :root { --font-anuphan: 'Anuphan', sans-serif; }
         body { font-family: var(--font-anuphan); }
         h1, h2 { font-family: var(--font-anuphan); }
       `}</style>
 
-    {/* ─────────────────────────────────────
+      {/* ─────────────────────────────────────
           HERO SECTION
       ───────────────────────────────────── */}
-    <section className="relative w-full h-[92vh] min-h-[560px] max-h-[900px] overflow-hidden">
->>>>>>> my-fixed-code-branch
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          transform: `scale(${1 + scrollY * 0.0002}) translateY(${scrollY * 0.08}px)`,
-        }}
-      >
-        <img
-          src={SITE_CONFIG.heroBgImage}
-          alt="ศาลพระภูมิพูนสิน"
-          className="w-full h-full object-cover object-center"
-        />
-<<<<<<< HEAD
-  {/* Gradient overlay — left bottom */ }
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-        </div >
-
-    {/* Text Content — bottom left */ }
-=======
+      <section className="relative w-full h-[92vh] min-h-[560px] max-h-[900px] overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            transform: `scale(${1 + scrollY * 0.0002}) translateY(${scrollY * 0.08}px)`,
+          }}
+        >
+          <img
+            src={SITE_CONFIG.heroBgImage}
+            alt="ศาลพระภูมิพูนสิน"
+            className="w-full h-full object-cover object-center"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         </div>
 
         {/* Text overlay — ซ้ายล่าง */}
->>>>>>> my-fixed-code-branch
-    < div
-  className = "absolute bottom-0 left-0 z-10 p-8 md:p-14 lg:p-20 max-w-2xl"
-  style = {{ opacity: Math.max(0, 1 - scrollY * 0.002) }
-}
+        <div
+          className="absolute bottom-0 left-0 z-10 p-8 md:p-14 lg:p-20 max-w-2xl"
+          style={{ opacity: Math.max(0, 1 - scrollY * 0.002) }}
         >
-  <Reveal effect="fade-up" delay={100}>
-<<<<<<< HEAD
-<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-4">
-  ร้านพูนสิน<br />
-  <span className="text-[#E8B84B]">จำหน่ายศาลพระภูมิทุกรูปแบบ</span>
-</h1>
-          </Reveal >
-          <Reveal effect="fade-up" delay={200}>
-            <p className="text-white/80 text-sm md:text-base mb-8 leading-relaxed">
-              ร้านพูนสิน เปิดมาตั้งแต่ปี 2506<br />
-              ผ่านมากว่า 60 ปี มั่นใจในคุณภาพ
-=======
+          <Reveal effect="fade-up" delay={100}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-4">
-        <span className="block">ร้านพูนสิน</span>
-        <span className="text-[#E8B84B]">ประสบการณ์ กว่า 60 ปี</span>
-      </h1>
-  </Reveal>
-  <Reveal effect="fade-up" delay={200}>
-    <p className="text-white/75 text-sm md:text-base mb-8 leading-relaxed">
-      จำหน่ายศาลพระภูมิทุกรูปแบบ ทั้งแบบดั้งเดิมและโมเดิร์น<br />
-      เปิดมาตั้งแต่ปี 2506 มั่นใจในคุณภาพ
->>>>>>> my-fixed-code-branch
-    </p>
-  </Reveal>
-  <Reveal effect="fade-up" delay={300}>
-    <Link
-      href="/collection"
-      id="hero-cta-btn"
-<<<<<<< HEAD
-      className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#B8782A] text-white text-xs font-bold tracking-[0.15em] uppercase px-7 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/30 hover:-translate-y-0.5"
-    >
-      เลือกชมสินค้าทั้งหมด
-=======
+              <span className="block">ร้านพูนสิน</span>
+              <span className="text-[#E8B84B]">ประสบการณ์ กว่า 60 ปี</span>
+            </h1>
+          </Reveal>
+          <Reveal effect="fade-up" delay={200}>
+            <p className="text-white/75 text-sm md:text-base mb-8 leading-relaxed">
+              จำหน่ายศาลพระภูมิทุกรูปแบบ ทั้งแบบดั้งเดิมและโมเดิร์น<br />
+              เปิดมาตั้งแต่ปี 2506 มั่นใจในคุณภาพ
+            </p>
+          </Reveal>
+          <Reveal effect="fade-up" delay={300}>
+            <Link
+              href="/collection"
+              id="hero-cta-btn"
               className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm font-bold tracking-[0.12em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
             >
               เลือกชมสินค้าทั้งหมด
               <ChevronRight size={18} />
->>>>>>> my-fixed-code-branch
-    </Link>
-  </Reveal>
-        </div >
-      </section >
-
-<<<<<<< HEAD
-  {/* ─── EXQUISITE COLLECTIONS SECTION ─── */ }
-  < section className = "bg-[#1A1A1A] py-16 md:py-20 px-6 md:px-10" >
-    <div className="max-w-6xl mx-auto">
-
-      {/* Section Header */}
-      <Reveal effect="fade-up">
-        <div className="text-center mb-10">
-          <h2 className="text-xs font-bold tracking-[0.35em] uppercase text-[#B8882A] mb-3">
-            สินค้ายอดฮิต
-          </h2>
-          <div className="w-12 h-px bg-[#B8882A] mx-auto" />
+            </Link>
+          </Reveal>
         </div>
-      </Reveal>
+      </section>
 
-      {/* 3-panel Grid */}
-      <Reveal effect="fade-up" delay={150}>
-        <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-2 md:gap-3 h-[480px] md:h-[580px]">
-
-          {/* Left: Large tall panel */}
-          <Link
-            href="/collection"
-            id="collection-grid-modern"
-            className="relative group col-span-1 row-span-2 overflow-hidden"
-          >
-            <img
-              src={COLLECTION_GRID[0].image}
-              alt={COLLECTION_GRID[0].label}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-            <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-2 group-hover:translate-y-0">
-              <p className="text-sm font-semibold">{COLLECTION_GRID[0].label}</p>
-              <p className="text-[11px] text-white/70">{COLLECTION_GRID[0].sublabel}</p>
-            </div>
-          </Link>
-
-          {/* Right Top: Small panel */}
-          <Link
-            href="/collection"
-            id="collection-grid-traditional"
-            className="relative group col-span-1 row-span-1 overflow-hidden md:col-start-2"
-          >
-            <img
-              src={COLLECTION_GRID[1].image}
-              alt={COLLECTION_GRID[1].label}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-400" />
-            <div className="absolute bottom-3 left-3 text-white">
-              <p className="text-sm font-semibold">{COLLECTION_GRID[1].label}</p>
-              <p className="text-[11px] text-white/70">{COLLECTION_GRID[1].sublabel}</p>
-            </div>
-          </Link>
-
-          {/* Right Bottom: Small panel */}
-          <Link
-            href="/collection"
-            id="collection-grid-ornate"
-            className="relative group col-span-1 row-span-1 overflow-hidden"
-          >
-            <img
-              src={COLLECTION_GRID[2].image}
-              alt={COLLECTION_GRID[2].label}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-            <div className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-2 group-hover:translate-y-0">
-              <p className="text-sm font-semibold">{COLLECTION_GRID[2].label}</p>
-              <p className="text-[11px] text-white/70">{COLLECTION_GRID[2].sublabel}</p>
-            </div>
-          </Link>
-
-          {/* Hidden on mobile, show extra panel on desktop */}
-          <Link
-            href="/collection"
-            id="collection-grid-extra"
-            className="relative group col-span-1 row-span-1 overflow-hidden hidden md:block md:col-start-3 md:row-start-1"
-          >
-            <img
-              src={FEATURED_IMAGES_LIST[4]}
-              alt="ศาลพระภูมิ"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-400" />
-          </Link>
-
-          <Link
-            href="/collection"
-            id="collection-grid-extra2"
-            className="relative group col-span-1 row-span-1 overflow-hidden hidden md:block md:col-start-3 md:row-start-2"
-          >
-            <img
-              src={FEATURED_IMAGES_LIST[5]}
-              alt="ศาลพระภูมิ"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-          </Link>
-        </div>
-      </Reveal>
-    </div>
-      </section >
-
-  {/* ─── ALL SHRINES SECTION (Carousel 3D) ─── */ }
-=======
       {/* ─────────────────────────────────────
           สินค้ายอดฮิต — DARK GRID SECTION
       ───────────────────────────────────── */}
@@ -475,7 +295,7 @@ export default function Home() {
           {/* 4. รูปเล็ก ล่าง-กลาง (ครอปจากข้างล่างก่อน) */}
           <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2" id="grid-br1" className="relative group overflow-hidden">
             <img
-              src="https://storage.googleapis.com/poonsinshop-images/images/shrine/ty2.1.webp"
+              src="https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.webp"
               alt="สินค้า"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
@@ -505,17 +325,10 @@ export default function Home() {
       {/* ─────────────────────────────────────
           สินค้าของเรา — SHRINE CAROUSEL
       ───────────────────────────────────── */}
->>>>>>> my-fixed-code-branch
-  < section className = "bg-white py-20 md:py-28 px-6 relative overflow-hidden z-20" >
-    <div className="max-w-6xl mx-auto relative z-10 text-center">
+      <section className="bg-white py-20 md:py-28 px-6 relative overflow-hidden z-20">
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
 
-      <Reveal effect="fade-up">
-<<<<<<< HEAD
-            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-2">สินค้าของเรา</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 tracking-tight">ศาลทุกรูปแบบ</h2>
-          </Reveal >
-
-=======
+          <Reveal effect="fade-up">
             <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
               สินค้าของเรา
             </p>
@@ -525,7 +338,6 @@ export default function Home() {
           </Reveal>
 
           {/* Slider ศาลพระภูมิ */}
->>>>>>> my-fixed-code-branch
           <Reveal delay={200} effect="fade-up">
             <div
               className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
@@ -569,289 +381,175 @@ export default function Home() {
         </div >
       </section >
 
-<<<<<<< HEAD
-  {/* ─── HISTORICAL TIMELINE SECTION ─── */ }
-  < section className = "bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100" >
-    <div className="max-w-6xl mx-auto">
-
-      {/* Section Header */}
-      <Reveal effect="fade-up">
-        <div className="text-center mb-14">
-          <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
-            ประวัติร้านพูนสิน
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
-            60 ปีแห่งประสบการณ์
-          </h2>
-          <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-=======
       {/* ─────────────────────────────────────
           ประวัติร้านพูนสิน — HISTORY TIMELINE
       ───────────────────────────────────── */}
-            <section className="bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100">
-              <div className="max-w-6xl mx-auto">
+      <section className="bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
 
-                {/* Header ตรงกลาง */}
-                <Reveal effect="fade-up">
-                  <div className="text-center mb-14">
-                    <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
-                      ประวัติร้านพูนสิน
-                    </p>
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                      60 ปีแห่งประสบการณ์
-                    </h2>
-                    <p className="text-gray-500 text-sm md:text-base max-w-sm mx-auto leading-relaxed">
->>>>>>> my-fixed-code-branch
-                      ร้านพูนสิน เปิดมาตั้งแต่ปี 2506<br />
-                      ผ่านมากว่า 60 ปี ยังคงรักษาคุณภาพไว้ดังเดิม
-                    </p>
-                  </div>
-<<<<<<< HEAD
-          </Reveal >
-
-  {/* 3-column Timeline Layout */ }
-  < div className = "grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-center" >
-
-    {/* Left: Year label */ }
-    < Reveal effect = "fade-up" delay = { 100} >
-      <div className="flex flex-col">
-        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#B8882A] mb-1">ก่อตั้งปี</span>
-        <span className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-none tracking-tighter">
-          2506
-        </span>
-        <div className="w-10 h-1 bg-[#B8882A] mt-4 mb-4" />
-        <p className="text-gray-500 text-sm leading-relaxed">
-          ร้านพูนสินเปิดร้านที่จังหวัดนครปฐม<br />
-          เปิดมาตั้งแต่รุ่นอากง-อาม่า เน้นความสวยงามและทนทาน
-        </p>
-      </div>
-            </Reveal >
-
-  {/* Center: 2×2 Image Grid */ }
-  < Reveal effect = "fade-up" delay = { 200} >
-    <div className="grid grid-cols-2 gap-2 h-[300px] md:h-[340px]">
-      {HISTORY_IMAGES.map((img, i) => (
-        <div key={i} className="overflow-hidden rounded-sm">
-          <img
-            src={img}
-            alt={`ประวัติร้านพูนสิน ${i + 1}`}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-      ))}
-    </div>
-            </Reveal >
-
-  {/* Right: 3 Bullet Points */ }
-  < Reveal effect = "fade-up" delay = { 300} >
-    <div className="flex flex-col gap-6">
-      <div>
-        <h3 className="font-bold text-gray-900 mb-1.5 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          เราสืบสานวิธีทำศาลแบบดั้งเดิมที่สวยงาม<br />
-          จากรุ่นสู่รุ่น ไม่ทำให้คุณภาพลดลงเลย
-        </p>
-      </div>
-      <div className="w-full h-px bg-gray-200" />
-      <div>
-        <h3 className="font-bold text-gray-900 mb-1.5 text-base">งานคราฟต์ที่ประณีต</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          ทุกชิ้นกลึงลอยด้วยความตั้งใจ ประณีต<br />
-          ด้วยช่างฝีมือที่ทำกันในครอบครัว
-        </p>
-      </div>
-      <div className="w-full h-px bg-gray-200" />
-      <div>
-        <h3 className="font-bold text-gray-900 mb-1.5 text-base">มั่นใจเรื่องคุณภาพ</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          วัสดุคุณภาพดี ทนทั้งแดดและฝน<br />
-          ใช้งานได้ยาวนาน
-        </p>
-      </div>
-    </div>
-            </Reveal >
-
-          </div >
-        </div >
-      </section >
-
-  {/* ─── REVIEWS SECTION ─── */ }
-  < section className = "bg-white py-20 md:py-28 px-6 border-t border-gray-100 relative overflow-hidden z-20" >
-    <div className="max-w-6xl mx-auto relative z-10 text-center">
-      <Reveal effect="fade-up">
-        <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-2">รีวิวจากลูกค้า</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-14 tracking-tight">รีวิวสินค้าของเรา</h2>
-      </Reveal>
-
-=======
+          {/* Header ตรงกลาง */}
+          <Reveal effect="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
+                ประวัติร้านพูนสิน
+              </p>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+                60 ปีแห่งประสบการณ์
+              </h2>
+              <p className="text-gray-500 text-sm md:text-base max-w-sm mx-auto leading-relaxed">
+                ร้านพูนสิน เปิดมาตั้งแต่ปี 2506<br />
+                ผ่านมากว่า 60 ปี ยังคงรักษาคุณภาพไว้ดังเดิม
+              </p>
+            </div>
           </Reveal>
 
-{/* 3-column layout */ }
-<div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
+          {/* 3-column layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
 
-  {/* ซ้าย: ปีที่ก่อตั้ง */}
-  <Reveal effect="fade-up" delay={100}>
-    <div className="flex flex-col">
-      <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#B8882A] mb-1">
-        ก่อตั้งปี
-      </span>
-      <span className="text-7xl md:text-8xl font-black text-gray-900 leading-none tracking-tighter">
-        2506
-      </span>
-      <div className="w-10 h-1 bg-[#B8882A] mt-5 mb-5" />
-      <p className="text-gray-500 text-sm leading-relaxed">
-        ร้านพูนสินเปิดร้านที่จังหวัดนครปฐม<br />
-        เปิดมาตั้งแต่รุ่นอากง-อาม่า เน้นความสวยงามและทนทาน
-      </p>
-    </div>
-  </Reveal>
+            {/* ซ้าย: ปีที่ก่อตั้ง */}
+            <Reveal effect="fade-up" delay={100}>
+              <div className="flex flex-col">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#B8882A] mb-1">
+                  ก่อตั้งปี
+                </span>
+                <span className="text-7xl md:text-8xl font-black text-gray-900 leading-none tracking-tighter">
+                  2506
+                </span>
+                <div className="w-10 h-1 bg-[#B8882A] mt-5 mb-5" />
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  ร้านพูนสินเปิดร้านที่จังหวัดนครปฐม<br />
+                  เปิดมาตั้งแต่รุ่นอากง-อาม่า เน้นความสวยงามและทนทาน
+                </p>
+              </div>
+            </Reveal>
 
-  {/* กลาง: กริดรูป 2×2 */}
-  <Reveal effect="fade-up" delay={200}>
-    <div className="grid grid-cols-2 gap-2 h-[300px] md:h-[340px]">
-      {HISTORY_IMAGES.map((img, i) => (
-        <div key={i} className="overflow-hidden">
-          <img
-            src={img}
-            alt={`ประวัติร้านพูนสิน ${i + 1}`}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
+            {/* กลาง: กริดรูป 2×2 */}
+            <Reveal effect="fade-up" delay={200}>
+              <div className="grid grid-cols-2 gap-2 h-[300px] md:h-[340px]">
+                {HISTORY_IMAGES.map((img, i) => (
+                  <div key={i} className="overflow-hidden">
+                    <img
+                      src={img}
+                      alt={`ประวัติร้านพูนสิน ${i + 1}`}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            {/* ขวา: 3 bullet */}
+            <Reveal effect="fade-up" delay={300}>
+              <div className="flex flex-col gap-6">
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    We keep our standard high from generation to generation.<br />
+                    สืบสานวิธีทำศาลแบบดั้งเดิมที่สวยงาม ไม่ทำให้คุณภาพลดลงเลย
+                  </p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">งานคราฟต์ที่ประณีต</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    ทุกชิ้นกลึงลอยด้วยความตั้งใจ ประณีต<br />
+                    ด้วยช่างฝีมือที่ทำกันในครอบครัว
+                  </p>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">มั่นใจเรื่องคุณภาพ</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    วัสดุคุณภาพดี ทนทั้งแดดและฝน<br />
+                    ใช้งานได้ยาวนาน
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
         </div>
-      ))}
-    </div>
-  </Reveal>
+      </section>
 
-  {/* ขวา: 3 bullet */}
-  <Reveal effect="fade-up" delay={300}>
-    <div className="flex flex-col gap-6">
-      <div>
-        <h3 className="font-bold text-gray-900 mb-2 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          เราสืบสานวิธีทำศาลแบบดั้งเดิมที่สวยงาม<br />
-          จากรุ่นสู่รุ่น ไม่ทำให้คุณภาพลดลงเลย
-        </p>
-      </div>
-      <div className="w-full h-px bg-gray-200" />
-      <div>
-        <h3 className="font-bold text-gray-900 mb-2 text-base">งานคราฟต์ที่ประณีต</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          ทุกชิ้นกลึงลอยด้วยความตั้งใจ ประณีต<br />
-          ด้วยช่างฝีมือที่ทำกันในครอบครัว
-        </p>
-      </div>
-      <div className="w-full h-px bg-gray-200" />
-      <div>
-        <h3 className="font-bold text-gray-900 mb-2 text-base">มั่นใจเรื่องคุณภาพ</h3>
-        <p className="text-gray-500 text-sm leading-relaxed">
-          วัสดุคุณภาพดี ทนทั้งแดดและฝน<br />
-          ใช้งานได้ยาวนาน
-        </p>
-      </div>
-    </div>
-  </Reveal>
-
-</div>
-        </div >
-      </section >
-
-{/* ─────────────────────────────────────
+      {/* ─────────────────────────────────────
           รีวิวสินค้าของเรา — REVIEWS
       ───────────────────────────────────── */}
-  < section className = "bg-white py-20 md:py-28 px-6 border-t border-gray-100 relative overflow-hidden z-20" >
-    <div className="max-w-6xl mx-auto relative z-10 text-center">
+      <section className="bg-white py-20 md:py-28 px-6 border-t border-gray-100 relative overflow-hidden z-20">
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
 
-      <Reveal effect="fade-up">
-        <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
-          รีวิวจากลูกค้า
-        </p>
-        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
-          รีวิวสินค้าของเรา
-        </h2>
-      </Reveal>
+          <Reveal effect="fade-up">
+            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+              รีวิวจากลูกค้า
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
+              รีวิวสินค้าของเรา
+            </h2>
+          </Reveal>
 
-      {/* Slider รีวิว */}
->>>>>>> my-fixed-code-branch
-      <Reveal delay={200} effect="fade-up">
-        <div
-          className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
-          onMouseEnter={() => setIsReviewPaused(true)}
-          onMouseLeave={() => {
-            setIsReviewPaused(false);
-            onDragEnd(() => changeReview('next'), () => changeReview('prev'));
-          }}
-          onTouchStart={(e) => { setIsReviewPaused(true); onDragStart(e.targetTouches[0].clientX); }}
-          onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
-          onTouchEnd={() => { setIsReviewPaused(false); onDragEnd(() => changeReview('next'), () => changeReview('prev')); }}
-          onMouseDown={(e) => onDragStart(e.clientX)}
-          onMouseMove={(e) => onDragMove(e.clientX)}
-          onMouseUp={() => onDragEnd(() => changeReview('next'), () => changeReview('prev'))}
-        >
-          {REVIEW_IMAGES_LIST.map((src, index) => (
-            <CarouselItem
-              key={index}
-              src={src}
-              index={index}
-              currentShrine={currentReview}
-              total={REVIEW_IMAGES_LIST.length}
-              onNext={() => changeReview('next')}
-              onPrev={() => changeReview('prev')}
-              canClick={canClick}
-            />
-          ))}
+          {/* Slider รีวิว */}
+          <Reveal delay={200} effect="fade-up">
+            <div
+              className="relative w-full h-[300px] md:h-[500px] flex items-center justify-center overflow-visible mb-12 cursor-grab active:cursor-grabbing"
+              onMouseEnter={() => setIsReviewPaused(true)}
+              onMouseLeave={() => {
+                setIsReviewPaused(false);
+                onDragEnd(() => changeReview('next'), () => changeReview('prev'));
+              }}
+              onTouchStart={(e) => { setIsReviewPaused(true); onDragStart(e.targetTouches[0].clientX); }}
+              onTouchMove={(e) => onDragMove(e.targetTouches[0].clientX)}
+              onTouchEnd={() => { setIsReviewPaused(false); onDragEnd(() => changeReview('next'), () => changeReview('prev')); }}
+              onMouseDown={(e) => onDragStart(e.clientX)}
+              onMouseMove={(e) => onDragMove(e.clientX)}
+              onMouseUp={() => onDragEnd(() => changeReview('next'), () => changeReview('prev'))}
+            >
+              {REVIEW_IMAGES_LIST.map((src, index) => (
+                <CarouselItem
+                  key={index}
+                  src={src}
+                  index={index}
+                  currentShrine={currentReview}
+                  total={REVIEW_IMAGES_LIST.length}
+                  onNext={() => changeReview('next')}
+                  onPrev={() => changeReview('prev')}
+                  canClick={canClick}
+                />
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
+            <div
+              className="flex gap-6"
+              onMouseEnter={() => setIsReviewPaused(true)}
+              onMouseLeave={() => setIsReviewPaused(false)}
+            >
+              <CarouselButton direction="prev" onClick={() => changeReview('prev')} />
+              <CarouselButton direction="next" onClick={() => changeReview('next')} />
+            </div>
+          </Reveal>
         </div>
-      </Reveal>
+      </section>
 
-      <Reveal delay={400} effect="fade-up" className="flex justify-center gap-6 mt-8">
-        <div
-          className="flex gap-6"
-          onMouseEnter={() => setIsReviewPaused(true)}
-          onMouseLeave={() => setIsReviewPaused(false)}
-        >
-          <CarouselButton direction="prev" onClick={() => changeReview('prev')} />
-          <CarouselButton direction="next" onClick={() => changeReview('next')} />
-        </div>
-      </Reveal>
-    </div>
-      </section >
-
-<<<<<<< HEAD
-  {/* ─── CTA SECTION ─── */ }
-  < section className = "bg-[#1A1A1A] py-16 md:py-20 px-6 text-center" >
-    <Reveal effect="fade-up">
-      <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
-        ติดต่อเราได้เลย
-      </p>
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 tracking-tight">
-        เลือกศาลที่ใช่สำหรับคุณ
-      </h2>
-      <Link
-        href="/collection"
-        id="cta-section-btn"
-        className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#B8782A] text-white text-xs font-bold tracking-[0.15em] uppercase px-8 py-4 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
-      >
-        เลือกชมสินค้าทั้งหมด
-=======
       {/* ─────────────────────────────────────
           CTA SECTION
       ───────────────────────────────────── */}
-        <section className="bg-white py-20 md:py-28 px-6 text-center border-t border-gray-100 relative overflow-hidden">
-          <Reveal effect="fade-up">
-            <Link
-              href="/collection"
-              id="cta-main-btn"
-              className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6)] hover:-translate-y-1 transition-all duration-300 ring-4 ring-white/30"
-            >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1)] z-10 group-hover:scale-105 transition-transform duration-300">
-                <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800" />
-              </div>
-              <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md">
-                เลือกชมสินค้าทั้งหมด
-              </span>
->>>>>>> my-fixed-code-branch
-            </Link>
-          </Reveal>
-        </section>
+      <section className="bg-white py-20 md:py-28 px-6 text-center border-t border-gray-100 relative overflow-hidden">
+        <Reveal effect="fade-up">
+          <Link
+            href="/collection"
+            id="cta-main-btn"
+            className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6)] hover:-translate-y-1 transition-all duration-300 ring-4 ring-white/30"
+          >
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1)] z-10 group-hover:scale-105 transition-transform duration-300">
+              <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800" />
+            </div>
+            <span className="relative z-10 pr-6 md:pr-10 tracking-wide drop-shadow-md">
+              เลือกชมสินค้าทั้งหมด
+            </span>
+          </Link>
+        </Reveal>
+      </section>
 
-      </div>
-      );
+    </div>
+  );
 }
