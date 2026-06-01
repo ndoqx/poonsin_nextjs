@@ -232,7 +232,7 @@ export default function Home() {
             <Link
               href="/collection"
               id="hero-cta-btn"
-              className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm font-bold tracking-[0.12em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm font-extrabold tracking-[0.12em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
             >
               เลือกชมสินค้าทั้งหมด
               <ChevronRight size={18} />
@@ -247,7 +247,7 @@ export default function Home() {
       <section className="bg-[#1C1C1C] py-12 px-4 select-none">
         {/* Label */}
         <div className="pb-8 text-center">
-          <p className="text-[11px] font-bold tracking-[0.35em] uppercase text-[#B8882A]">
+          <p className="text-[11px] font-extrabold tracking-[0.35em] uppercase text-[#B8882A]">
             สินค้ายอดฮิต
           </p>
         </div>
@@ -385,12 +385,12 @@ export default function Home() {
               className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain rounded-xl shadow-2xl mb-6 animate-in zoom-in-95 duration-300"
             />
             <div className="text-center text-white px-4 max-w-xl">
-              <h3 className="text-xl md:text-2xl font-bold tracking-tight">{activeLightbox.title}</h3>
+              <h3 className="text-xl md:text-2xl font-extrabold tracking-tight">{activeLightbox.title}</h3>
               <p className="text-sm text-white/60 mt-2 mb-6">{activeLightbox.desc}</p>
               <Link
                 href={activeLightbox.href}
                 onClick={() => setActiveLightbox(null)}
-                className="inline-flex items-center gap-2 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm md:text-base font-bold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#C8892A]/20 hover:scale-105"
+                className="inline-flex items-center gap-2 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm md:text-base font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#C8892A]/20 hover:scale-105"
               >
                 ดูรายละเอียดเพิ่มเติม
                 <ChevronRight size={18} />
@@ -407,7 +407,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
           <Reveal effect="fade-up">
-            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+            <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
               สินค้าของเรา
             </p>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
@@ -468,7 +468,7 @@ export default function Home() {
           {/* Header ตรงกลาง */}
           <Reveal effect="fade-up">
             <div className="text-center mb-14">
-              <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
+              <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
                 ประวัติร้านพูนสิน
               </p>
               <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
@@ -487,7 +487,7 @@ export default function Home() {
             {/* ซ้าย: ปีที่ก่อตั้ง */}
             <Reveal effect="fade-up" delay={100}>
               <div className="flex flex-col">
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#B8882A] mb-1">
+                <span className="text-[11px] font-extrabold tracking-[0.2em] uppercase text-[#B8882A] mb-1">
                   ก่อตั้งปี
                 </span>
                 <span className="text-7xl md:text-8xl font-black text-gray-900 leading-none tracking-tighter">
@@ -520,7 +520,7 @@ export default function Home() {
             <Reveal effect="fade-up" delay={300}>
               <div className="flex flex-col gap-6">
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
+                  <h3 className="font-extrabold text-gray-900 mb-2 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
                     We keep our standard high from generation to generation.<br />
                     สืบสานวิธีทำศาลแบบดั้งเดิมที่สวยงาม ไม่ทำให้คุณภาพลดลงเลย
@@ -528,7 +528,7 @@ export default function Home() {
                 </div>
                 <div className="w-full h-px bg-gray-200" />
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">งานคราฟต์ที่ประณีต</h3>
+                  <h3 className="font-extrabold text-gray-900 mb-2 text-base">งานคราฟต์ที่ประณีต</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
                     ทุกชิ้นกลึงลอยด้วยความตั้งใจ ประณีต<br />
                     ด้วยช่างฝีมือที่ทำกันในครอบครัว
@@ -536,7 +536,7 @@ export default function Home() {
                 </div>
                 <div className="w-full h-px bg-gray-200" />
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">มั่นใจเรื่องคุณภาพ</h3>
+                  <h3 className="font-extrabold text-gray-900 mb-2 text-base">มั่นใจเรื่องคุณภาพ</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
                     วัสดุคุณภาพดี ทนทั้งแดดและฝน<br />
                     ใช้งานได้ยาวนาน
@@ -556,7 +556,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
           <Reveal effect="fade-up">
-            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+            <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
               รีวิวจากลูกค้า
             </p>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
@@ -616,7 +616,7 @@ export default function Home() {
           <Link
             href="/collection"
             id="cta-main-btn"
-            className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-bold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6)] hover:-translate-y-1 transition-all duration-300 ring-4 ring-white/30"
+            className="group relative inline-flex items-center gap-4 md:gap-6 bg-gradient-to-b from-[#FFA726] to-[#F57C00] text-white px-3 py-2 md:px-4 md:py-3 rounded-full font-extrabold text-lg md:text-3xl shadow-[0_10px_30px_rgba(245,124,0,0.5),inset_0_2px_8px_rgba(255,255,255,0.6),inset_0_-4px_8px_rgba(180,60,0,0.4)] hover:shadow-[0_15px_40px_rgba(245,124,0,0.6)] hover:-translate-y-1 transition-all duration-300 ring-4 ring-white/30"
           >
             <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-b from-white to-gray-100 rounded-full flex items-center justify-center shrink-0 shadow-[0_4px_10px_rgba(0,0,0,0.1)] z-10 group-hover:scale-105 transition-transform duration-300">
               <ChevronRight className="w-6 h-6 md:w-10 md:h-10 text-gray-800" />
