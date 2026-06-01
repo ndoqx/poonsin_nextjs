@@ -245,9 +245,9 @@ export default function Home() {
           สินค้ายอดฮิต — DARK GRID SECTION
       ───────────────────────────────────── */}
       <section className="bg-[#1C1C1C] py-12 px-4 select-none">
-        {/* Label */}
+        {/* Label — [แก้ไข]: เปลี่ยน tracking-[0.35em] เป็น tracking-normal */}
         <div className="pb-8 text-center">
-          <p className="text-[11px] font-extrabold tracking-[0.35em] uppercase text-[#B8882A]">
+          <p className="text-[11px] font-extrabold tracking-normal uppercase text-[#B8882A]">
             สินค้ายอดฮิต
           </p>
         </div>
@@ -407,7 +407,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
           <Reveal effect="fade-up">
-            <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+            {/* Label — [แก้ไข]: เปลี่ยน tracking-[0.3em] เป็น tracking-normal */}
+            <p className="text-[11px] font-extrabold tracking-normal uppercase text-[#B8882A] mb-3">
               สินค้าของเรา
             </p>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
@@ -468,7 +469,8 @@ export default function Home() {
           {/* Header ตรงกลาง */}
           <Reveal effect="fade-up">
             <div className="text-center mb-14">
-              <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-4">
+              {/* Label — [แก้ไข]: เปลี่ยน tracking-[0.3em] เป็น tracking-normal */}
+              <p className="text-[11px] font-extrabold tracking-normal uppercase text-[#B8882A] mb-4">
                 ประวัติร้านพูนสิน
               </p>
               <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
@@ -487,7 +489,8 @@ export default function Home() {
             {/* ซ้าย: ปีที่ก่อตั้ง */}
             <Reveal effect="fade-up" delay={100}>
               <div className="flex flex-col">
-                <span className="text-[11px] font-extrabold tracking-[0.2em] uppercase text-[#B8882A] mb-1">
+                {/* [แก้ไข]: เปลี่ยน tracking-[0.2em] เป็น tracking-normal สำหรับภาษาไทย */}
+                <span className="text-[11px] font-extrabold tracking-normal uppercase text-[#B8882A] mb-1">
                   ก่อตั้งปี
                 </span>
                 <span className="text-7xl md:text-8xl font-black text-gray-900 leading-none tracking-tighter">
@@ -556,7 +559,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10 text-center">
 
           <Reveal effect="fade-up">
-            <p className="text-[11px] font-extrabold tracking-[0.3em] uppercase text-[#B8882A] mb-3">
+            {/* Label — [แก้ไข]: เปลี่ยน tracking-[0.3em] เป็น tracking-normal */}
+            <p className="text-[11px] font-extrabold tracking-normal uppercase text-[#B8882A] mb-3">
               รีวิวจากลูกค้า
             </p>
             <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-16 tracking-tight">
