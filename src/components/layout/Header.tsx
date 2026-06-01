@@ -7,15 +7,38 @@ import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [hash, setHash] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      const section = document.getElementById('shop-history');
+      const headerOffset = 100;
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+          setActiveSection('shop-history');
+        } else {
+          setActiveSection(null);
+        }
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check initial scroll
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const updateHash = () => setHash(window.location.hash || '');
+
+    updateHash();
+    window.addEventListener('hashchange', updateHash);
+    return () => window.removeEventListener('hashchange', updateHash);
   }, []);
 
   useEffect(() => {
@@ -55,7 +78,13 @@ export function Header() {
 
           <div className="hidden md:flex space-x-10 items-center">
             {navLinks.map((item, i) => {
-              const isActive = pathname === item.href;
+              const isAnchorItem = Boolean(item.scrollId);
+              const isHomeItem = item.href === '/';
+              const isActive = isAnchorItem
+                ? pathname === '/' && (activeSection === item.scrollId || hash === `#${item.scrollId}`)
+                : isHomeItem
+                  ? pathname === '/' && activeSection === null
+                  : pathname === item.href;
               if (item.scrollId) {
                 return (
                   <a
@@ -126,7 +155,13 @@ export function Header() {
           <div className="flex-1 flex flex-col items-center py-12 px-6">
             <div className="space-y-8 w-full flex flex-col items-center">
               {navLinks.map((item, i) => {
-                const isActive = pathname === item.href;
+                const isAnchorItem = Boolean(item.scrollId);
+                const isHomeItem = item.href === '/';
+                const isActive = isAnchorItem
+                  ? pathname === '/' && (activeSection === item.scrollId || hash === `#${item.scrollId}`)
+                  : isHomeItem
+                    ? pathname === '/' && activeSection === null
+                    : pathname === item.href;
                 if (item.scrollId) {
                   return (
                     <a
