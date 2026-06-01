@@ -29,12 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    // About page removed — history section lives on the homepage as an anchor
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),

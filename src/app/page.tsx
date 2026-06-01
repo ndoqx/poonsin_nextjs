@@ -467,10 +467,10 @@ export default function Home() {
         </div >
       </section >
 
-      {/* ─────────────────────────────────────
+        {/* ─────────────────────────────────────
           ประวัติร้านพูนสิน — HISTORY TIMELINE
-      ───────────────────────────────────── */}
-      <section className="bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100">
+        ───────────────────────────────────── */}
+        <section id="shop-history" className="bg-[#FAFAF8] py-20 md:py-28 px-6 md:px-10 border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
 
           {/* Header ตรงกลาง */}

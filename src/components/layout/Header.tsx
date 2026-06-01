@@ -28,9 +28,17 @@ export function Header() {
   const navLinks = [
     { name: 'หน้าหลัก', href: '/' },
     { name: 'สินค้าทั้งหมด', href: '/collection' },
-    { name: 'ประวัติร้านพูนสิน', href: '/about' },
+    { name: 'ประวัติร้านพูนสิน', href: '/#shop-history', scrollId: 'shop-history' },
     { name: 'ติดต่อเรา', href: '/contact' }
   ];
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const headerOffset = 92; // adjust for fixed header height
+    const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -48,9 +56,42 @@ export function Header() {
           <div className="hidden md:flex space-x-10 items-center">
             {navLinks.map((item, i) => {
               const isActive = pathname === item.href;
+              if (item.scrollId) {
+                return (
+                  <a
+                    key={i}
+                    href={pathname === '/' ? `#${item.scrollId}` : `/#${item.scrollId}`}
+                    onClick={(e) => {
+                      if (pathname === '/') {
+                        e.preventDefault();
+                        closeMenu();
+                        // smooth scroll to section
+                        scrollToId(item.scrollId as string);
+                      }
+                    }}
+                    className={`tracking-wide transition-colors relative group py-2 ${isActive ? 'text-amber-600 font-semibold' : 'text-gray-700 hover:text-amber-600'
+                      }`}>
+                    {item.name}
+                    <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  </a>
+                );
+              }
+
               return (
-                <Link key={i} href={item.href} className={`tracking-wide transition-colors relative group py-2 ${isActive ? 'text-amber-600 font-semibold' : 'text-gray-700 hover:text-amber-600'
-                  }`}>
+                <Link
+                  key={i}
+                  href={item.href}
+                  onClick={(e) => {
+                    if (item.href === '/' && pathname === '/') {
+                      e.preventDefault();
+                      closeMenu();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      return;
+                    }
+                    closeMenu();
+                  }}
+                  className={`tracking-wide transition-colors relative group py-2 ${isActive ? 'text-amber-600 font-semibold' : 'text-gray-700 hover:text-amber-600'
+                    }`}>
                   {item.name}
                   <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-amber-500 transform origin-left transition-transform duration-300 ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
@@ -86,9 +127,40 @@ export function Header() {
             <div className="space-y-8 w-full flex flex-col items-center">
               {navLinks.map((item, i) => {
                 const isActive = pathname === item.href;
+                if (item.scrollId) {
+                  return (
+                    <a
+                      key={i}
+                      href={pathname === '/' ? `#${item.scrollId}` : `/#${item.scrollId}`}
+                      onClick={(e) => {
+                        closeMenu();
+                        if (pathname === '/') {
+                          e.preventDefault();
+                          scrollToId(item.scrollId as string);
+                        }
+                      }}
+                      className={`text-2xl font-bold transition-colors w-full text-center tracking-wide py-2 ${isActive ? 'text-amber-600 block' : 'text-gray-900 hover:text-amber-600'
+                        }`}>
+                      {item.name}
+                    </a>
+                  );
+                }
+
                 return (
-                  <Link key={i} href={item.href} onClick={closeMenu} className={`text-2xl font-bold transition-colors w-full text-center tracking-wide py-2 ${isActive ? 'text-amber-600 block' : 'text-gray-900 hover:text-amber-600'
-                    }`}>
+                  <Link
+                    key={i}
+                    href={item.href}
+                    onClick={(e) => {
+                      if (item.href === '/' && pathname === '/') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        closeMenu();
+                        return;
+                      }
+                      closeMenu();
+                    }}
+                    className={`text-2xl font-bold transition-colors w-full text-center tracking-wide py-2 ${isActive ? 'text-amber-600 block' : 'text-gray-900 hover:text-amber-600'
+                      }`}>
                     {item.name}
                   </Link>
                 );

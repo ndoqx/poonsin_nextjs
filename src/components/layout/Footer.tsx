@@ -5,7 +5,7 @@ import { Facebook, Instagram, MessageCircle, MapPin } from 'lucide-react';
 export function Footer() {
   const navLinks = [
     { name: 'สินค้า', href: '/collection' },
-    { name: 'ประวัติ', href: '/about' },
+    { name: 'ประวัติ', href: '/#shop-history' },
     { name: 'ติดต่อเรา', href: '/contact' },
   ];
 
