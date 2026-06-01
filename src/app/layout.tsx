@@ -69,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="th">
       <head>
-        {/* Google Tag Manager (อัปเดตรหัสตามรูปภาพเรียบร้อย) */}
+        {/* Google Tag Manager (GTM) */}
         <Script id="gtm-script" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -80,7 +80,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Meta (Facebook) Pixel - เปิดใช้งานและฝังรหัสจริงเรียบร้อย */}
+        {/* Meta (Facebook) Pixel */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -93,6 +93,21 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1729862211763181');
             fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/* Google Analytics 4 (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TYQGEVX5RL"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-TYQGEVX5RL');
           `}
         </Script>
 
@@ -111,10 +126,10 @@ export default function RootLayout({
               logo: "https://storage.googleapis.com/poonsinshop-images/images/logo.webp",
               image:
                 "https://storage.googleapis.com/poonsinshop-images/images/logo.webp",
-              telephone: "+66-81-889-0713", // อย่าลืมใส่เบอร์โทรจริงของร้านตรงนี้
+              telephone: "+66-81-889-0713", 
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "420/ถนนเทศา", // อย่าลืมใส่ที่อยู่จริงของร้านตรงนี้
+                streetAddress: "420/ถนนเทศา", 
                 addressLocality: "นครปฐม",
                 addressRegion: "Nakhon Pathom",
                 postalCode: "73000",
@@ -141,7 +156,7 @@ export default function RootLayout({
       <body
         className={`${kanit.variable} ${sarabun.variable} bg-gray-50 text-gray-800 antialiased`}
       >
-        {/* Google Tag Manager (noscript) (อัปเดตรหัสตามรูปภาพเรียบร้อย) */}
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KGTBQZ86"
@@ -151,7 +166,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
 
-        {/* Meta (Facebook) Pixel (noscript) - เปิดใช้งานและฝังรหัสจริงเรียบร้อย */}
+        {/* Meta (Facebook) Pixel (noscript) */}
         <noscript>
           <img
             height="1"
