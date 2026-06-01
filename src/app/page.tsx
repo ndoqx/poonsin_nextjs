@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // กำหนดรายการรูปภาพศาลพระภูมิ
 const SHRINES_LIST = [
@@ -124,6 +124,25 @@ export default function Home() {
   const [dragEnd, setDragEnd] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
+  // Lightbox state
+  const [activeLightbox, setActiveLightbox] = useState<{ src: string; title: string; desc: string; href: string } | null>(null);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastClickTimeRef = useRef<number>(0);
+
+  // ฟังก์ชันตรวจจับ double-tap/click
+  const handleItemPress = (item: { src: string; title: string; desc: string; href: string }) => {
+    const currentTime = new Date().getTime();
+    const clickDelay = currentTime - lastClickTimeRef.current;
+    if (clickDelay < 300 && clickDelay > 0) {
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    } else {
+      clickTimeoutRef.current = setTimeout(() => {
+        setActiveLightbox(item);
+      }, 230);
+    }
+    lastClickTimeRef.current = currentTime;
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -233,154 +252,161 @@ export default function Home() {
       {/* ─────────────────────────────────────
           สินค้ายอดฮิต — DARK GRID SECTION
       ───────────────────────────────────── */}
-      <section className="bg-[#1C1C1C]">
+      <section className="bg-[#1C1C1C] py-12 px-4 select-none">
         {/* Label */}
-        <div className="pt-12 pb-6 text-center">
+        <div className="pb-8 text-center">
           <p className="text-[11px] font-bold tracking-[0.35em] uppercase text-[#B8882A]">
             สินค้ายอดฮิต
           </p>
         </div>
 
-        {/* ─── Mobile: horizontal scroll strip ─── */}
-        <div className="flex md:hidden gap-[3px] overflow-x-auto snap-x snap-mandatory scrollbar-none pb-1">
-          {[
-            {
-              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
-              id: "grid-mob-1",
+        {/* Responsive Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 max-w-7xl mx-auto h-auto md:h-[580px]">
+
+          {/* 1. รูปใหญ่ฝั่งซ้าย */}
+          <div
+            onClick={() => handleItemPress({
               src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.webp",
               title: "ศาลพระภูมิโมเดิร์น",
-              sub: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
-            },
-            {
-              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
-              id: "grid-mob-2",
-              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg",
-              title: "ศาลพระภูมิโมเดิร์น",
-              sub: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
-            },
-            {
-              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99",
-              id: "grid-mob-3",
-              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg",
-              title: "ศาลพระพรหมโมเดิร์น",
-              sub: "สไตล์โมเดิร์น สวยงามสง่างาม",
-            },
-            {
-              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2",
-              id: "grid-mob-4",
-              src: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.webp",
-              title: "ศาลเจ้าที่ ตา,ยาย",
-              sub: "ตั้งวางได้หลากหลายพื้นที่",
-            },
-            {
-              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%82%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99",
-              id: "grid-mob-5",
-              src: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.webp",
-              title: "ศาลโรมัน",
-              sub: "สไตล์ยุโรป ทรงคุณค่า สวยงามสง่างาม",
-            },
-          ].map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              id={item.id}
-              className="relative flex-none w-[80vw] max-w-sm snap-start overflow-hidden group aspect-video"
-            >
-              <img
-                src={item.src}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-semibold leading-tight">{item.title}</p>
-                <p className="text-[11px] text-white/70 mt-0.5">{item.sub}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* ─── Desktop: 5-panel grid (ไม่เปลี่ยน) ─── */}
-        <div
-          className="hidden md:grid gap-[3px]"
-          style={{ gridTemplateColumns: '2fr 1fr 1fr', gridTemplateRows: '1fr 1fr', height: '560px' }}
-        >
-          {/* 1. รูปใหญ่ฝั่งซ้าย — เต็มความสูง 2 แถว */}
-          <Link
-            href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99"
-            id="grid-main"
-            className="relative group overflow-hidden"
-            style={{ gridRow: '1 / 3' }}
+              desc: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99"
+            })}
+            className="relative group overflow-hidden rounded-xl sm:col-span-2 md:col-span-2 md:row-span-2 h-[280px] sm:h-[380px] md:h-full transition-all duration-300 shadow-md cursor-pointer bg-neutral-800"
           >
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic1.webp"
               alt="สินค้ายอดฮิต"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-400" />
-            <div className="absolute bottom-5 left-5 text-white">
-              <p className="text-base font-semibold">ศาลพระภูมิโมเดิร์น</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent transition-opacity duration-300" />
+            <div className="absolute bottom-5 left-5 right-5 text-white">
+              <p className="text-base md:text-lg font-semibold">ศาลพระภูมิโมเดิร์น</p>
               <p className="text-xs text-white/70 mt-1">สไตล์ทันสมัย เข้ากับบ้านยุคใหม่</p>
             </div>
-          </Link>
+          </div>
 
           {/* 2. รูปเล็ก บน-กลาง */}
-          <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99" id="grid-tr1" className="relative group overflow-hidden">
+          <div
+            onClick={() => handleItemPress({
+              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm1.1.jpg",
+              title: "ศาลพระภูมิโมเดิร์น",
+              desc: "สไตล์ทันสมัย เข้ากับบ้านยุคใหม่",
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99"
+            })}
+            className="relative group overflow-hidden rounded-xl h-[240px] md:h-full transition-all duration-300 shadow-md cursor-pointer bg-neutral-800"
+          >
             <img
-              src="https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm9.1.jpg"
+              src="https://storage.googleapis.com/poonsinshop-images/images/modernpoom/medium/ppmm1.1.jpg"
               alt="สินค้า"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-400" />
-            <div className="absolute bottom-5 left-5 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 text-white">
               <p className="text-base font-semibold">ศาลพระภูมิโมเดิร์น</p>
               <p className="text-xs text-white/70 mt-1">สไตล์ทันสมัย เข้ากับบ้านยุคใหม่</p>
             </div>
-          </Link>
+          </div>
 
           {/* 3. รูปเล็ก บน-ขวา */}
-          <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99" id="grid-tr2" className="relative group overflow-hidden">
+          <div
+            onClick={() => handleItemPress({
+              src: "https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg",
+              title: "ศาลพระพรหมโมเดิร์น",
+              desc: "สไตล์โมเดิร์น สวยงามสง่างาม",
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%A3%E0%B8%AB%E0%B8%A1%E0%B9%82%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A3%E0%B9%8C%E0%B8%99"
+            })}
+            className="relative group overflow-hidden rounded-xl h-[240px] md:h-full transition-all duration-300 shadow-md cursor-pointer bg-neutral-800"
+          >
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/modernpoom/large/ppml1.1.jpg"
               alt="สินค้า"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-400" />
-            <div className="absolute bottom-5 left-5 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 text-white">
               <p className="text-base font-semibold">ศาลพระพรหมโมเดิร์น</p>
               <p className="text-xs text-white/70 mt-1">สไตล์โมเดิร์น สวยงามสง่างาม</p>
             </div>
-          </Link>
+          </div>
 
           {/* 4. รูปเล็ก ล่าง-กลาง */}
-          <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2" id="grid-br1" className="relative group overflow-hidden">
+          <div
+            onClick={() => handleItemPress({
+              src: "https://storage.googleapis.com/poonsinshop-images/images/shrine/ty2.1.webp",
+              title: "ศาลเจ้าที่ ตา,ยาย",
+              desc: "ตั้งวางได้หลากหลายพื้นที่",
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%20%E0%B8%95%E0%B8%B2%2C%E0%B8%A2%E0%B8%B2%E0%B8%A2"
+            })}
+            className="relative group overflow-hidden rounded-xl h-[240px] md:h-full transition-all duration-300 shadow-md cursor-pointer bg-neutral-800"
+          >
             <img
-              src="https://storage.googleapis.com/poonsinshop-images/images/shrine/ty4.1.webp"
+              src="https://storage.googleapis.com/poonsinshop-images/images/shrine/ty2.1.webp"
               alt="สินค้า"
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-400" />
-            <div className="absolute bottom-5 left-5 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 text-white">
               <p className="text-base font-semibold">ศาลเจ้าที่ ตา,ยาย</p>
               <p className="text-xs text-white/70 mt-1">ตั้งวางได้หลากหลายพื้นที่</p>
             </div>
-          </Link>
+          </div>
 
           {/* 5. รูปเล็ก ล่าง-ขวา */}
-          <Link href="/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%82%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99" id="grid-br2" className="relative group overflow-hidden">
+          <div
+            onClick={() => handleItemPress({
+              src: "https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.webp",
+              title: "ศาลโรมัน",
+              desc: "สไตล์ยุโรป ทรงคุณค่า สวยงามสง่างาม",
+              href: "/collection?category=%E0%B8%A8%E0%B8%B2%E0%B8%A5%E0%B9%82%E0%B8%A3%E0%B8%A1%E0%B8%B1%E0%B8%99"
+            })}
+            className="relative group overflow-hidden rounded-xl h-[240px] md:h-full transition-all duration-300 shadow-md cursor-pointer bg-neutral-800"
+          >
             <img
               src="https://storage.googleapis.com/poonsinshop-images/images/roman/rm2.1.webp"
               alt="สินค้า"
               className="w-full h-full object-cover object-top-left transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-400" />
-            <div className="absolute bottom-5 left-5 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 text-white">
               <p className="text-base font-semibold">ศาลโรมัน</p>
               <p className="text-xs text-white/70 mt-1">สไตล์ยุโรป ทรงคุณค่า สวยงามสง่างาม</p>
             </div>
-          </Link>
+          </div>
+
         </div>
       </section>
+
+      {/* LIGHTBOX MODAL */}
+      {activeLightbox && (
+        <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black/90 p-4 md:p-6 backdrop-blur-md animate-in fade-in">
+          <button
+            onClick={() => setActiveLightbox(null)}
+            className="absolute top-4 right-4 md:top-6 md:right-6 text-white/40 hover:text-white transition-colors duration-200 p-2 rounded-full hover:bg-white/10"
+            aria-label="ปิดหน้าต่าง"
+          >
+            <X size={36} strokeWidth={1.5} />
+          </button>
+          <div className="w-full max-w-4xl flex flex-col items-center">
+            <img
+              src={activeLightbox.src}
+              alt={activeLightbox.title}
+              className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain rounded-xl shadow-2xl mb-6 animate-in zoom-in-95 duration-300"
+            />
+            <div className="text-center text-white px-4 max-w-xl">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight">{activeLightbox.title}</h3>
+              <p className="text-sm text-white/60 mt-2 mb-6">{activeLightbox.desc}</p>
+              <Link
+                href={activeLightbox.href}
+                onClick={() => setActiveLightbox(null)}
+                className="inline-flex items-center gap-2 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm md:text-base font-bold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#C8892A]/20 hover:scale-105"
+              >
+                ดูรายละเอียดเพิ่มเติม
+                <ChevronRight size={18} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ─────────────────────────────────────
           สินค้าของเรา — SHRINE CAROUSEL

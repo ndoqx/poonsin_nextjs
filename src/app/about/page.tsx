@@ -215,12 +215,11 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-900 overflow-x-hidden selection:bg-amber-100 selection:text-gray-900">
 
-      {/* --- CSS สำหรับ Font --- */}
+      {/* --- แก้ไขสไตล์ฟอนต์ให้อ่านง่ายเป็นระเบียบด้วยฟอนต์ Prompt --- */}
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700;800&display=swap');
-        :root { --font-anuphan: 'Anuphan', sans-serif; }
-        body { font-family: var(--font-anuphan); }
-        h1, h2 { font-family: var(--font-anuphan); }
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap');
+        :root { --font-prompt: 'Prompt', sans-serif; }
+        body, h1, h2, h3, p, span, a, button { font-family: var(--font-prompt) !important; }
       `}</style>
 
       {/* ─────────────────────────────────────

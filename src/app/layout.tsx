@@ -31,10 +31,7 @@ export const metadata: Metadata = {
     "ศาลพระพรหม",
   ],
   authors: [{ name: "ร้านพูนสิน" }],
-  metadataBase: new URL("https://poonsinshop.com"), // อัปเดตตามโดเมนในรูปภาพของคุณแล้ว
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL("https://poonsinshop.com"),
   openGraph: {
     title: "ร้านพูนสิน - ศาลพระภูมิและศาลโมเดิร์น อันดับ 1",
     description:

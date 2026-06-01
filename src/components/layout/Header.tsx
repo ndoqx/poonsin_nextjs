@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Facebook, Instagram } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Phone, MessageCircle, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -27,7 +27,7 @@ export function Header() {
 
   const navLinks = [
     { name: 'หน้าหลัก', href: '/' },
-    { name: 'คอลเลกชัน', href: '/collection' },
+    { name: 'สินค้าทั้งหมด', href: '/collection' },
     { name: 'ประวัติร้านพูนสิน', href: '/about' },
     { name: 'ติดต่อเรา', href: '/contact' }
   ];
@@ -96,8 +96,11 @@ export function Header() {
             </div>
 
             <div className="mt-16 flex gap-6 text-gray-400 border-t border-gray-100 w-1/2 justify-center pt-8">
-              <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] transition-colors"><Facebook size={36} /></a>
-              <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#dc2743] transition-colors"><Instagram size={36} /></a>
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] transition-colors"><Facebook size={36} /></a>
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#dc2743] transition-colors"><Instagram size={36} /></a>
+                <a href="https://line.me/ti/p/~0611733389" target="_blank" rel="noreferrer" className="hover:text-[#00B900] transition-colors"><MessageCircle size={36} /></a>
+                <a href="tel:0611733389" className="hover:text-[#EA4335] transition-colors"><Phone size={36} /></a>
+                <a href="https://www.google.com/maps?rlz=1C5CHFA_enTH1175TH1175&sca_esv=c11289b76da90c62&sxsrf=ANbL-n6CHoqRGBS7s7mKwwFL0zCu-OVjNA:1776172656677&biw=1440&bih=778&um=1&ie=UTF-8&fb=1&gl=th&sa=X&geocode=KRnU0Kbr5eIwMbngK2Ix4ej9&daddr=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000" target="_blank" rel="noreferrer" className="hover:text-[#EA4335] transition-colors"><MapPin size={36} /></a>
             </div>
           </div>
         </div>

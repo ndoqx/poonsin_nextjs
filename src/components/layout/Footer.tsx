@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, MessageCircle, Twitter } from 'lucide-react';
+import { Facebook, Instagram, MessageCircle, MapPin } from 'lucide-react';
 
 export function Footer() {
   const navLinks = [
@@ -62,13 +62,23 @@ export function Footer() {
               </h4>
               <div className="flex flex-col gap-1.5 text-sm text-gray-600">
                 <p className="font-semibold text-gray-800">081-8890173</p>
+                {/* ที่อยู่ */}
+                <a
+                  href="https://www.google.com/maps?q=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-1.5 text-gray-500 hover:text-[#B8882A] transition-colors leading-relaxed group"
+                >
+                  <MapPin size={13} className="mt-0.5 shrink-0 group-hover:text-[#B8882A]" />
+                  <span>420 ถนนเทศา ตำบลพระประโทน<br />อำเภอเมืองนครปฐม นครปฐม 73000</span>
+                </a>
               </div>
             </div>
 
             {/* Social Icons */}
             <div className="flex gap-3 mt-1">
               <a
-                href="https://line.me/ti/p/~0611733389"  // ใส่ลิงก์ LINE หรือ ID ของคุณตรงนี้
+                href="https://line.me/ti/p/~0611733389"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Line"
@@ -93,6 +103,15 @@ export function Footer() {
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-[#dc2743] hover:text-[#dc2743] transition-all duration-200"
               >
                 <Instagram size={14} />
+              </a>
+              <a
+                href="https://www.google.com/maps?q=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Google Maps"
+                className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-[#EA4335] hover:text-[#EA4335] transition-all duration-200"
+              >
+                <MapPin size={14} />
               </a>
             </div>
           </div>

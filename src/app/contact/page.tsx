@@ -1,14 +1,74 @@
-"use client";
-
 import React from 'react';
 import { Phone, MessageCircle, Facebook, Instagram, MapPin } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'ติดต่อร้านพูนสิน | ศาลพระภูมิและศาลโมเดิร์น นครปฐม',
+  description:
+    'ติดต่อร้านพูนสิน ผู้จำหน่ายศาลพระภูมิและศาลโมเดิร์นทุกรูปแบบ ตั้งแต่ปี 2506 ที่ 420 ถนนเทศา ตำบลพระประโทน อำเภอเมืองนครปฐม นครปฐม 73000 โทร 081-8890173',
+};
+
+// JSON-LD Structured Data — ทำให้ Google แสดงที่อยู่/โทร/social ใน Search Results
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'ร้านพูนสิน',
+  alternateName: 'Poonsin Shop',
+  description: 'ศาลพระภูมิและศาลโมเดิร์นทุกรูปแบบ ก่อตั้งปี 2506',
+  url: 'https://www.poonsinshop.com',
+  telephone: '+66-81-889-0173',
+  foundingDate: '1963',
+  image: 'https://storage.googleapis.com/poonsinshop-images/images/logo.webp',
+  logo: 'https://storage.googleapis.com/poonsinshop-images/images/logo.webp',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '420 ถนนเทศา',
+    addressLocality: 'ตำบลพระประโทน อำเภอเมืองนครปฐม',
+    addressRegion: 'นครปฐม',
+    postalCode: '73000',
+    addressCountry: 'TH',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 13.8198,
+    longitude: 100.0489,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+  ],
+  sameAs: [
+    'https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr',
+    'https://www.instagram.com/poonsin.shop',
+    'https://line.me/ti/p/~0611733389',
+    'https://www.google.com/maps?q=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+66-81-889-0173',
+    contactType: 'customer service',
+    areaServed: 'TH',
+    availableLanguage: 'Thai',
+  },
+};
 
 export default function ContactPage() {
   return (
     <div className="bg-[#FAF9F6] text-gray-900 font-sans min-h-screen pt-24 selection:bg-amber-200 selection:text-gray-900">
 
+      {/* JSON-LD Structured Data for Google Search */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Contact Section */}
+
       <section className="bg-white text-gray-900 py-24 md:py-32 px-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[calc(100vh-100px)]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
           <h1 className="text-[20vw] font-bold whitespace-nowrap tracking-tighter">POONSIN</h1>
