@@ -7,8 +7,7 @@ import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [hash, setHash] = useState('');
+  const [activeSection, setActiveSection] = useState<'home' | 'shop-history' | null>('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -16,30 +15,34 @@ export function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
+      if (pathname !== '/') {
+        return;
+      }
+
       const section = document.getElementById('shop-history');
       const headerOffset = 100;
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= headerOffset && rect.bottom > headerOffset) {
-          setActiveSection('shop-history');
-        } else {
-          setActiveSection(null);
-        }
+      if (!section) {
+        setActiveSection('home');
+        return;
+      }
+
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      const currentScroll = window.pageYOffset + headerOffset;
+
+      if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
+        setActiveSection('shop-history');
+      } else if (currentScroll < sectionTop) {
+        setActiveSection('home');
+      } else {
+        setActiveSection(null);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const updateHash = () => setHash(window.location.hash || '');
-
-    updateHash();
-    window.addEventListener('hashchange', updateHash);
-    return () => window.removeEventListener('hashchange', updateHash);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
@@ -81,9 +84,9 @@ export function Header() {
               const isAnchorItem = Boolean(item.scrollId);
               const isHomeItem = item.href === '/';
               const isActive = isAnchorItem
-                ? pathname === '/' && (activeSection === item.scrollId || hash === `#${item.scrollId}`)
+                ? pathname === '/' && activeSection === 'shop-history'
                 : isHomeItem
-                  ? pathname === '/' && activeSection === null
+                  ? pathname === '/' && activeSection === 'home'
                   : pathname === item.href;
               if (item.scrollId) {
                 return (
@@ -158,9 +161,9 @@ export function Header() {
                 const isAnchorItem = Boolean(item.scrollId);
                 const isHomeItem = item.href === '/';
                 const isActive = isAnchorItem
-                  ? pathname === '/' && (activeSection === item.scrollId || hash === `#${item.scrollId}`)
+                  ? pathname === '/' && activeSection === 'shop-history'
                   : isHomeItem
-                    ? pathname === '/' && activeSection === null
+                    ? pathname === '/' && activeSection === 'home'
                     : pathname === item.href;
                 if (item.scrollId) {
                   return (
