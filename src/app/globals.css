@@ -4,7 +4,7 @@
   --color-gold: #C5A059;
   --color-gold-dark: #B08D45;
   --color-gold-light: #D4B06A;
-  --font-heading: var(--font-kanit);
+  --font-heading: var(--font-body);
   --font-body: var(--font-sarabun);
 }
 
