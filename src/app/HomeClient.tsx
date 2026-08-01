@@ -8,24 +8,27 @@ import { Reveal } from '@/components/ui/Reveal';
 import { SITE_CONFIG } from '@/lib/site-config';
 import { useState, useEffect, useRef } from 'react';
 
+// Real intrinsic dimensions (source files are up to 4000x6000) — required so
+// next/image can size/optimize them without distorting the fixed-height,
+// auto-width layout the carousel relies on.
 const SHRINES_LIST = [
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic4.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic5.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic6.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic7.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic8.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic9.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic10.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic11.webp",
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic4.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic5.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic6.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic7.webp", width: 4000, height: 6000 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic8.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic9.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic10.webp", width: 3508, height: 4961 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/mainpic/mainpic11.webp", width: 3508, height: 4961 },
 ];
 
 const REVIEW_IMAGES_LIST = [
-  "https://storage.googleapis.com/poonsinshop-images/images/review1.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/review2.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/review3.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/review4.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/review5.webp",
-  "https://storage.googleapis.com/poonsinshop-images/images/review6.webp",
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review1.webp", width: 1144, height: 1430 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review2.webp", width: 1280, height: 1280 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review3.webp", width: 1280, height: 1280 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review4.webp", width: 1280, height: 1280 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review5.webp", width: 1280, height: 1280 },
+  { src: "https://storage.googleapis.com/poonsinshop-images/images/review6.webp", width: 1280, height: 1280 },
 ];
 
 const HISTORY_IMAGES = [
@@ -106,6 +109,8 @@ const CarouselButton = ({
 
 const CarouselItem = ({
   src,
+  width,
+  height,
   index,
   currentShrine,
   total,
@@ -114,6 +119,8 @@ const CarouselItem = ({
   canClick
 }: {
   src: string;
+  width: number;
+  height: number;
   index: number;
   currentShrine: number;
   total: number;
@@ -137,19 +144,23 @@ const CarouselItem = ({
 
   return (
     <div
-      className={`absolute transition-all duration-500 ease-in-out ${positionClass}`}
+      className={`absolute transition-[transform,opacity] duration-500 ease-in-out will-change-transform ${positionClass}`}
       onClick={() => {
         if (!canClick) return;
         if (diff === 1) onNext();
         if (diff === -1) onPrev();
       }}
     >
-      {/* Intrinsic aspect ratio varies per photo (fixed height, auto width) — a fixed next/image box would distort these, so a plain <img> is used deliberately here. */}
-      <img
+      {/* Real width/height (see SHRINES_LIST/REVIEW_IMAGES_LIST) let next/image size
+          this correctly without distortion, while the fixed-height, auto-width
+          classes below keep the existing layout. */}
+      <Image
         src={src}
+        width={width}
+        height={height}
         alt={`Shrine ${index + 1}`}
-        loading="lazy"
-        decoding="async"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        quality={80}
         className="h-72 md:h-[500px] w-auto object-contain rounded-xl pointer-events-none"
       />
     </div>
@@ -266,6 +277,7 @@ export function HomeClient() {
             alt="ศาลพระภูมิพูนสิน"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-center"
           />
@@ -291,7 +303,7 @@ export function HomeClient() {
             <Link
               href="/collection"
               id="hero-cta-btn"
-              className="inline-flex items-center gap-3 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm font-extrabold tracking-[0.12em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#C8892A]/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 bg-[#A26A1B] hover:bg-[#8A5814] text-white text-sm font-extrabold tracking-[0.12em] px-8 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-[#A26A1B]/40 hover:-translate-y-0.5"
             >
               เลือกชมสินค้าทั้งหมด
               <ChevronRight size={18} />
@@ -363,7 +375,7 @@ export function HomeClient() {
               <Link
                 href={activeLightbox.href}
                 onClick={() => setActiveLightbox(null)}
-                className="inline-flex items-center gap-2 bg-[#C8892A] hover:bg-[#A8721F] text-white text-sm md:text-base font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#C8892A]/20 hover:scale-105"
+                className="inline-flex items-center gap-2 bg-[#A26A1B] hover:bg-[#8A5814] text-white text-sm md:text-base font-extrabold px-8 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#A26A1B]/20 hover:scale-105"
               >
                 ดูรายละเอียดเพิ่มเติม
                 <ChevronRight size={18} />
@@ -404,10 +416,12 @@ export function HomeClient() {
               onMouseMove={(e) => onDragMove(e.clientX)}
               onMouseUp={() => onDragEnd(() => changeShrine('next'), () => changeShrine('prev'))}
             >
-              {SHRINES_LIST.map((src, index) => (
+              {SHRINES_LIST.map((shrine, index) => (
                 <CarouselItem
                   key={index}
-                  src={src}
+                  src={shrine.src}
+                  width={shrine.width}
+                  height={shrine.height}
                   index={index}
                   currentShrine={currentShrine}
                   total={SHRINES_LIST.length}
@@ -554,10 +568,12 @@ export function HomeClient() {
               onMouseMove={(e) => onDragMove(e.clientX)}
               onMouseUp={() => onDragEnd(() => changeReview('next'), () => changeReview('prev'))}
             >
-              {REVIEW_IMAGES_LIST.map((src, index) => (
+              {REVIEW_IMAGES_LIST.map((review, index) => (
                 <CarouselItem
                   key={index}
-                  src={src}
+                  src={review.src}
+                  width={review.width}
+                  height={review.height}
                   index={index}
                   currentShrine={currentReview}
                   total={REVIEW_IMAGES_LIST.length}

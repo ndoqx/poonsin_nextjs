@@ -63,6 +63,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Next.js only serves qualities explicitly allowlisted here; 75 is the
+    // built-in default and 80 is what the shrine/review carousel images request.
+    qualities: [75, 80],
     remotePatterns: [
       {
         protocol: "https",

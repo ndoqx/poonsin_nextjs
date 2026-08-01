@@ -72,8 +72,9 @@ export default function RootLayout({
   return (
     <html lang="th">
       <head>
-        {/* Google Tag Manager (GTM) */}
-        <Script id="gtm-script" strategy="afterInteractive">
+        {/* Google Tag Manager (GTM) — lazyOnload: deferred until the browser is idle
+            after window load, so it stays off the main thread during initial render/TBT. */}
+        <Script id="gtm-script" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -84,7 +85,7 @@ export default function RootLayout({
         </Script>
 
         {/* Meta (Facebook) Pixel */}
-        <Script id="fb-pixel" strategy="afterInteractive">
+        <Script id="fb-pixel" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -102,9 +103,9 @@ export default function RootLayout({
         {/* Google Analytics 4 (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-TYQGEVX5RL"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

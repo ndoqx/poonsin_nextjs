@@ -172,11 +172,11 @@ function CollectionGrid() {
 
               {/* Header Mobile Only */}
               <div className="flex md:hidden justify-between items-center p-4 border-b border-gray-100 bg-white shrink-0 z-50 relative shadow-sm w-full">
-                <button onClick={() => setActiveProduct(null)} className="p-2 -ml-2 text-gray-600">
+                <button onClick={() => setActiveProduct(null)} className="p-2 -ml-2 text-gray-600" aria-label="ปิด">
                   <ChevronLeft size={28} />
                 </button>
                 <span className="font-bold text-gray-900 truncate px-2 text-sm">{activeProduct.name}</span>
-                <button onClick={closeProduct} className="p-2 -mr-2 text-gray-600">
+                <button onClick={closeProduct} className="p-2 -mr-2 text-gray-600" aria-label="ปิด">
                   <X size={28} />
                 </button>
               </div>
@@ -186,7 +186,7 @@ function CollectionGrid() {
                 <button onClick={closeProduct} className="flex items-center gap-2 text-gray-600 hover:text-amber-600 font-bold transition-colors">
                   <ChevronLeft size={24} /> ย้อนกลับไปเลือกหน้าสินค้าของเรา
                 </button>
-                <button onClick={closeProduct} className="w-10 h-10 bg-gray-100 hover:bg-red-50 hover:text-red-500 text-gray-600 rounded-full flex items-center justify-center transition-colors">
+                <button onClick={closeProduct} className="w-10 h-10 bg-gray-100 hover:bg-red-50 hover:text-red-500 text-gray-600 rounded-full flex items-center justify-center transition-colors" aria-label="ปิด">
                   <X size={24} />
                 </button>
               </div>
@@ -214,7 +214,7 @@ function CollectionGrid() {
                         />
                       </motion.div>
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">ไม่มีรูปภาพ</div>
+                      <div className="w-full h-full flex items-center justify-center text-gray-500">ไม่มีรูปภาพ</div>
                     )}
                   </div>
 
@@ -255,7 +255,7 @@ function CollectionGrid() {
                   </div>
 
                   <div className="mb-8 flex-1">
-                    <h4 className="font-bold text-gray-900 mb-2 md:mb-3 text-base md:text-lg">รายละเอียดสินค้า</h4>
+                    <h3 className="font-bold text-gray-900 mb-2 md:mb-3 text-base md:text-lg">รายละเอียดสินค้า</h3>
                     <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4 md:mb-6">
                       {activeProduct.description}
                     </p>

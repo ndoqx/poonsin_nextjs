@@ -132,7 +132,11 @@ export function Header() {
             })}
           </div>
 
-          <button className="md:hidden relative p-2 text-gray-900 bg-white/50 rounded-full border border-gray-200" onClick={() => setIsMenuOpen(true)}>
+          <button
+            className="md:hidden relative p-2 text-gray-900 bg-white/50 rounded-full border border-gray-200"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="เปิดเมนูหลัก"
+          >
             <Menu size={24} />
           </button>
         </div>
@@ -151,7 +155,7 @@ export function Header() {
             <Link href="/" onClick={closeMenu} className="flex items-center transition-transform active:scale-95">
               <Image src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp" alt="Poonsin Logo" width={48} height={48} className="h-12 w-auto object-contain rounded-md shadow-sm" />
             </Link>
-            <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors">
+            <button onClick={closeMenu} className="p-1 border-[1.5px] border-gray-300 text-gray-800 rounded-md hover:bg-gray-100 transition-colors" aria-label="ปิด">
               <X size={26} />
             </button>
           </div>
@@ -206,12 +210,12 @@ export function Header() {
               })}
             </div>
 
-            <div className="mt-16 flex gap-6 text-gray-400 border-t border-gray-100 w-1/2 justify-center pt-8">
-                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] transition-colors"><Facebook size={36} /></a>
-                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="hover:text-[#dc2743] transition-colors"><Instagram size={36} /></a>
-                <a href="https://line.me/ti/p/~0611733389" target="_blank" rel="noreferrer" className="hover:text-[#00B900] transition-colors"><MessageCircle size={36} /></a>
-                <a href="tel:0611733389" className="hover:text-[#EA4335] transition-colors"><Phone size={36} /></a>
-                <a href="https://www.google.com/maps?rlz=1C5CHFA_enTH1175TH1175&sca_esv=c11289b76da90c62&sxsrf=ANbL-n6CHoqRGBS7s7mKwwFL0zCu-OVjNA:1776172656677&biw=1440&bih=778&um=1&ie=UTF-8&fb=1&gl=th&sa=X&geocode=KRnU0Kbr5eIwMbngK2Ix4ej9&daddr=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000" target="_blank" rel="noreferrer" className="hover:text-[#EA4335] transition-colors"><MapPin size={36} /></a>
+            <div className="mt-16 flex gap-6 text-gray-500 border-t border-gray-100 w-1/2 justify-center pt-8">
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="ติดต่อเราผ่าน Facebook" className="hover:text-[#1877F2] transition-colors"><Facebook size={36} /></a>
+                <a href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="ติดต่อเราผ่าน Instagram" className="hover:text-[#dc2743] transition-colors"><Instagram size={36} /></a>
+                <a href="https://line.me/ti/p/~0611733389" target="_blank" rel="noreferrer" aria-label="ติดต่อเราผ่าน Line" className="hover:text-[#00B900] transition-colors"><MessageCircle size={36} /></a>
+                <a href="tel:0611733389" aria-label="โทรติดต่อเรา" className="hover:text-[#EA4335] transition-colors"><Phone size={36} /></a>
+                <a href="https://www.google.com/maps?rlz=1C5CHFA_enTH1175TH1175&sca_esv=c11289b76da90c62&sxsrf=ANbL-n6CHoqRGBS7s7mKwwFL0zCu-OVjNA:1776172656677&biw=1440&bih=778&um=1&ie=UTF-8&fb=1&gl=th&sa=X&geocode=KRnU0Kbr5eIwMbngK2Ix4ej9&daddr=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000" target="_blank" rel="noreferrer" aria-label="ดูตำแหน่งร้านบน Google Maps" className="hover:text-[#EA4335] transition-colors"><MapPin size={36} /></a>
             </div>
           </div>
         </div>

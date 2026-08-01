@@ -34,7 +34,7 @@ export function Footer() {
                 <div className="text-[10px] tracking-[0.2em] text-gray-500 uppercase">
                   ศาลพระภูมิและศาลโมเดิร์นทุกรุปแบบ
                 </div>
-                <div className="text-[9px] tracking-[0.15em] text-gray-400 uppercase mt-0.5">
+                <div className="text-[9px] tracking-[0.15em] text-gray-600 uppercase mt-0.5">
                   ก่อตั้งปี 2506
                 </div>
               </div>
@@ -60,9 +60,9 @@ export function Footer() {
           {/* Column 3: Contact + Social */}
           <div className="flex flex-col gap-4">
             <div>
-              <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-gray-700 mb-3">
+              <h3 className="text-xs font-bold tracking-[0.2em] uppercase text-gray-700 mb-3">
                 ติดต่อเรา
-              </h4>
+              </h3>
               <div className="flex flex-col gap-1.5 text-sm text-gray-600">
                 <p className="font-semibold text-gray-800">081-8890173</p>
                 {/* ที่อยู่ */}
@@ -84,7 +84,7 @@ export function Footer() {
                 href="https://line.me/ti/p/~0611733389"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Line"
+                aria-label="ติดต่อเราผ่าน Line"
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-gray-800 hover:text-gray-900 transition-all duration-200"
               >
                 <MessageCircle size={14} />
@@ -93,7 +93,7 @@ export function Footer() {
                 href="https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Facebook"
+                aria-label="ติดต่อเราผ่าน Facebook"
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-[#1877F2] hover:text-[#1877F2] transition-all duration-200"
               >
                 <Facebook size={14} />
@@ -102,7 +102,7 @@ export function Footer() {
                 href="https://www.instagram.com/poonsin.shop?igsh=MW1xd29jNDl2emUxdg=="
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Instagram"
+                aria-label="ติดต่อเราผ่าน Instagram"
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-[#dc2743] hover:text-[#dc2743] transition-all duration-200"
               >
                 <Instagram size={14} />
@@ -111,7 +111,7 @@ export function Footer() {
                 href="https://www.google.com/maps?q=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Google Maps"
+                aria-label="ดูตำแหน่งร้านบน Google Maps"
                 className="w-8 h-8 border border-gray-300 rounded-full flex items-center justify-center text-gray-500 hover:border-[#EA4335] hover:text-[#EA4335] transition-all duration-200"
               >
                 <MapPin size={14} />
