@@ -497,7 +497,7 @@ export function HomeClient() {
                 <div>
                   <h3 className="font-extrabold text-gray-900 mb-2 text-base">ส่งต่อประสบการณ์รุ่นสู่รุ่น</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    สืบสานวิธีทำศาลแบบดิมที่สวยงามดั้งเดิม<br />
+                    สืบสานวิธีทำศาลแบบเดิมที่สวยงามดั้งเดิม<br />
                   </p>
                 </div>
                 <div className="w-full h-px bg-gray-200" />
