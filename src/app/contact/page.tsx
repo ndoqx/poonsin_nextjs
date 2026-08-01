@@ -1,90 +1,53 @@
 import React from 'react';
+import Image from 'next/image';
 import { Phone, MessageCircle, Facebook, Instagram, MapPin } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import type { Metadata } from 'next';
 
+const title = 'ติดต่อร้านพูนสิน | ศาลพระภูมิและศาลโมเดิร์น นครปฐม';
+const description =
+  'ติดต่อร้านพูนสิน ผู้จำหน่ายศาลพระภูมิและศาลโมเดิร์นทุกรูปแบบ ตั้งแต่ปี 2506 ที่ 420 ถนนเทศา ตำบลพระประโทน อำเภอเมืองนครปฐม นครปฐม 73000 โทร 081-8890173';
+
 export const metadata: Metadata = {
-  title: 'ติดต่อร้านพูนสิน | ศาลพระภูมิและศาลโมเดิร์น นครปฐม',
-  description:
-    'ติดต่อร้านพูนสิน ผู้จำหน่ายศาลพระภูมิและศาลโมเดิร์นทุกรูปแบบ ตั้งแต่ปี 2506 ที่ 420 ถนนเทศา ตำบลพระประโทน อำเภอเมืองนครปฐม นครปฐม 73000 โทร 081-8890173',
+  title,
+  description,
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title,
+    description,
+    url: 'https://poonsinshop.com/contact',
+    type: 'website',
+  },
 };
 
-// JSON-LD Structured Data — ทำให้ Google แสดงที่อยู่/โทร/social ใน Search Results
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'ร้านพูนสิน',
-  alternateName: 'Poonsin Shop',
-  description: 'ศาลพระภูมิและศาลโมเดิร์นทุกรูปแบบ ก่อตั้งปี 2506',
-  url: 'https://www.poonsinshop.com',
-  telephone: '+66-81-889-0173',
-  foundingDate: '1963',
-  image: 'https://storage.googleapis.com/poonsinshop-images/images/logo.webp',
-  logo: 'https://storage.googleapis.com/poonsinshop-images/images/logo.webp',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '420 ถนนเทศา',
-    addressLocality: 'ตำบลพระประโทน อำเภอเมืองนครปฐม',
-    addressRegion: 'นครปฐม',
-    postalCode: '73000',
-    addressCountry: 'TH',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 13.8198,
-    longitude: 100.0489,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
-  ],
-  sameAs: [
-    'https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr',
-    'https://www.instagram.com/poonsin.shop',
-    'https://line.me/ti/p/~0611733389',
-    'https://www.google.com/maps?q=420+ถนน+เทศา+ตำบลพระประโทน+อำเภอเมืองนครปฐม+นครปฐม+73000',
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+66-81-889-0173',
-    contactType: 'customer service',
-    areaServed: 'TH',
-    availableLanguage: 'Thai',
-  },
-};
+// LocalBusiness structured data is declared once, sitewide, in src/app/layout.tsx.
 
 export default function ContactPage() {
   return (
     <div className="bg-[#FAF9F6] text-gray-900 font-sans min-h-screen pt-24 selection:bg-amber-200 selection:text-gray-900">
 
-      {/* JSON-LD Structured Data for Google Search */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       {/* Contact Section */}
 
       <section className="bg-white text-gray-900 py-24 md:py-32 px-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[calc(100vh-100px)]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
-          <h1 className="text-[20vw] font-bold whitespace-nowrap tracking-tighter">POONSIN</h1>
+        <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
+          <span className="block text-[20vw] font-bold whitespace-nowrap tracking-tighter">POONSIN</span>
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <Reveal effect="scale-up">
-            <img
+            <Image
               src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp"
               alt="Poonsin Logo"
+              width={128}
+              height={128}
               className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-8 md:mb-10 object-contain rounded-2xl shadow-xl transition-transform hover:scale-105"
             />
-            <p className="text-lg md:text-2xl text-gray-600 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed">
+            <h1 className="text-lg md:text-2xl text-gray-600 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed font-normal">
               จัดส่งและติดตั้งอย่างทั่วไทย<br />
               <span className="text-amber-600 font-bold">ดูแลทุกขั้นตอนโดยเจ้าของร้านโดยตรง</span>
-            </p>
+            </h1>
 
             <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-12 md:mb-16">
               <a href="tel:0818890173" className="group relative overflow-hidden bg-gray-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-xl hover:shadow-gray-900/40 hover:-translate-y-1 flex items-center justify-center gap-3 w-full md:w-auto">
@@ -132,7 +95,7 @@ export default function ContactPage() {
                   <MapPin size={28} />
                 </div>
                 <div className="text-center md:text-left">
-                  <h3 className="font-bold text-gray-900 text-lg md:text-xl mb-1.5 group-hover:text-amber-600 transition-colors">ที่ตั้งร้านพูนสิน</h3>
+                  <h2 className="font-bold text-gray-900 text-lg md:text-xl mb-1.5 group-hover:text-amber-600 transition-colors">ที่ตั้งร้านพูนสิน</h2>
                   <p className="text-gray-600 font-medium text-sm md:text-base leading-relaxed">
                     420 ถนน เทศา ตำบลพระประโทน อำเภอเมืองนครปฐม นครปฐม 73000
                   </p>

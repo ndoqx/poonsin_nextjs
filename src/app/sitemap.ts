@@ -12,7 +12,7 @@ async function getDynamicRoutes() {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.poonsinshop.com';
+  const baseUrl = 'https://poonsinshop.com';
 
   // Define static routes (internal pages only — external URLs like Google Maps
   // or social media must NOT be in sitemap.xml; use JSON-LD structured data instead)

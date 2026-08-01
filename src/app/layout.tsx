@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "ร้านพูนสิน" }],
   metadataBase: new URL("https://poonsinshop.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "ร้านพูนสิน - ศาลพระภูมิและศาลโมเดิร์น อันดับ 1",
     description:
@@ -111,7 +114,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* JSON-LD LocalBusiness Schema */}
+        {/* JSON-LD LocalBusiness Schema — single sitewide source of truth (see also src/app/contact/page.tsx, which reuses this data for its ContactPage-specific markup) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,12 +129,13 @@ export default function RootLayout({
               logo: "https://storage.googleapis.com/poonsinshop-images/images/logo.webp",
               image:
                 "https://storage.googleapis.com/poonsinshop-images/images/logo.webp",
-              telephone: "+66-81-889-0713", 
+              telephone: "+66-81-889-0173",
+              foundingDate: "1963",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "420/ถนนเทศา", 
+                streetAddress: "420 ถนนเทศา ตำบลพระประโทน อำเภอเมืองนครปฐม",
                 addressLocality: "นครปฐม",
-                addressRegion: "Nakhon Pathom",
+                addressRegion: "นครปฐม",
                 postalCode: "73000",
                 addressCountry: "TH",
               },
@@ -145,10 +149,22 @@ export default function RootLayout({
                 dayOfWeek: [
                   "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
                 ],
-                opens: "06:00",
-                closes: "22:00",
+                opens: "08:00",
+                closes: "18:00",
               },
               priceRange: "$$",
+              sameAs: [
+                "https://www.facebook.com/share/16XBg3i9ou/?mibextid=wwXIfr",
+                "https://www.instagram.com/poonsin.shop",
+                "https://line.me/ti/p/~0611733389",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+66-81-889-0173",
+                contactType: "customer service",
+                areaServed: "TH",
+                availableLanguage: "Thai",
+              },
             }),
           }}
         />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Facebook, Instagram, MessageCircle, MapPin } from 'lucide-react';
 
@@ -19,9 +20,11 @@ export function Footer() {
           {/* Column 1: Brand Logo */}
           <div className="flex flex-col gap-3">
             <Link href="/" className="flex flex-col gap-1 w-fit transition-opacity hover:opacity-80">
-              <img
+              <Image
                 src="https://storage.googleapis.com/poonsinshop-images/images/logo.webp"
                 alt="Poonsin Logo"
+                width={56}
+                height={56}
                 className="h-14 w-auto object-contain"
               />
               <div>
@@ -39,7 +42,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Navigation Links */}
-          <div>
+          <nav aria-label="Footer">
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -52,7 +55,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Column 3: Contact + Social */}
           <div className="flex flex-col gap-4">
